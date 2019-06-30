@@ -21,12 +21,27 @@ class InputJob extends Component {
             [propertyName]: event.target.value,
         })
     }
+    //on click => dispatch action to post
+    handleSubmit = () => {
+        if(this.state.companyName && this.state.jobTitle && this.state.postUrl && this.status_id) {
+            this.props.dispatch({
+                type: 'POST_NEW_JOB',
+                payload: this.state,
+            })
+        } else {
+            alert ('input field cannot be empty');
+            return;
+        }
+  
+    }
+
+
     render() {
         return (
             <div>
                 <h2>Enter a New Job</h2>
                 <pre>
-                    {JSON.stringify(this.state)}
+                    {/* {JSON.stringify(this.state)} */}
                 </pre>
                 <form onSubmit={this.handleSubmit}>
                     <label>Company Name:</label>
@@ -46,7 +61,7 @@ class InputJob extends Component {
                     <input type="submit" value="Submit" />
                 </form>
                 <pre>
-                    {JSON.stringify(this.props.reduxState.status, null, 2)}
+                    {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                 </pre>
             </div>
         )
