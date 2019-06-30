@@ -1,31 +1,48 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class InputJob extends Component {
+    //in component did mount => fetch all status to populate the ddl
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ALL_STATUS',
+        })
+    };
+    //local state to temporarily hold the inputs
+    state = {
+        companyName: '',
+        jobTitle: '',
+        postUrl: '',
+        status_id: '',
+    }
+    handleChangeFor = (propertyName) => (event) => {
+        this.setState({
+            [propertyName]: event.target.value,
         })
     }
     render() {
         return (
             <div>
                 <h2>Enter a New Job</h2>
-                <form>
-                    Company Name:
-                    <input type="text" name="companyName" /><br />
-                    Job Title:
-                    <input type="text" name="jobTitle" /><br />
-                    Post URL:
-                    <input type="text" name="postUrl" /><br />
-                    Status:
-                    <select type="text" name="status">
-                        {this.props.reduxState.status.map(status => <option key={status.id}>{status.status_name}</option>)}
+                <pre>
+                    {JSON.stringify(this.state)}
+                </pre>
+                <form onSubmit={this.handleSubmit}>
+                    <label>Company Name:</label>
+                    <input onChange={this.handleChangeFor('companyName')} type="text" name="companyName" /><br />
+                    <label>Job Title:</label>
+                    <input onChange={this.handleChangeFor('jobTitle')} type="text" name="jobTitle" /><br />
+                    <label>Post URL:</label>
+                    <input onChange={this.handleChangeFor('postUrl')} type="text" name="postUrl" /><br />
+                    <label>Status:</label>
+                    <select type="text" name="status" onChange={this.handleChangeFor('status_id')}>
+                        {this.props.reduxState.status.map(status => <option key={status.id} value={status.id}>{status.status_name}</option>)}
                     </select>
-                    
+
                     <br />
                     <br />
-                    <input type="submit" value="Cancel" />
+                    <Link to='/home'><button>Cancel</button></Link>
                     <input type="submit" value="Submit" />
                 </form>
                 <pre>
