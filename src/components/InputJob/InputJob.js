@@ -23,7 +23,7 @@ class InputJob extends Component {
     }
     //on click => dispatch action to post
     handleSubmit = () => {
-        if(this.state.companyName && this.state.jobTitle && this.state.postUrl && this.status_id) {
+        if(this.state.companyName && this.state.jobTitle && this.state.postUrl && this.state.status_id) {
             this.props.dispatch({
                 type: 'POST_NEW_JOB',
                 payload: this.state,
@@ -41,7 +41,7 @@ class InputJob extends Component {
             <div>
                 <h2>Enter a New Job</h2>
                 <pre>
-                    {/* {JSON.stringify(this.state)} */}
+                    {JSON.stringify(this.state)}
                 </pre>
                 <form onSubmit={this.handleSubmit}>
                     <label>Company Name:</label>
