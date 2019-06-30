@@ -7,7 +7,7 @@ import './Nav.css';
 const Nav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
+      <h2 className="nav-title">Job Application Tracker</h2>
     </Link>
     <div className="nav-right">
       <Link className="nav-link" to="/home">
@@ -21,6 +21,18 @@ const Nav = (props) => (
         <>
           <Link className="nav-link" to="/info">
             Info Page
+          </Link> 
+          <Link className="nav-link" to="/new-job">
+            Input Job
+          </Link>
+          <Link className="nav-link" to="/job-list">
+            My Jobs
+          </Link>
+          <Link className="nav-link" to="/follow-up">
+            Follow-ups
+          </Link>
+          <Link className="nav-link" to="/dashboard">
+            Dashboard
           </Link>
           <LogOutButton className="nav-link"/>
         </>

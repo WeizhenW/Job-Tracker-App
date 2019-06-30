@@ -16,6 +16,12 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import InputJob from '../InputJob/InputJob';
+import MyJobList from '../MyJobList/MyJobList';
+import FollowUp from '../FollowUp/FollowUp';
+import Dashboard from '../Dashboard/Dashboard';
+import JobDetail from '../JobDetail/JobDetail';
+import EditDetail from '../EditDetail/EditDetail';
 
 import './App.css';
 
@@ -55,6 +61,49 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+
+            {/* input job page */}
+            <ProtectedRoute
+              exact
+              path="/new-job"
+              component={InputJob}
+            />
+
+            {/* job list page */}
+            <ProtectedRoute
+              exact
+              path="/job-list"
+              component={MyJobList}
+            />
+
+            {/* follow up page */}
+            <ProtectedRoute
+              exact
+              path="/follow-up"
+              component={FollowUp}
+            />
+
+            {/* dashboard page */}
+            <ProtectedRoute
+              exact
+              path="/dashboard"
+              component={Dashboard}
+            />
+
+            {/* job detail page */}
+            <ProtectedRoute
+              exact
+              path="/job-list/:id"
+              component={JobDetail}
+            />  
+            
+            {/* edit detail page */}
+            <ProtectedRoute
+              exact
+              path="/job-list/:id/edit"
+              component={EditDetail}
+            />
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
