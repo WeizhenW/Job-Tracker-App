@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 
 class InputJob extends Component {
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'FETCH_ALL_STATUS',
+        })
+    }
     render() {
         return (
             <div>
-                <h2>Enter a new InputJob</h2>
+                <h2>Enter a New Job</h2>
                 <form>
                     Company Name:
                     <input type="text" name="companyName" /><br />
@@ -15,12 +20,7 @@ class InputJob extends Component {
                     <input type="text" name="postUrl" /><br />
                     Status:
                     <select type="text" name="status">
-                        <option value="new">New</option>
-                        <option value="applied">Applied</option>
-                        <option value="phone">Phone Interview</option>
-                        <option value="onsite">Onsite Interview</option>
-                        <option value="reject">Reject</option>
-                        <option value="offer">Offer</option>
+                        {this.props.reduxState.status.map(status => <option key={status.id}>{status.status_name}</option>)}
                     </select>
                     
                     <br />
@@ -28,9 +28,15 @@ class InputJob extends Component {
                     <input type="submit" value="Cancel" />
                     <input type="submit" value="Submit" />
                 </form>
+                <pre>
+                    {JSON.stringify(this.props.reduxState.status, null, 2)}
+                </pre>
             </div>
         )
     }
 }
 
-export default InputJob;
+const mapReduxStateToProps = reduxState => ({
+    reduxState,
+})
+export default connect(mapReduxStateToProps)(InputJob);
