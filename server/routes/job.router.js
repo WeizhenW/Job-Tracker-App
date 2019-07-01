@@ -58,7 +58,7 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
         LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
         WHERE "job"."id" = $1 AND "job"."user_id" = $2
         GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id])
-        .then((result) => res.send(result.rows))
+        .then((result) => res.send(result.rows[0]))
         .catch(error => {
             console.log('error with get new jobs list', error);
             res.sendStatus(500);
