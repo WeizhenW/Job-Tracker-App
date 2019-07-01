@@ -7,7 +7,7 @@ class AppliedJobList extends Component {
         return (
             <div>
                 <p>
-                    Input Job Page
+                    Applied jobs
                 </p>
             </div>
         )

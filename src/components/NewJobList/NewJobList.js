@@ -6,7 +6,7 @@ class NewJobList extends Component {
         return (
             <div>
                 <p>
-                    Input Job Page
+                    To apply
                 </p>
             </div>
         )

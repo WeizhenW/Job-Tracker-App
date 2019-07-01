@@ -22,6 +22,8 @@ import FollowUp from '../FollowUp/FollowUp';
 import Dashboard from '../Dashboard/Dashboard';
 import JobDetail from '../JobDetail/JobDetail';
 import EditDetail from '../EditDetail/EditDetail';
+import NewJobList from '../NewJobList/NewJobList';
+import AppliedJobList from '../AppliedJobList/AppliedJobList';
 
 import './App.css';
 
@@ -74,6 +76,20 @@ class App extends Component {
               exact
               path="/job-list"
               component={MyJobList}
+            />
+
+            {/* to apply job list page */}
+            <ProtectedRoute
+              exact
+              path="/job-list/to-apply"
+              component={NewJobList}
+            />
+
+            {/* applied job list page */}
+            <ProtectedRoute
+              exact
+              path="/job-list/applied"
+              component={AppliedJobList}
             />
 
             {/* follow up page */}
