@@ -52,7 +52,7 @@ class NewJobList extends Component {
                             -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
                             -
-                        <Link to="/job-list/:id"><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></Link>
+                        <Link to="/job-list/detail"><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></Link>
                         </li>)}
                     </ul>
                 </div>

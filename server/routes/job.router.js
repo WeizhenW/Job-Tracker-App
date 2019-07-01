@@ -51,13 +51,29 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
 
 //route to get one job details
 router.get('/:jobid', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "job" WHERE "id" = $1 AND "user_id" = $2;`, [req.params.jobid, req.user.id])
-    .then((result) => res.send(result.rows))
-    .catch(error => {
-        console.log('error with get new jobs list', error);
-        res.sendStatus(500);
+    pool.query(`SELECT "title", "company", "address", "post_url", "email", "phone", "website", "note", "status"."status_name", array_agg("skill") AS "skills"
+        FROM "job" 
+        LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
+        LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
+        LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
+        WHERE "job"."id" = $1 AND "job"."user_id" = $2
+        GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id])
+        .then((result) => res.send(result.rows))
+        .catch(error => {
+            console.log('error with get new jobs list', error);
+            res.sendStatus(500);
+        })
     })
-})
+    
+    
+    
+    
+    
+    // SELECT * FROM "job" 
+    //     LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
+    //     LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
+    //     LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
+    //     WHERE "job"."id" = $1 AND "job"."user_id" = $2;`, 
 /**
  * POST route template
  */
