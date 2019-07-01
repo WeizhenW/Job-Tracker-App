@@ -30,7 +30,6 @@ router.get('/toapply', rejectUnauthenticated, (req, res) => {
 
 //route to delete one job
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in delete', req.body);
     pool.query(`DELETE FROM "job" WHERE "id" = $1 AND "user_id" = $2;`, 
     [req.params.id, req.user.id])
     .then(() => res.sendStatus(200))

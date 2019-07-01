@@ -11,8 +11,8 @@ function* fetchNewJobsList() {
 }
 //generator to delete one job
 function* deleteJob(action) {
-    console.log(action.payload);
     yield axios.delete(`/api/job/delete/${action.payload.id}`);
+    yield put({type: 'FETCH_NEW_JOBS_LIST'});
 }
 
 
