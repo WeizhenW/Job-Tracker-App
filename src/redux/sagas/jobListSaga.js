@@ -9,11 +9,18 @@ function* fetchNewJobsList() {
         payload: allNewJobs.data,
     })
 }
+//generator to delete one job
+function* deleteJob(action) {
+    console.log(action.payload);
+    yield axios.delete(`/api/job/delete/${action.payload.id}`);
+}
 
 
 
 function* jobListSaga() {
     yield takeLatest('FETCH_NEW_JOBS_LIST', fetchNewJobsList);
+    yield takeLatest('DELETE_JOB', deleteJob);
+
   }
   
   export default jobListSaga;
