@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
+
 class MyJobList extends Component {
+    
     render() {
         return (
             <div>
@@ -10,6 +13,7 @@ class MyJobList extends Component {
                 <br />
                 <br />
                 <Link to='/job-list/applied'><button>Applied Jobs</button></Link>
+                 
             </div>
         )
     }

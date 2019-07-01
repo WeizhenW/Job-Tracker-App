@@ -51,7 +51,7 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
 
 //route to get one job details
 router.get('/:jobid', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT "title", "company", "address", "post_url", "email", "phone", "website", "note", "status"."status_name", array_agg("skill") AS "skills"
+    pool.query(`SELECT "job"."id", "title", "company", "address", "post_url", "email", "phone", "website", "note", "status_id", "status"."status_name", array_agg("skill") AS "skills"
         FROM "job" 
         LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
         LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
@@ -60,13 +60,23 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
         GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id])
         .then((result) => res.send(result.rows[0]))
         .catch(error => {
-            console.log('error with get new jobs list', error);
+            console.log('error with get job detail', error);
             res.sendStatus(500);
         })
     })
     
-    
-    
+//route to update one job details    
+router.put('/edit', rejectUnauthenticated, (req, res) => {
+    const job = req.body;
+    pool.query(`UPDATE "job" SET "title" = $1, "company" = $2, "address" = $3, "post_url" = $4, "email" = $5,
+        "phone" = $6, "website" = $7, "note" = $8, "status_id" = $9 WHERE "id" = $10 AND "user_id" = $11`,
+        [job.title, job.company, job.address, job.post_url, job.email, job.phone, job.website, job.note, job.status_id, job.id, req.user.id])
+    .then(() => res.sendStatus(200))
+    .catch(error => {
+            console.log('error with update job detail', error);
+            res.sendStatus(500);
+        })  
+})
     
     
     // SELECT * FROM "job" 

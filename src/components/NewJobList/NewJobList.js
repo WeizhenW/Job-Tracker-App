@@ -27,10 +27,11 @@ class NewJobList extends Component {
     
     //function to get job details for one job
     handleGetDetail = (job) => {
-        this.props.dispatch({
-            type: 'FETCH_ONE_JOB_DETAIL',
-            payload: job,
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_ONE_JOB_DETAIL',
+        //     payload: job,
+        // })
+        this.props.history.push(`/job-list/detail/${job.id}`)
     }
 
     
@@ -52,7 +53,7 @@ class NewJobList extends Component {
                             -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
                             -
-                        <Link to="/job-list/detail"><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></Link>
+                        <button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button>
                         </li>)}
                     </ul>
                 </div>

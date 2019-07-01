@@ -32,8 +32,13 @@ function* deleteJob(action) {
 //generator to delete one job
 function* fetchOneJobDetail(action) {
     const oneJobDetailResponse = yield axios.get(`/api/job/${action.payload.id}`);
-    console.log(oneJobDetailResponse);
     yield put({type: 'SET_ONE_JOB_DETAIL', payload: oneJobDetailResponse.data})
+}
+
+//generator to update the job detail
+function* updateJobDetail (action) {
+    yield axios.put('/api/job/edit', action.payload);
+    yield put({type: 'FETCH_ONE_JOB_DETAIL', payload: action.payload});
 }
 
 
@@ -42,7 +47,8 @@ function* jobListSaga() {
     yield takeEvery('FETCH_NEW_JOBS_LIST', fetchNewJobsList);
     yield takeEvery('DELETE_JOB', deleteJob);
     yield takeEvery('FETCH_APPLIED_JOBS_LIST', fetchAppliedJobsList);
-    yield takeEvery('FETCH_ONE_JOB_DETAIL', fetchOneJobDetail)
+    yield takeEvery('FETCH_ONE_JOB_DETAIL', fetchOneJobDetail);
+    yield takeEvery('UPDATE_JOB_DETAIL', updateJobDetail);
 
   }
   

@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 
 class JobDetail extends Component {
+    //at page load, fetch the details from db
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'FETCH_ONE_JOB_DETAIL',
+            payload: {id: this.props.match.params.id},
+        });
+    }
+
+    handleGoToEdit = (id) => {
+        console.log('in handle go to edit button');
+        this.props.history.push(`/job-list/edit/${id}`);
+
+    }
     render() {
         return (
             <div>
                 <h2>Job Detail Page</h2>
                 <pre>
-                    {JSON.stringify(this.props.jobDetail, null, 2)}
+                    {/* {JSON.stringify(this.props.history)} */}
                 </pre>
                 <ul>
                     <li>Job Title: {this.props.jobDetail.title}</li>
@@ -28,12 +42,15 @@ class JobDetail extends Component {
                         }
                     </li>
                 </ul>
+                <button onClick={()=>this.handleGoToEdit(this.props.jobDetail.id)}>Edit</button>
+                <Link to="/job-list"><button>Back to List</button></Link>
             </div>
         )
     }
 }
 
 const mapReduxStateToProps = reduxState => ({
+    reduxState,
     jobDetail: reduxState.jobList.jobDetailReducer,
 })
 export default connect(mapReduxStateToProps)(JobDetail);
