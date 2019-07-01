@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //generator to get all job status
@@ -10,7 +10,11 @@ function* fetchAllStatus() {
     })
 }
 
-
+//generator to update job status
+function* updateJobStatus(action) {
+    yield axios.put(`/api/status/${action.payload.job_id}`, action.payload);
+    yield put({type: 'FETCH_NEW_JOBS_LIST'});
+}
 
 
 
@@ -18,7 +22,9 @@ function* fetchAllStatus() {
 
 
 function* jobStatusSaga() {
-    yield takeLatest('FETCH_ALL_STATUS', fetchAllStatus);
+    yield takeEvery('FETCH_ALL_STATUS', fetchAllStatus);
+    yield takeEvery('UPDATE_JOB_STATUS', updateJobStatus);
+
   }
   
   export default jobStatusSaga;

@@ -6,14 +6,18 @@ class NewJobList extends Component {
         this. props.dispatch({type: 'FETCH_NEW_JOBS_LIST'});
     }
     //function to move jobs to applied list
-    handleMove = () => {
-        console.log('in move');
+    handleMove = (job) => {
+        this.props.dispatch({
+            type: 'UPDATE_JOB_STATUS',
+            payload: {
+                job_id: job.id,
+                status_id: 2
+            },
+        })
     }
 
     //function to delete job
     handleDelete = (job) => {
-        console.log('in delete');
-        console.log(job);
         this.props.dispatch({
             type: 'DELETE_JOB',
             payload: job,
@@ -36,6 +40,8 @@ class NewJobList extends Component {
                         <button onClick={() => this.handleMove(job)}>Move</button>
                         -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
+                        -
+                        <button>Detail</button>
                     </li> )}
 
                     </ul>

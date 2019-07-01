@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-// route to get all status from db
+// get route to retrieve all status from db
 router.get('/', rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT * FROM "status"`)
     .then(result => res.send(result.rows))
@@ -14,6 +14,16 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     })
 });
 
+//put route to update the status of one job
+router.put('/:job_id', rejectUnauthenticated, (req, res) => {
+    pool.query(`UPDATE "job" SET "status_id" = $1 WHERE "id" = $2 AND "user_id" = $3;`,
+    [req.body.status_id, req.params.job_id, req.user.id])
+    .then(() => res.sendStatus(200))
+    .catch(error => {
+        console.log('error with update job status', error);
+        res.sendStatus(500);
+    })
+})
 /**
  * POST route template
  */

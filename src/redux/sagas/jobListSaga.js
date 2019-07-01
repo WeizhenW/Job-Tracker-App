@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
 //generator to get all job status
@@ -17,9 +17,10 @@ function* deleteJob(action) {
 
 
 
+
 function* jobListSaga() {
-    yield takeLatest('FETCH_NEW_JOBS_LIST', fetchNewJobsList);
-    yield takeLatest('DELETE_JOB', deleteJob);
+    yield takeEvery('FETCH_NEW_JOBS_LIST', fetchNewJobsList);
+    yield takeEvery('DELETE_JOB', deleteJob);
 
   }
   
