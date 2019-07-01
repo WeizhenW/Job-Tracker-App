@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class AppliedList extends Component {
     componentDidMount() {
@@ -24,6 +25,14 @@ class AppliedList extends Component {
         })
     }
 
+    //function to get job details for one job
+    handleGetDetail = (job) => {
+        this.props.dispatch({
+            type: 'FETCH_ONE_JOB_DETAIL',
+            payload: job,
+        })
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +50,7 @@ class AppliedList extends Component {
                             -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
                             -
-                        <button>Detail</button>
+                        <Link to="/job-list/:id"><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></Link>
                         </li>)}
                     </ul>
                 </div>

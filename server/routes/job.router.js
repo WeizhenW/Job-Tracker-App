@@ -49,6 +49,15 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//route to get one job details
+router.get('/:jobid', rejectUnauthenticated, (req, res) => {
+    pool.query(`SELECT * FROM "job" WHERE "id" = $1 AND "user_id" = $2;`, [req.params.jobid, req.user.id])
+    .then((result) => res.send(result.rows))
+    .catch(error => {
+        console.log('error with get new jobs list', error);
+        res.sendStatus(500);
+    })
+})
 /**
  * POST route template
  */

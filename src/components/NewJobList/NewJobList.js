@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class NewJobList extends Component {
     componentDidMount() {
@@ -22,7 +23,17 @@ class NewJobList extends Component {
             type: 'DELETE_JOB',
             payload: job,
         })
+    }    
+    
+    //function to get job details for one job
+    handleGetDetail = (job) => {
+        this.props.dispatch({
+            type: 'FETCH_ONE_JOB_DETAIL',
+            payload: job,
+        })
     }
+
+    
 
     render() {
         return (
@@ -41,7 +52,7 @@ class NewJobList extends Component {
                             -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
                             -
-                        <button>Detail</button>
+                        <Link to="/job-list/:id"><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></Link>
                         </li>)}
                     </ul>
                 </div>

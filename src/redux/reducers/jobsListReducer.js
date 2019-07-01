@@ -18,7 +18,17 @@ const appliedJobsListReducer = (state=[], action) => {
     }
 }
 
+const jobDetailReducer = (state={}, action) => {
+    switch(action.type) {
+        case 'SET_ONE_JOB_DETAIL':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     newJobsListReducer,
     appliedJobsListReducer,
+    jobDetailReducer,
 }) 
