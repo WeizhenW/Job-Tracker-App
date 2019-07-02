@@ -21,10 +21,6 @@ class EditDetail extends Component {
         this.props.dispatch({
             type: 'FETCH_ALL_STATUS',
         });
-        // //fetch full list of job skills
-        // this.props.dispatch({
-        //     type: 'FETCH_ALL_SKILLS',
-        // });
     }
 
     //get input and save to local state
@@ -78,7 +74,7 @@ class EditDetail extends Component {
                     <li>Phone: <input value={this.state.job.phone || ''} onChange={this.handleChangeFor('phone')} /></li>
                     <li>Website: <input value={this.state.job.website || ''} onChange={this.handleChangeFor('website')} /></li>
                     <li>Comment: <input value={this.state.job.note || ''} onChange={this.handleChangeFor('note')} /></li>
-                    <Skills job={this.state.job}/>
+                    <Skills job_id={this.props.match.params.id}/>
                 </ul>
                 <button onClick={() => this.handleSave(this.state.job.id)}>Save</button>
                 <button onClick={() => this.handleCancel(this.state.job.id)}>Cancel</button>

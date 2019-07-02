@@ -55,7 +55,9 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
         LEFT JOIN "status" ON "job"."status_id" = "status"."id"
         WHERE "job"."id" = $1 AND "job"."user_id"=$2;`,
         [req.params.jobid, req.user.id])
-        .then((result) => res.send(result.rows[0]))
+        .then((result) => {
+            res.send(result.rows[0]);
+        })
         .catch(error => {
             console.log('error with get job detail', error);
             res.sendStatus(500);

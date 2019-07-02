@@ -27,7 +27,8 @@ class JobDetail extends Component {
             <div>
                 <h2>Job Detail Page</h2>
                 <pre>
-                    {JSON.stringify(this.props.skills.skillsForOneJobReducer, null, 2)}
+                    {/* {JSON.stringify(this.props.skills.skillsForOneJobReducer, null, 2)} */}
+                    {JSON.stringify(this.props.jobDetail, null, 2)}
                 </pre>
                 <ul>
                     <li>Job Title: {this.props.jobDetail.title}</li>
@@ -47,7 +48,7 @@ class JobDetail extends Component {
                         }
                     </li>
                 </ul>
-                <button onClick={()=>this.handleGoToEdit(this.props.jobDetail.id)}>Edit</button>
+                <button onClick={()=>this.handleGoToEdit(this.props.match.params.id)}>Edit</button>
                 <Link to="/job-list"><button>Back to List</button></Link>
             </div>
         )

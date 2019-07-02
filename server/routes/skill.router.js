@@ -16,15 +16,30 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // get route to retrieve skills for one job from db
 router.get('/:jobid', rejectUnauthenticated, (req, res) => {
-    console.log('req.params.jobid', req.params.jobid);
     pool.query(`SELECT * FROM "job_skill"
         JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
         JOIN "job" ON "job"."id" = "job_skill"."job_id" 
         WHERE "job_skill"."job_id" = $1 AND "job"."user_id" = $2;`,
         [req.params.jobid, req.user.id])
-    .then(result => res.send(result.rows))
+    .then(result => {
+        res.send(result.rows)
+    })
     .catch(error => {
         console.log('error with get skills for one job', error);
+        res.sendStatus(500);
+    })
+});
+
+// post route to add one skill into one job into db
+router.post('/add', rejectUnauthenticated, (req, res) => {
+    console.log("hit route add skill", req.body);
+    pool.query(`INSERT INTO "job_skill" ("job_id", "skill_id")
+        VALUES ($1, $2);`,[req.body.job_id, req.body.skill_id])
+    .then(() => {
+        res.sendStatus(200)
+    })
+    .catch(error => {
+        console.log('error with post one skill for one job', error);
         res.sendStatus(500);
     })
 });

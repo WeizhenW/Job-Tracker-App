@@ -14,14 +14,24 @@ function* fetchAllSkills() {
 function* fetchSkillsForOneJob(action) {
     const skillsForOneJobResponse = yield axios.get(`/api/skill/${action.payload.id}`);
     yield put({
-        type: 'SET_ALL_SKILLS',
+        type: 'SET_SKILLS_FOR_ONE_JOB',
         payload: skillsForOneJobResponse.data,
+    })
+}
+
+//generator to add one skill into one job
+function* addSkillToJob(action) {
+    yield axios.post(`/api/skill/add`, action.payload);
+    const skillsForOneJobResponse = yield put({
+        type: 'FETCH_ONE_JOB_SKILLS',
+        payload: {id: action.payload.job_id}
     })
 }
 
 function* jobSkillSaga() {
     yield takeEvery('FETCH_ALL_SKILLS', fetchAllSkills);
     yield takeEvery('FETCH_ONE_JOB_SKILLS', fetchSkillsForOneJob);
+    yield takeEvery('ADD_ONE_SKILL', addSkillToJob);
 
   }
   
