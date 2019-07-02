@@ -32,7 +32,6 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
 
 // post route to add one skill into one job into db
 router.post('/add', rejectUnauthenticated, (req, res) => {
-    console.log("hit route add skill", req.body);
     pool.query(`SELECT * FROM "job" WHERE "id" = $1 AND "user_id" = $2;`,
         [req.body.job_id, req.user.id]).then(
             result => {
@@ -54,18 +53,44 @@ router.post('/add', rejectUnauthenticated, (req, res) => {
 });
 
 // delete route to add one skill into one job into db
-router.post('/delete', rejectUnauthenticated, (req, res) => {
-    console.log("hit route add skill", req.body);
-    pool.query(`DELETE INTO "job_skill" ("job_id", "skill_id")
-        VALUES ($1, $2);`, [req.body.job_id, req.body.skill_id])
-        .then(() => {
-            res.sendStatus(200)
-        })
+router.delete('/delete/:job_id/:skill_id', rejectUnauthenticated, (req, res) => {
+    pool.query(`SELECT * FROM "job" WHERE "id" = $1 AND "user_id" = $2;`,
+        [req.body.job_id, req.user.id]).then(
+            result => {
+                if (result) {
+                    pool.query(`DELETE FROM "job_skill" WHERE "job_id" = $1 AND "skill_id" = $2;`,
+                    [req.params.job_id, req.params.skill_id])
+                        .then(() => {
+                            res.sendStatus(200);
+                        })
+                } else {
+                    res.sendStatus(403);
+                }
+            }
+        )
         .catch(error => {
             console.log('error with post one skill for one job', error);
             res.sendStatus(500);
         })
 });
+
+
+
+
+
+
+
+
+//     pool.query(`DELETE FROM "job_skill" ("job_id", "skill_id")
+//         VALUES ($1, $2);`, [req.body.job_id, req.body.skill_id])
+//         .then(() => {
+//             res.sendStatus(200)
+//         })
+//         .catch(error => {
+//             console.log('error with post one skill for one job', error);
+//             res.sendStatus(500);
+//         })
+// });
 
 /**
  * POST route template

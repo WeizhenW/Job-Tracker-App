@@ -30,7 +30,7 @@ function* addSkillToJob(action) {
 
 //generator to remove one skill into one job
 function* removeSkillOneJob(action) {
-    yield axios.delete(`/api/skill/delete`, action.payload);
+    yield axios.delete(`/api/skill/delete/${action.payload.job_id}/${action.payload.skill_id}`);
     yield put({
         type: 'FETCH_ONE_JOB_SKILLS',
         payload: {id: action.payload.job_id}
