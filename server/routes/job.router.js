@@ -49,15 +49,12 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     })
 })
 
-//route to get one job details
+//route to get one job details (except for job skills)
 router.get('/:jobid', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT "job"."id", "title", "company", "address", "post_url", "email", "phone", "website", "note", "status_id", "status"."status_name", array_agg("skill") AS "skills"
-        FROM "job" 
-        LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
-        LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
-        LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
-        WHERE "job"."id" = $1 AND "job"."user_id" = $2
-        GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id])
+    pool.query(`SELECT * FROM "job"
+        LEFT JOIN "status" ON "job"."status_id" = "status"."id"
+        WHERE "job"."id" = $1 AND "job"."user_id"=$2;`,
+        [req.params.jobid, req.user.id])
         .then((result) => res.send(result.rows[0]))
         .catch(error => {
             console.log('error with get job detail', error);
@@ -65,6 +62,15 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
         })
     })
     
+
+    // `SELECT "job"."id", "title", "company", "address", "post_url", "email", "phone", "website", "note", "status_id", "status"."status_name", array_agg("skill") AS "skills"
+    //     FROM "job" 
+    //     LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
+    //     LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
+    //     LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
+    //     WHERE "job"."id" = $1 AND "job"."user_id" = $2
+    //     GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id]
+
 //route to update one job details    
 router.put('/edit', rejectUnauthenticated, (req, res) => {
     const job = req.body;
@@ -79,11 +85,7 @@ router.put('/edit', rejectUnauthenticated, (req, res) => {
 })
     
     
-    // SELECT * FROM "job" 
-    //     LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
-    //     LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
-    //     LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
-    //     WHERE "job"."id" = $1 AND "job"."user_id" = $2;`, 
+    
 /**
  * POST route template
  */

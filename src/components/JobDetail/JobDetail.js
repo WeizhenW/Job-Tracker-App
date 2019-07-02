@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { SIGILL } from 'constants';
 
 
 class JobDetail extends Component {
-    //at page load, fetch the details from db
+    //at page load, fetch the details from db for one job
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ONE_JOB_DETAIL',
+            payload: {id: this.props.match.params.id},
+        });
+        this.props.dispatch({
+            type: 'FETCH_ONE_JOB_SKILLS',
             payload: {id: this.props.match.params.id},
         });
     }
@@ -22,7 +27,7 @@ class JobDetail extends Component {
             <div>
                 <h2>Job Detail Page</h2>
                 <pre>
-                    {/* {JSON.stringify(this.props.history)} */}
+                    {JSON.stringify(this.props.skills.skillsForOneJobReducer, null, 2)}
                 </pre>
                 <ul>
                     <li>Job Title: {this.props.jobDetail.title}</li>
@@ -35,8 +40,8 @@ class JobDetail extends Component {
                     <li>Website: {this.props.jobDetail.website}</li>
                     <li>Comment: {this.props.jobDetail.note}</li>
                     <li>Skills: 
-                        {this.props.jobDetail.skills && this.props.jobDetail.skills[0]?
-                        <ul>{this.props.jobDetail.skills.map(i => <li key={i}>{i}</li>)}</ul>
+                        {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0]?
+                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li key={skill.skill_id}>{skill.skill}</li>)}</ul>
                         :
                         'null'
                         }
@@ -52,5 +57,6 @@ class JobDetail extends Component {
 const mapReduxStateToProps = reduxState => ({
     reduxState,
     jobDetail: reduxState.jobList.jobDetailReducer,
+    skills: reduxState.skill,
 })
 export default connect(mapReduxStateToProps)(JobDetail);

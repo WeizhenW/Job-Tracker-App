@@ -12,6 +12,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const statusRouter = require('./routes/jobStatus.router');
 const jobRouter = require('./routes/job.router');
+const skillRouter = require('./routes/skill.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,6 +29,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/status', statusRouter);
 app.use('/api/job', jobRouter);
+app.use('/api/skill', skillRouter);
 
 
 // Serve static files
