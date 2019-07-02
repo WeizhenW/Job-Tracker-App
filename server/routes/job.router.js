@@ -63,23 +63,15 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         })
     })
-    
-
-    // `SELECT "job"."id", "title", "company", "address", "post_url", "email", "phone", "website", "note", "status_id", "status"."status_name", array_agg("skill") AS "skills"
-    //     FROM "job" 
-    //     LEFT JOIN "status" ON "job"."status_id" = "status"."id" 
-    //     LEFT JOIN "job_skill" ON "job"."id" = "job_skill"."job_id"
-    //     LEFT JOIN "skill" ON "job_skill"."skill_id" = "skill"."id"
-    //     WHERE "job"."id" = $1 AND "job"."user_id" = $2
-    //     GROUP BY "job"."id", "status"."status_name";`, [req.params.jobid, req.user.id]
 
 //route to update one job details    
 router.put('/edit', rejectUnauthenticated, (req, res) => {
     const job = req.body;
     pool.query(`UPDATE "job" SET "title" = $1, "company" = $2, "address" = $3, "post_url" = $4, "email" = $5,
         "phone" = $6, "website" = $7, "note" = $8, "status_id" = $9 WHERE "id" = $10 AND "user_id" = $11`,
-        [job.title, job.company, job.address, job.post_url, job.email, job.phone, job.website, job.note, job.status_id, job.id, req.user.id])
-    .then(() => res.sendStatus(200))
+        [job.title, job.company, job.address, job.post_url, job.email, job.phone, job.website, job.note, job.status_id, job.job_id, req.user.id])
+    .then(() => {
+        res.sendStatus(200);})
     .catch(error => {
             console.log('error with update job detail', error);
             res.sendStatus(500);

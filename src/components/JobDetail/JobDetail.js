@@ -18,7 +18,6 @@ class JobDetail extends Component {
     }
 
     handleGoToEdit = (id) => {
-        console.log('in handle go to edit button');
         this.props.history.push(`/job-list/edit/${id}`);
 
     }

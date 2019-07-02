@@ -37,8 +37,9 @@ function* fetchOneJobDetail(action) {
 
 //generator to update the job detail
 function* updateJobDetail (action) {
+    console.log('in update job detail reducer', action.payload);
     yield axios.put('/api/job/edit', action.payload);
-    yield put({type: 'FETCH_ONE_JOB_DETAIL', payload: action.payload});
+    yield put({type: 'FETCH_ONE_JOB_DETAIL', payload: {id: action.payload.job_id}});
 }
 
 

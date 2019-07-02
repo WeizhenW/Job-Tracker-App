@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Skills from '../SkillsPerJob/SkillsPerJob';
+import { throwStatement } from '@babel/types';
 
 
 
@@ -39,7 +40,10 @@ class EditDetail extends Component {
     handleSave = (id) => {
         this.props.dispatch({
             type: 'UPDATE_JOB_DETAIL',
-            payload: this.state.job,
+            payload: {
+                ...this.state.job,
+                job_id: this.props.match.params.id,
+            }
         })
         this.props.history.push(`/job-list/detail/${id}`);
     }
@@ -76,8 +80,8 @@ class EditDetail extends Component {
                     <li>Comment: <input value={this.state.job.note || ''} onChange={this.handleChangeFor('note')} /></li>
                     <Skills job_id={this.props.match.params.id}/>
                 </ul>
-                <button onClick={() => this.handleSave(this.state.job.id)}>Save</button>
-                <button onClick={() => this.handleCancel(this.state.job.id)}>Cancel</button>
+                <button onClick={() => this.handleSave(this.props.match.params.id)}>Save</button>
+                <button onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</button>
             </div>
         )
     }

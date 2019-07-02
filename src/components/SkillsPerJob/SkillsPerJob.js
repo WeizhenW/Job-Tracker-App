@@ -40,6 +40,17 @@ class SkillsPerJob extends Component {
         })
     }
 
+    //function to dispatch action to remove one skill from one job
+    handleRemove = (skillToRemove) => {
+        console.log('inside handle move', skillToRemove.skill_id, skillToRemove.job_id);
+        this.props.dispatch({
+            type: 'REMOVE_SKILL',
+            payload: {
+                skill_id: skillToRemove.skill_id,
+                job_id: skillToRemove.job_id,
+            }
+        })
+    }
     render() {
         return (
             <div>
@@ -54,7 +65,7 @@ class SkillsPerJob extends Component {
                 <button onClick={this.handleAdd}>Add</button>
                 <li>Skills:
                         {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li key={skill.skill_id}>{skill.skill}</li>)}</ul>
+                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li onClick={() => this.handleRemove(skill)} key={skill.skill_id}>{skill.skill}</li>)}</ul>
                         :
                         'null'
                     }
