@@ -7,7 +7,21 @@ import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 
+const styles = {
+
+    skills: {
+        display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    },
+    chip: {
+        margin: 3,
+    }
+
+
+};
 
 
 class SkillsPerJob extends Component {
@@ -76,12 +90,13 @@ class SkillsPerJob extends Component {
                 </Select>
                 <Button variant="contained" onClick={this.handleAdd}>Add</Button>
                 <br />
-                <span>Skills: </span>
-                {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                    <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li onClick={() => this.handleRemove(skill)} key={skill.skill_id}>{skill.skill}</li>)}</ul>
-                    :
-                    'null'
-                }
+                <span style={styles.jobTitle}>Job Skills: </span>
+                                    <br />
+                                    {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
+                                        this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} onClick = {() => this.handleRemove(skill)} key={skill.skill_id} label={skill.skill} color="primary" />)
+                                        :
+                                        'null'
+                                    }
 
             </div>
         )

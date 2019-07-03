@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
 
 const styles = {
 
@@ -29,6 +30,14 @@ const styles = {
     },
     button: {
         margin: 20,
+    },
+    skills: {
+        display: 'flex',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    },
+    chip: {
+        margin: 3,
     }
 
 
@@ -103,12 +112,15 @@ class JobDetail extends Component {
                                     <span style={styles.jobTitle}>Comment: </span>{this.props.jobDetail.note}
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
+                                        <div style={styles.skills}>
                                     <span style={styles.jobTitle}>Job Skills: </span>
+                                    <br />
                                     {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li key={skill.skill_id}>{skill.skill}</li>)}</ul>
+                                        this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} key={skill.skill_id} label={skill.skill} color="primary" />)
                                         :
                                         'null'
                                     }
+                                    </div>
                                     </Grid>
                                 </Grid>
                             </div>

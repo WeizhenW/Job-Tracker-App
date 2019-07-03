@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Skills from '../SkillsPerJob/SkillsPerJob';
+import './EditDetail.css';
 
 //material ui
 import TextField from '@material-ui/core/TextField';
@@ -16,17 +17,7 @@ const styles = {
         width: '80%',
 
     },
-    textField: {
-        marginLeft: 10,
-        marginRight: 10,
-        width: 300,
-    },
-    paper: {
-        width: '80%',
-        margin: '10px auto',
-        padding: '100px',
-        flexWrap: 'wrap',
-    },
+    
     title: {
         textAlign: 'center',
         color: '#F7882F',
@@ -92,12 +83,6 @@ class EditDetail extends Component {
     render() {
         return (
             <div>
-                {/* <pre>
-                    {JSON.stringify(this.props.jobDetail, null, 2)}
-                    <br />
-                    {JSON.stringify(this.state, null, 2)}
-                    <br />
-                </pre> */}
                 <div>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={3}>
@@ -108,16 +93,13 @@ class EditDetail extends Component {
                             i am stuck with styling
                         </Grid>
                         <Grid item xs={12} sm={9}>
-                            <Paper style={styles.paper}>
+                            <div className="inputPage">
                                 <div style={styles.title}>
                                     <h2>Edit the Job Detail</h2>
                                 </div>
-                                <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
-                                <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
                                 <form style={styles.container} onSubmit={this.handleSubmit}>
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={6}>
-
                                             <TextField
                                                 id="job-title"
                                                 label="Job Title"
@@ -136,7 +118,8 @@ class EditDetail extends Component {
                                                 margin="normal"
                                                 fullWidth
                                                 style={styles.TextField}
-                                            />                                          </Grid>
+                                            />
+                                        </Grid>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
                                                 id="job-status"
@@ -181,8 +164,6 @@ class EditDetail extends Component {
                                                 style={styles.TextField}
                                             />                                          </Grid>
                                         <Grid item xs={12} sm={6}>
-
-                                            
                                             <TextField
                                                 id="email"
                                                 label="Email"
@@ -201,9 +182,9 @@ class EditDetail extends Component {
                                                 margin="normal"
                                                 fullWidth
                                                 style={styles.TextField}
-                                            />                                          </Grid>
+                                            />                                          
+                                            </Grid>
                                     </Grid>
-
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={6}>
                                             <TextField
@@ -220,10 +201,11 @@ class EditDetail extends Component {
                                         <Grid item xs={12} sm={6}>
                                             <Skills job_id={this.props.match.params.id} />
                                         </Grid>
+                                        <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
+                                            <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
                                     </Grid>
                                 </form>
-                               
-                            </Paper>
+                            </div>
                         </Grid>
                     </Grid>
                 </div>

@@ -68,7 +68,7 @@ class MyJobList extends Component {
                                 <h2>My Job List</h2>
                             </div>
                             <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">View Jobs To Apply</Button>
-                            <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">Applied Jobs</Button>
+                            <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">View Applied Jobs</Button>
                             {/* <pre>
                                 {JSON.stringify(this.state)}
                             </pre> */}

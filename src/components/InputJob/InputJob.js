@@ -76,6 +76,7 @@ class InputJob extends Component {
                 type: 'POST_NEW_JOB',
                 payload: this.state,
             })
+            this.props.history.push('/new-job');
         } else {
             alert('input field cannot be empty');
             return;
@@ -144,7 +145,7 @@ class InputJob extends Component {
                                     </Select>
                                 </FormControl>
                                 <div style={styles.buttonDiv} >
-                                <Link><Button style={styles.button} variant="contained" color="secondary" to='/home'>Cancel</Button></Link>
+                                <Link to='/home'><Button style={styles.button} variant="contained" color="secondary" >Cancel</Button></Link>
                                 <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
                                 </div>
                             </form>
