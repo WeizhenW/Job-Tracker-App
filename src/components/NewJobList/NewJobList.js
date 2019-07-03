@@ -8,6 +8,8 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Button from '@material-ui/core/Button';
+
 
 class NewJobList extends Component {
     componentDidMount() {
@@ -62,28 +64,12 @@ class NewJobList extends Component {
                             <TableCell>{job.title}</TableCell>
                             <TableCell>{job.company}</TableCell>
                             <TableCell>{job.company}</TableCell>
-                            <TableCell><button onClick={() => this.handleMove(job)}>Move</button></TableCell>
-                            <TableCell><button onClick={() => this.handleDelete(job)}>Delete</button></TableCell>
-                            <TableCell><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></TableCell>
+                            <TableCell><Button variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
+                            <TableCell><Button variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
+                            <TableCell><Button variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell>
                         </TableRow>)}
                     </TableBody>
                     </Table>
-
-
-                {/* <div className="jobList">
-                    <ul>
-                        {this.props.reduxState.jobList.newJobsListReducer.map(job => <li key={job.id}>
-                            {job.title} -
-                        {job.company} -
-                        {job.post_url} -
-                        <button onClick={() => this.handleMove(job)}>Move</button>
-                            -
-                        <button onClick={() => this.handleDelete(job)}>Delete</button>
-                            -
-                        <button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button>
-                        </li>)}
-                    </ul>
-                </div> */}
             </div>
         )
     }

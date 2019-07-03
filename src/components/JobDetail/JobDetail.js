@@ -1,19 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { SIGILL } from 'constants';
 
+//material ui
+
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
+const styles = {
+
+    paper: {
+        width: '80%',
+        margin: '10px auto',
+        padding: '100px',
+    },
+    title: {
+        textAlign: 'center',
+        color: '#F7882F',
+    },
+    detail: {
+        marginTop: 60,
+        fontSize: 18,
+    },
+    jobTitle: {
+        color: '#2f5bf7',
+        fontWeight: 600,
+    },
+    button: {
+        margin: 20,
+    }
+
+
+};
 
 class JobDetail extends Component {
     //at page load, fetch the details from db for one job
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ONE_JOB_DETAIL',
-            payload: {id: this.props.match.params.id},
+            payload: { id: this.props.match.params.id },
         });
         this.props.dispatch({
             type: 'FETCH_ONE_JOB_SKILLS',
-            payload: {id: this.props.match.params.id},
+            payload: { id: this.props.match.params.id },
         });
     }
 
@@ -24,30 +54,70 @@ class JobDetail extends Component {
     render() {
         return (
             <div>
-                <h2>Job Detail Page</h2>
-                <pre>
-                    {JSON.stringify(this.props.jobDetail, null, 2)}
-                </pre>
-                <ul>
-                    <li>Job Title: {this.props.jobDetail.title}</li>
-                    <li>Job Status: {this.props.jobDetail.status_name}</li>
-                    <li>Company Name: {this.props.jobDetail.company}</li>
-                    <li>Company Address: {this.props.jobDetail.address}</li>
-                    <li>Post URL: {this.props.jobDetail.post_url}</li>
-                    <li>Email: {this.props.jobDetail.email}</li>
-                    <li>Phone: {this.props.jobDetail.phone}</li>
-                    <li>Website: {this.props.jobDetail.website}</li>
-                    <li>Comment: {this.props.jobDetail.note}</li>
-                    <li>Skills: 
-                        {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0]?
-                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li key={skill.skill_id}>{skill.skill}</li>)}</ul>
-                        :
-                        'null'
-                        }
-                    </li>
-                </ul>
-                <button onClick={()=>this.handleGoToEdit(this.props.match.params.id)}>Edit</button>
-                <Link to="/job-list"><button>Back to List</button></Link>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={3}>
+                        this is the side
+                        <br />
+                        i don't know what to put
+                        <br />
+                        i am stuck with styling
+                        </Grid>
+                    <Grid item xs={12} sm={9}>
+                        <Paper style={styles.paper}>
+                            <div style={styles.title}>
+                                <h2>Job Detail Page</h2>
+                            </div>
+                            {/* <pre>
+                                {JSON.stringify(this.props.jobDetail, null, 2)}
+                            </pre> */}
+                            <div style={styles.detail}>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                        <span style={styles.jobTitle}>Job Title: </span> {this.props.jobDetail.title}
+                                        <br />
+                                        <span style={styles.jobTitle}>Post URL: </span>{this.props.jobDetail.post_url}
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <span style={styles.jobTitle}>Job Status: </span> {this.props.jobDetail.status_name}
+                                    </Grid>
+                                </Grid>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                    <span style={styles.jobTitle}>Company Name: </span>{this.props.jobDetail.company}
+                                        <br />
+                                        <span style={styles.jobTitle}>Company Address: </span>{this.props.jobDetail.address}
+                                        <br />
+                                        <span style={styles.jobTitle}>Website: </span>{this.props.jobDetail.website}
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                    
+                                    <br />
+                                    <span style={styles.jobTitle}>Email: </span>{this.props.jobDetail.email}
+                                    <br />
+                                    <span style={styles.jobTitle}>Phone: </span>{this.props.jobDetail.phone}
+                                    </Grid>
+                                </Grid>
+
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                    <span style={styles.jobTitle}>Comment: </span>{this.props.jobDetail.note}
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                    <span style={styles.jobTitle}>Job Skills: </span>
+                                    {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
+                                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li key={skill.skill_id}>{skill.skill}</li>)}</ul>
+                                        :
+                                        'null'
+                                    }
+                                    </Grid>
+                                </Grid>
+                            </div>
+                            
+                            <Button style={styles.button} variant="contained" color="primary" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
+                            <Link to="/job-list"><Button style={styles.button} variant="contained" color="secondary">Back to List</Button></Link>
+                        </Paper>
+                    </Grid>
+                </Grid>
             </div>
         )
     }

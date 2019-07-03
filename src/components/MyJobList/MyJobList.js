@@ -69,13 +69,13 @@ class MyJobList extends Component {
                             </div>
                             <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">View Jobs To Apply</Button>
                             <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">Applied Jobs</Button>
-                            <pre>
+                            {/* <pre>
                                 {JSON.stringify(this.state)}
-                            </pre>
+                            </pre> */}
                             {this.state.toApplyButtonClicked ?
-                                <NewJobs />
+                                <NewJobs history={this.props.history}/>
                                 :
-                                <AppliedJobs />
+                                <AppliedJobs history={this.props.history} />
                             }
                         </Paper>
                     </Grid>

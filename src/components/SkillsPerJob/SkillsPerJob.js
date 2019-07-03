@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+//material ui
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import Button from '@material-ui/core/Button';
+
+
+
 class SkillsPerJob extends Component {
 
     //at page load, fetch the list of job skills from db
@@ -12,7 +21,7 @@ class SkillsPerJob extends Component {
         //fetch job skills tagged for this job
         this.props.dispatch({
             type: 'FETCH_ONE_JOB_SKILLS',
-            payload: {id: this.props.job_id},
+            payload: { id: this.props.job_id },
         });
     }
 
@@ -25,7 +34,7 @@ class SkillsPerJob extends Component {
     //get input and save to local state
     handleChange = (event) => {
         this.setState({
-            skill_id: event.target.value,     
+            skill_id: event.target.value,
         })
     }
 
@@ -56,20 +65,24 @@ class SkillsPerJob extends Component {
             <div>
                 <pre>
                     {/* {JSON.stringify(this.props.skills.skillsForOneJobReducer, null, 2)} */}
-                    {JSON.stringify(this.state)}
+                    {/* {JSON.stringify(this.state)} */}
                 </pre>
+                <InputLabel htmlFor="skill">Job Skills Required</InputLabel>
+                <Select value={this.state.skill_id} type="text" name="skill" displayEmpty fullWidth onChange={this.handleChange}>
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    {this.props.skills.allSkillsReducer.map(skill => <MenuItem key={skill.id} value={skill.id}>{skill.skill}</MenuItem>)}
+                </Select>
+                <Button variant="contained" onClick={this.handleAdd}>Add</Button>
+                <br />
+                <span>Skills: </span>
+                {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
+                    <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li onClick={() => this.handleRemove(skill)} key={skill.skill_id}>{skill.skill}</li>)}</ul>
+                    :
+                    'null'
+                }
 
-                <select type="text" name="skill" onChange={this.handleChange}>
-                    {this.props.skills.allSkillsReducer.map(skill => <option key={skill.id} value={skill.id}>{skill.skill}</option>)}
-                </select>
-                <button onClick={this.handleAdd}>Add</button>
-                <li>Skills:
-                        {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                        <ul>{this.props.skills.skillsForOneJobReducer.map(skill => <li onClick={() => this.handleRemove(skill)} key={skill.skill_id}>{skill.skill}</li>)}</ul>
-                        :
-                        'null'
-                    }
-                </li>
             </div>
         )
     }
