@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+//material ui
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 class AppliedList extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_APPLIED_JOBS_LIST' });
@@ -32,7 +39,6 @@ class AppliedList extends Component {
         //     payload: job,
         // });
         this.props.history.push(`/job-list/detail/${job.id}`);
-
     }
 
     render() {
@@ -42,26 +48,52 @@ class AppliedList extends Component {
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                 </pre>
-                <div className="jobList">
-                    <ul>
-                        {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <li key={job.id}>
-                            {job.title} -
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Job Title</TableCell>
+                            <TableCell>company</TableCell>
+                            <TableCell>Post URL</TableCell>
+                            <TableCell>Move to Applied List</TableCell>
+                            <TableCell>Delete Job</TableCell>
+                            <TableCell>See Detail</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <TableRow key={job.id}>
+                            <TableCell>{job.title}</TableCell>
+                            <TableCell>{job.company}</TableCell>
+                            <TableCell>{job.company}</TableCell>
+                            <TableCell><button onClick={() => this.handleMove(job)}>Move</button></TableCell>
+                            <TableCell><button onClick={() => this.handleDelete(job)}>Delete</button></TableCell>
+                            <TableCell><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></TableCell>
+                        </TableRow>)}
+                    </TableBody>
+                    </Table>
+
+
+
+                    {/* <div className="jobList">
+                        <ul>
+                            {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <li key={job.id}>
+                                {job.title} -
                         {job.company} -
                         {job.post_url} -
                         <button onClick={() => this.handleMove(job)}>Move</button>
-                            -
+                                -
                         <button onClick={() => this.handleDelete(job)}>Delete</button>
-                            -
+                                -
                         <button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button>
-                        </li>)}
-                    </ul>
-                </div>
+                            </li>)}
+                        </ul>
+                    </div> */}
             </div>
-        )
-    }
-}
+                )
+            }
+        }
+        
 
 const mapReduxStateToProps = reduxState => ({
-    reduxState,
-})
+                    reduxState,
+                })
 export default connect(mapReduxStateToProps)(AppliedList);

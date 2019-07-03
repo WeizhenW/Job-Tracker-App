@@ -1,0 +1,14 @@
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.drawer {
+    width: 200px;
+    flex-shrink: 0;
+    background-color: #6B7A8F;
+    height: 100vh;
+    display: flex;
+    font-size: 18px;
+    /* padding-top: 20%; */
+}

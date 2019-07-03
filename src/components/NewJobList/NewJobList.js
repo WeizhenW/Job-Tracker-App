@@ -2,6 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+//material ui
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+
 class NewJobList extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_NEW_JOBS_LIST' });
@@ -37,7 +44,33 @@ class NewJobList extends Component {
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.jobList, null, 2)} */}
                 </pre>
-                <div className="jobList">
+
+
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Job Title</TableCell>
+                            <TableCell>company</TableCell>
+                            <TableCell>Post URL</TableCell>
+                            <TableCell>Move to Applied List</TableCell>
+                            <TableCell>Delete Job</TableCell>
+                            <TableCell>See Detail</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
+                            <TableCell>{job.title}</TableCell>
+                            <TableCell>{job.company}</TableCell>
+                            <TableCell>{job.company}</TableCell>
+                            <TableCell><button onClick={() => this.handleMove(job)}>Move</button></TableCell>
+                            <TableCell><button onClick={() => this.handleDelete(job)}>Delete</button></TableCell>
+                            <TableCell><button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button></TableCell>
+                        </TableRow>)}
+                    </TableBody>
+                    </Table>
+
+
+                {/* <div className="jobList">
                     <ul>
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <li key={job.id}>
                             {job.title} -
@@ -50,7 +83,7 @@ class NewJobList extends Component {
                         <button onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</button>
                         </li>)}
                     </ul>
-                </div>
+                </div> */}
             </div>
         )
     }

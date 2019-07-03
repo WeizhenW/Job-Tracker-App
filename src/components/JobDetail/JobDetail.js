@@ -26,7 +26,6 @@ class JobDetail extends Component {
             <div>
                 <h2>Job Detail Page</h2>
                 <pre>
-                    {/* {JSON.stringify(this.props.skills.skillsForOneJobReducer, null, 2)} */}
                     {JSON.stringify(this.props.jobDetail, null, 2)}
                 </pre>
                 <ul>

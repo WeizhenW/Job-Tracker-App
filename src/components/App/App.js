@@ -26,6 +26,7 @@ import NewJobList from '../NewJobList/NewJobList';
 import AppliedJobList from '../AppliedJobList/AppliedJobList';
 
 import './App.css';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 class App extends Component {
   componentDidMount () {
@@ -35,7 +36,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
           <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
@@ -120,13 +120,24 @@ class App extends Component {
               component={EditDetail}
             />
 
+            {/* edit detail page */}
+            <ProtectedRoute
+              exact
+              path="/logout"
+              component={LogOutButton}
+            />
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
-        </div>
+          {/* <Footer /> */}
+
       </Router>
   )}
 }
 
-export default connect()(App);
+
+const mapReduxStateToProps = reduxState => ({
+  reduxState,
+})
+export default connect(mapReduxStateToProps)(App);
