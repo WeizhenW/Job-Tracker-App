@@ -90,8 +90,8 @@ router.get('/:jobid', rejectUnauthenticated, (req, res) => {
 router.put('/edit', rejectUnauthenticated, (req, res) => {
     const job = req.body;
     pool.query(`UPDATE "job" SET "title" = $1, "company" = $2, "address" = $3, "post_url" = $4, "email" = $5,
-        "phone" = $6, "website" = $7, "note" = $8, "status_id" = $9 WHERE "id" = $10 AND "user_id" = $11`,
-        [job.title, job.company, job.address, job.post_url, job.email, job.phone, job.website, job.note, job.status_id, job.job_id, req.user.id])
+        "phone" = $6, "website" = $7, "note" = $8, "status_id" = $9, "follow_up"= $10 WHERE "id" = $11 AND "user_id" = $12`,
+        [job.title, job.company, job.address, job.post_url, job.email, job.phone, job.website, job.note, job.status_id, job.follow_up, job.job_id, req.user.id])
         .then(() => {
             res.sendStatus(200);
         })
