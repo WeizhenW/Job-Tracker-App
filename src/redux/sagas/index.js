@@ -7,6 +7,7 @@ import newJobSaga from './newJobSaga';
 import jobListSaga from './jobListSaga';
 import skillSaga from './skillSaga';
 import followUpSaga from './followUpSaga';
+import urlSaga from './urlSaga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     jobListSaga(),
     skillSaga(),
     followUpSaga(),
+    urlSaga(),
   ]);
 }

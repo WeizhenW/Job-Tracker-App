@@ -6,6 +6,7 @@ import status from './statusReducer';
 import jobList from './jobsListReducer';
 import skill from './skillReducer';
 import followup from './followUpReducer';
+import s3Url from './s3UrlReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   jobList, //contains full list of status from db status table
   skill,
   followup,
+  s3Url,
 });
 
 export default rootReducer;
