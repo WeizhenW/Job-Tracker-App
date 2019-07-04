@@ -23,14 +23,14 @@ const Nav = (props) => (
             Info Page
           </Link>  */}
           <Link className="nav-link" to="/new-job">
-            Input Job
+            New Job
           </Link>
           <Link className="nav-link" to="/job-list">
-            My Jobs
+            My Job List
           </Link>
-          <Link className="nav-link" to="/follow-up">
+          {/* <Link className="nav-link" to="/follow-up">
             Follow-ups
-          </Link>
+          </Link> */}
           <Link className="nav-link" to="/dashboard">
             Dashboard
           </Link>

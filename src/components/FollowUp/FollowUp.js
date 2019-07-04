@@ -38,7 +38,12 @@ const styles = {
         width: '80%',
         margin: '10px auto',
         padding: '100px',
-        paddingTop: '50px',
+        paddingTop: '20px',
+    },
+    title: {
+        textAlign: 'center',
+        color: '#F7882F',
+        fontSize: '28px'
     },
 }
 
@@ -121,7 +126,9 @@ class FollowUp extends Component {
                         </Grid>
                     <Grid item xs={12} sm={9}>
                         <Paper style={styles.paper}>
-                            <h2>List of jobs to follow up</h2>
+                            <div style={styles.title}>
+                                <h2>Your Task List</h2>
+                            </div>
                             <pre>
                                 {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                             </pre>
@@ -162,14 +169,14 @@ class FollowUp extends Component {
                                             <Button onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
                                         </TableCell>
                                         <TableCell style={styles.tableBody}>
-                                        <FormGroup row>
+                                            <FormGroup row>
                                                 <FormControlLabel
                                                     control={
-                                                        <Switch checked={job.follow_up}  onChange={this.handleChangeFollowUp(job)} value="follow_up" />
+                                                        <Switch checked={job.follow_up} onChange={this.handleChangeFollowUp(job)} value="follow_up" />
                                                     }
                                                     label="Follow Up"
                                                 />
-                                                </FormGroup>
+                                            </FormGroup>
                                         </TableCell>
 
                                     </TableRow>)}

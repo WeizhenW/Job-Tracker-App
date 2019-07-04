@@ -93,11 +93,11 @@ class App extends Component {
             />
 
             {/* follow up page */}
-            <ProtectedRoute
+            {/* <ProtectedRoute
               exact
               path="/follow-up"
               component={FollowUp}
-            />
+            /> */}
 
             {/* dashboard page */}
             <ProtectedRoute
