@@ -13,6 +13,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 
 
 const styles = {
@@ -35,6 +37,9 @@ const styles = {
 class FollowUp extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_FOLLOW_UP_LIST' });
+        this.props.dispatch({
+            type: 'FETCH_ALL_STATUS',
+        });
         //fetch full list of status
         // this.props.dispatch({
         //     type: 'FETCH_ALL_STATUS',
@@ -51,15 +56,25 @@ class FollowUp extends Component {
     //     })
     // }
     //get input and dispatch the update action immediately
-    // handleChange = (job) => (event) => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_JOB_STATUS',
-    //         payload: {
-    //             status_id: event.target.value,
-    //             job_id: job.id
-    //         },
-    //     })
-    // }
+    handleChange = (job) => (event) => {
+        this.props.dispatch({
+            type: 'UPDATE_JOB_STATUS',
+            payload: {
+                status_id: event.target.value,
+                job_id: job.id,
+            },
+        })
+    }
+
+    //function to update status date
+    handleFollowUp = (job) => {
+        this.props.dispatch({
+            type: 'UPDATE_STATUS_DATE',
+            payload: {
+                job_id: job.id,
+            }
+        })
+    }
 
     //function to delete job
     // handleDelete = (job) => {
@@ -88,7 +103,7 @@ class FollowUp extends Component {
                         </Grid>
                     <Grid item xs={12} sm={9}>
                         <Paper style={styles.paper}>
-                            <h2>List of jobs to apply</h2>
+                            <h2>List of jobs to follow up</h2>
                             <pre>
                                 {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                             </pre>
@@ -98,8 +113,8 @@ class FollowUp extends Component {
                                         <TableCell style={styles.tableHeader} >Job Title</TableCell>
                                         <TableCell style={styles.tableHeader}>company</TableCell>
                                         {/* <TableCell style={styles.tableHeader}>Post URL</TableCell> */}
-                                        {/* <TableCell style={styles.tableHeader}>Status</TableCell> */}
-                                        {/* <TableCell style={styles.tableHeader}>Delete Job</TableCell> */}
+                                        <TableCell style={styles.tableHeader}>Status</TableCell>
+                                        <TableCell style={styles.tableHeader}>Follow Up Done</TableCell>
                                         {/* <TableCell style={styles.tableHeader}>See Detail</TableCell> */}
                                     </TableRow>
                                 </TableHead>
@@ -108,8 +123,8 @@ class FollowUp extends Component {
                                         <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                                         <TableCell style={styles.tableBody}>{job.company}</TableCell>
                                         {/* <TableCell style={styles.tableBody}>{job.post_url}</TableCell> */}
-                                        {/* <TableCell style={styles.tableBody}> */}
-                                        {/* <Select
+                                        <TableCell style={styles.tableBody}>
+                                        <Select
                                     variant="outlined"
                                     id="status"
                                     name="status"
@@ -124,7 +139,10 @@ class FollowUp extends Component {
                                     {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>               
 
-                            </TableCell> */}
+                            </TableCell>
+                            <TableCell>
+                                <Button onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
+                            </TableCell>
 
                                     </TableRow>)}
                                 </TableBody>
