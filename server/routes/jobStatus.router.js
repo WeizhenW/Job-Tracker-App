@@ -16,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 //put route to update the status of one job
 router.put('/:job_id', rejectUnauthenticated, (req, res) => {
-    pool.query(`UPDATE "job" SET "status_id" = $1 WHERE "id" = $2 AND "user_id" = $3;`,
+    pool.query(`UPDATE "job" SET "status_id" = $1, "status_date"= CURRENT_DATE WHERE "id" = $2 AND "user_id" = $3;`,
     [req.body.status_id, req.params.job_id, req.user.id])
     .then(() => res.sendStatus(200))
     .catch(error => {

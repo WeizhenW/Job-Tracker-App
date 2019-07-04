@@ -23,7 +23,7 @@ router.post('/new', rejectUnauthenticated, (req, res) => {
 
 //route to get all jobs to apply
 router.get('/toapply', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "job" WHERE "status_id" = 1 AND "user_id" = $1;`, [req.user.id])
+    pool.query(`SELECT * FROM "job" WHERE "status_id" = 1 AND "user_id" = $1 ;`, [req.user.id])
     .then((result) => res.send(result.rows))
     .catch(error => {
         console.log('error with get new jobs list', error);
@@ -33,7 +33,7 @@ router.get('/toapply', rejectUnauthenticated, (req, res) => {
 
 //route to get all applied jobs
 router.get('/applied', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "job" WHERE "status_id" <> 1 AND "user_id" = $1;`, [req.user.id])
+    pool.query(`SELECT * FROM "job" WHERE "status_id" <> 1 AND "user_id" = $1 ORDER BY "status_id";`, [req.user.id])
     .then((result) => res.send(result.rows))
     .catch(error => {
         console.log('error with get applied jobs list', error);
