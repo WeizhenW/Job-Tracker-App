@@ -136,7 +136,9 @@ class EditDetail extends Component {
                                             />
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
-                                            <InputLabel htmlFor="status">Job Status</InputLabel>
+                                        <span style={styles.jobTitle}>Job Status: </span> {this.props.jobDetail.status_name}
+
+                                            {/* <InputLabel htmlFor="status">Job Status</InputLabel>
                                             <Select
                                                 id="status"
                                                 name="status"
@@ -150,7 +152,7 @@ class EditDetail extends Component {
                                                     <em>None</em>
                                                 </MenuItem>
                                                 {this.props.status.map(status => <MenuItem value={status.id}>{status.status_name}</MenuItem>)}
-                                            </Select>
+                                            </Select> */}
                                         </Grid>
 
                                         <Grid item xs={12} sm={12}>

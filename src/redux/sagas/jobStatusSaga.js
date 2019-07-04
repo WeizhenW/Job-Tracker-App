@@ -13,16 +13,12 @@ function* fetchAllStatus() {
 //generator to update job status
 function* updateJobStatus(action) {
     yield axios.put(`/api/status/${action.payload.job_id}`, action.payload);
-    if(action.payload.status_id === 2) {
+    // if(action.payload.status_id !== 1) {
         yield put({type: 'FETCH_NEW_JOBS_LIST'});
-    } else {
+    // } else {
         yield put({type: 'FETCH_APPLIED_JOBS_LIST'});
-    }
+    // }
 }
-
-
-
-
 
 
 function* jobStatusSaga() {

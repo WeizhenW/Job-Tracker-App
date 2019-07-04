@@ -98,7 +98,7 @@ class SkillsPerJob extends Component {
                     </MenuItem>
                     {this.props.skills.allSkillsReducer.map(skill => <MenuItem key={skill.id} value={skill.id}>{skill.skill}</MenuItem>)}
                 </Select>
-                <Button style={styles.addButton} variant="contained" onClick={this.handleAdd}>Add</Button>
+                <Button style={styles.addButton} variant="contained" onClick={this.handleAdd}>Add Skill</Button>
                 <br />
                 <br />
                 {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?

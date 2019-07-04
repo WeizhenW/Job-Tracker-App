@@ -9,6 +9,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = {
     tableHeader: {
@@ -33,14 +35,28 @@ const styles = {
 class AppliedList extends Component {
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_APPLIED_JOBS_LIST' });
+        //fetch full list of status
+        this.props.dispatch({
+            type: 'FETCH_ALL_STATUS',
+        });
     }
     //function to move jobs to applied list
-    handleMove = (job) => {
+    // handleMove = (job) => {
+    //     this.props.dispatch({
+    //         type: 'UPDATE_JOB_STATUS',
+    //         payload: {
+    //             job_id: job.id,
+    //             status_id: 1,
+    //         },
+    //     })
+    // }
+    //get input and dispatch the update action immediately
+    handleChange = (job) => (event) => {
         this.props.dispatch({
             type: 'UPDATE_JOB_STATUS',
             payload: {
-                job_id: job.id,
-                status_id: 1,
+                status_id: event.target.value,
+                job_id: job.id
             },
         })
     }
@@ -75,7 +91,7 @@ class AppliedList extends Component {
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>
                             <TableCell style={styles.tableHeader}>company</TableCell>
                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
-                            <TableCell style={styles.tableHeader}>Move to New Job List</TableCell>
+                            <TableCell style={styles.tableHeader}>Status</TableCell>
                             {/* <TableCell style={styles.tableHeader}>Delete Job</TableCell> */}
                             {/* <TableCell style={styles.tableHeader}>See Detail</TableCell> */}
                         </TableRow>
@@ -85,7 +101,25 @@ class AppliedList extends Component {
                             <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
                             <TableCell style={styles.tableBody}>{job.post_url}</TableCell>
-                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
+                            <TableCell style={styles.tableBody}>
+                                <Select
+                                    id="status"
+                                    name="status"
+                                    displayEmpty
+                                    value={job.status_id}
+                                    onChange={this.handleChange(job)}
+                                    margin="normal"
+                                    fullWidth
+                                >
+                                    <MenuItem value="">
+                                        <em>None</em>
+                                    </MenuItem>
+                                    {this.props.status.map(status => <MenuItem value={status.id}>{status.status_name}</MenuItem>)}
+                                </Select>               
+
+
+
+                            </TableCell>
                             {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell> */}
                             {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell> */}
                         </TableRow>)}
@@ -99,6 +133,7 @@ class AppliedList extends Component {
         
 
 const mapReduxStateToProps = reduxState => ({
-                    reduxState,
-                })
+    reduxState,
+    status: reduxState.status
+})
 export default connect(mapReduxStateToProps)(AppliedList);
