@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const statusRouter = require('./routes/jobStatus.router');
 const jobRouter = require('./routes/job.router');
 const skillRouter = require('./routes/skill.router');
+const followUpRouter = require('./routes/followup.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -30,6 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/status', statusRouter);
 app.use('/api/job', jobRouter);
 app.use('/api/skill', skillRouter);
+app.use('/api/followup', followUpRouter)
 
 
 // Serve static files
