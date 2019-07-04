@@ -12,13 +12,22 @@ import Button from '@material-ui/core/Button';
 
 const styles = {
     tableHeader: {
-        fontSize: '18px',
+        fontSize: '16px',
         backgroundColor: 'black',
         color: 'white',
     },
     tableBody: {
-        fontSize: '16px',
-    }
+        fontSize: '14px',
+    },
+    jobTitle: {
+        fontSize: '14px',
+        // textDecoration: 'underline',
+        // color: 'blue',
+        // curser: 'pointer',
+    },
+    button: {
+        fontSize: '10px',
+    },
 }
 
 class AppliedList extends Component {
@@ -67,18 +76,18 @@ class AppliedList extends Component {
                             <TableCell style={styles.tableHeader}>company</TableCell>
                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
                             <TableCell style={styles.tableHeader}>Move to New Job List</TableCell>
-                            <TableCell style={styles.tableHeader}>Delete Job</TableCell>
-                            <TableCell style={styles.tableHeader}>See Detail</TableCell>
+                            {/* <TableCell style={styles.tableHeader}>Delete Job</TableCell> */}
+                            {/* <TableCell style={styles.tableHeader}>See Detail</TableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <TableRow key={job.id}>
-                            <TableCell style={styles.tableBody}>{job.title}</TableCell>
+                            <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell>
+                            <TableCell style={styles.tableBody}>{job.post_url}</TableCell>
+                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
+                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell> */}
+                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell> */}
                         </TableRow>)}
                     </TableBody>
                     </Table>

@@ -15,7 +15,7 @@ const styles = {
         fontSize: '28px'
     },
     button: {
-        marginLeft: '150px',
+        marginLeft: '200px',
     },
  
     paper: {
@@ -67,13 +67,13 @@ class MyJobList extends Component {
                             <div style={styles.buttonDiv}>
                             {this.state.toApplyButtonClicked ?
                             <>
-                                <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">View Jobs To Apply</Button>
-                                <Button onClick={() => this.handleClick('applied')} style={styles.button}  variant="contained">View Applied Jobs</Button>                                
+                                <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">Backlog</Button>
+                                <Button onClick={() => this.handleClick('applied')} style={styles.button}  variant="contained">Applied Jobs</Button>                                
                             </>
                             :
                             <>
-                                <Button onClick={() => this.handleClick('toApply')} style={styles.button}  variant="contained">View Jobs To Apply</Button>
-                                <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">View Applied Jobs</Button>
+                                <Button onClick={() => this.handleClick('toApply')} style={styles.button}  variant="contained">Backlog</Button>
+                                <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">Applied Jobs</Button>
                                 </>
                             }
                                 <br />

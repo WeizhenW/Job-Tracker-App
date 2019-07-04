@@ -12,12 +12,15 @@ import Button from '@material-ui/core/Button';
 
 const styles = {
     tableHeader: {
-        fontSize: '18px',
+        fontSize: '16px',
         backgroundColor: 'black',
         color: 'white',
     },
     tableBody: {
-        fontSize: '16px',
+        fontSize: '14px',
+    },
+    button: {
+        fontSize: '10px',
     }
 }
 
@@ -42,8 +45,8 @@ class NewJobList extends Component {
             type: 'DELETE_JOB',
             payload: job,
         })
-    }    
-    
+    }
+
     //function to get job details for one job
     handleGetDetail = (job) => {
         this.props.history.push(`/job-list/detail/${job.id}`)
@@ -58,27 +61,35 @@ class NewJobList extends Component {
                 </pre>
 
                 <Table style={styles.table}>
+                    <colgroup>
+                        <col style={{ width: '30%' }} />
+                        <col style={{ width: '30%' }} />
+                        <col style={{ width: '10%' }} />
+                        <col style={{ width: '10%' }} />
+                        <col style={{ width: '10%' }} />
+                        <col style={{ width: '10%' }} />
+                    </colgroup>
                     <TableHead>
                         <TableRow >
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>
-                            <TableCell style={styles.tableHeader}>company</TableCell>
-                            <TableCell style={styles.tableHeader}>Post URL</TableCell>
-                            <TableCell style={styles.tableHeader}>Move to Applied List</TableCell>
-                            <TableCell style={styles.tableHeader}>Delete Job</TableCell>
-                            <TableCell style={styles.tableHeader}>See Detail</TableCell>
+                            <TableCell style={styles.tableHeader}>Company</TableCell>
+                            <TableCell style={styles.tableHeader} >Post URL</TableCell>
+                            <TableCell style={styles.tableHeader}>Applied?</TableCell>
+                            <TableCell style={styles.tableHeader}>Delete</TableCell>
+                            {/* <TableCell style={styles.tableHeader}>Detail</TableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
-                            <TableCell style={styles.tableBody}>{job.title}</TableCell>
+                            <TableCell style={styles.tableBody}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
-                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell>
+                            <TableCell style={styles.tableBody}>{job.post_url}</TableCell>
+                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleMove(job)}> Done </Button></TableCell>
+                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
+                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Go</Button></TableCell> */}
                         </TableRow>)}
                     </TableBody>
-                    </Table>
+                </Table>
             </div>
         )
     }
