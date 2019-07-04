@@ -9,11 +9,19 @@ function* fetchAllFollowUps() {
     })
 }
 
+function* updateFollowUpMode(action) {
+    yield axios.put('/api/followup', action.payload);
+    yield put({
+        type: 'FETCH_FOLLOW_UP_LIST',
+    })
+}
+
 
 
 
 function* followUpSaga() {
     yield takeEvery('FETCH_FOLLOW_UP_LIST', fetchAllFollowUps);
+    yield takeEvery('UPDATE_FOLLOW_UP_MODE', updateFollowUpMode);
 
   }
   

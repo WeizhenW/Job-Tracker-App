@@ -15,7 +15,9 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
-
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
 
 const styles = {
     tableHeader: {
@@ -82,6 +84,16 @@ class FollowUp extends Component {
         })
     }
 
+    //function to update follow up mode
+    handleChangeFollowUp = (job) => (event) => {
+        this.props.dispatch({
+            type: 'UPDATE_FOLLOW_UP_MODE',
+            payload: {
+                job_id: job.id,
+                follow_up: event.target.checked,
+            }
+        })
+    }
     //function to delete job
     // handleDelete = (job) => {
     //     this.props.dispatch({
@@ -121,7 +133,7 @@ class FollowUp extends Component {
                                         {/* <TableCell style={styles.tableHeader}>Post URL</TableCell> */}
                                         <TableCell style={styles.tableHeader}>Status</TableCell>
                                         <TableCell style={styles.tableHeader}>Follow Up Done</TableCell>
-                                        {/* <TableCell style={styles.tableHeader}>See Detail</TableCell> */}
+                                        <TableCell style={styles.tableHeader}>Follow Up Mode</TableCell>
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
@@ -130,25 +142,35 @@ class FollowUp extends Component {
                                         <TableCell style={styles.tableBody}>{job.company}</TableCell>
                                         {/* <TableCell style={styles.tableBody}>{job.post_url}</TableCell> */}
                                         <TableCell style={styles.tableBody}>
-                                        <Select
-                                    variant="outlined"
-                                    id="status"
-                                    name="status"
-                                    displayEmpty
-                                    value={job.status_id}
-                                    onChange={this.handleChange(job)}
-                                    fullWidth
-                                >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
-                                </Select>               
+                                            <Select
+                                                variant="outlined"
+                                                id="status"
+                                                name="status"
+                                                displayEmpty
+                                                value={job.status_id}
+                                                onChange={this.handleChange(job)}
+                                                fullWidth
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                            </Select>
 
-                            </TableCell>
-                            <TableCell>
-                                <Button onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
-                            </TableCell>
+                                        </TableCell>
+                                        <TableCell style={styles.tableBody}>
+                                            <Button onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
+                                        </TableCell>
+                                        <TableCell style={styles.tableBody}>
+                                        <FormGroup row>
+                                                <FormControlLabel
+                                                    control={
+                                                        <Switch checked={job.follow_up}  onChange={this.handleChangeFollowUp(job)} value="follow_up" />
+                                                    }
+                                                    label="Follow Up"
+                                                />
+                                                </FormGroup>
+                                        </TableCell>
 
                                     </TableRow>)}
                                 </TableBody>
