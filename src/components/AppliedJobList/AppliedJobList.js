@@ -8,9 +8,10 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+
 
 const styles = {
     tableHeader: {
@@ -103,21 +104,19 @@ class AppliedList extends Component {
                             <TableCell style={styles.tableBody}>{job.post_url}</TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
+                                    variant="outlined"
                                     id="status"
                                     name="status"
                                     displayEmpty
                                     value={job.status_id}
                                     onChange={this.handleChange(job)}
-                                    margin="normal"
                                     fullWidth
                                 >
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
-                                    {this.props.status.map(status => <MenuItem value={status.id}>{status.status_name}</MenuItem>)}
+                                    {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>               
-
-
 
                             </TableCell>
                             {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell> */}

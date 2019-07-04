@@ -52,7 +52,7 @@ router.post('/add', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// delete route to add one skill into one job into db
+// delete route to delete one skill from one job
 router.delete('/delete/:job_id/:skill_id', rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT * FROM "job" WHERE "id" = $1 AND "user_id" = $2;`,
         [req.body.job_id, req.user.id]).then(

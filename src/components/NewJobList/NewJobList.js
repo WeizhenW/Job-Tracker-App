@@ -111,13 +111,13 @@ class NewJobList extends Component {
                                     displayEmpty
                                     value={job.status_id}
                                     onChange={this.handleChange(job)}
-                                    margin="normal"
+                                    // margin="normal"
                                     fullWidth
                                 >
                                     <MenuItem value="">
                                         <em>None</em>
                                     </MenuItem>
-                                    {this.props.status.map(status => <MenuItem value={status.id}>{status.status_name}</MenuItem>)}
+                                    {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>                               
                                 {/* <Button style={styles.button} variant="contained" onClick={this.handleUpdateStatus}>Update</Button> */}
                             </TableCell>
