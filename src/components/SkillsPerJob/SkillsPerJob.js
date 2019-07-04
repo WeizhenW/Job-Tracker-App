@@ -17,7 +17,11 @@ const styles = {
         flexWrap: 'wrap',
     },
     chip: {
-        margin: 3,
+        margin: '20px 5px',
+    },
+    addButton: {
+        margin: 20,
+        float: 'right',
     }
 
 
@@ -94,12 +98,11 @@ class SkillsPerJob extends Component {
                     </MenuItem>
                     {this.props.skills.allSkillsReducer.map(skill => <MenuItem key={skill.id} value={skill.id}>{skill.skill}</MenuItem>)}
                 </Select>
-                <Button variant="contained" onClick={this.handleAdd}>Add</Button>
+                <Button style={styles.addButton} variant="contained" onClick={this.handleAdd}>Add</Button>
                 <br />
-                <span style={styles.jobTitle}>Job Skills: </span>
                 <br />
                 {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                    this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} onClick={() => this.handleRemove(skill)} key={skill.skill_id} label={skill.skill} color="primary" />)
+                    this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} onDelete={() => this.handleRemove(skill)} key={skill.skill_id} label={skill.skill} color="primary" />)
                     :
                     ''
                 }

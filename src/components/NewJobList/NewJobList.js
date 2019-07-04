@@ -10,6 +10,16 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
+const styles = {
+    tableHeader: {
+        fontSize: '18px',
+        backgroundColor: 'black',
+        color: 'white',
+    },
+    tableBody: {
+        fontSize: '16px',
+    }
+}
 
 class NewJobList extends Component {
     componentDidMount() {
@@ -47,26 +57,25 @@ class NewJobList extends Component {
                     {/* {JSON.stringify(this.props.reduxState.jobList, null, 2)} */}
                 </pre>
 
-
-                <Table>
+                <Table style={styles.table}>
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Job Title</TableCell>
-                            <TableCell>company</TableCell>
-                            <TableCell>Post URL</TableCell>
-                            <TableCell>Move to Applied List</TableCell>
-                            <TableCell>Delete Job</TableCell>
-                            <TableCell>See Detail</TableCell>
+                        <TableRow >
+                            <TableCell style={styles.tableHeader} >Job Title</TableCell>
+                            <TableCell style={styles.tableHeader}>company</TableCell>
+                            <TableCell style={styles.tableHeader}>Post URL</TableCell>
+                            <TableCell style={styles.tableHeader}>Move to Applied List</TableCell>
+                            <TableCell style={styles.tableHeader}>Delete Job</TableCell>
+                            <TableCell style={styles.tableHeader}>See Detail</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
-                            <TableCell>{job.title}</TableCell>
-                            <TableCell>{job.company}</TableCell>
-                            <TableCell>{job.company}</TableCell>
-                            <TableCell><Button variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
-                            <TableCell><Button variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
-                            <TableCell><Button variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell>
+                            <TableCell style={styles.tableBody}>{job.title}</TableCell>
+                            <TableCell style={styles.tableBody}>{job.company}</TableCell>
+                            <TableCell style={styles.tableBody}>{job.company}</TableCell>
+                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleMove(job)}>Move</Button></TableCell>
+                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
+                            <TableCell style={styles.tableBody}><Button variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell>
                         </TableRow>)}
                     </TableBody>
                     </Table>

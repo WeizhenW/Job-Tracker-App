@@ -4,12 +4,6 @@ import AppliedJobs from '../AppliedJobList/AppliedJobList';
 import NewJobs from '../NewJobList/NewJobList';
 
 //material ui
-import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { Input } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -18,14 +12,17 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
+        fontSize: '28px'
     },
     button: {
-        margin: 20,
+        marginLeft: '150px',
     },
+ 
     paper: {
         width: '80%',
         margin: '10px auto',
         padding: '100px',
+        paddingTop: '50px',
     },
 }
 
@@ -67,13 +64,26 @@ class MyJobList extends Component {
                             <div style={styles.title}>
                                 <h2>My Job List</h2>
                             </div>
-                            <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">View Jobs To Apply</Button>
-                            <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">View Applied Jobs</Button>
+                            <div style={styles.buttonDiv}>
+                            {this.state.toApplyButtonClicked ?
+                            <>
+                                <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">View Jobs To Apply</Button>
+                                <Button onClick={() => this.handleClick('applied')} style={styles.button}  variant="contained">View Applied Jobs</Button>                                
+                            </>
+                            :
+                            <>
+                                <Button onClick={() => this.handleClick('toApply')} style={styles.button}  variant="contained">View Jobs To Apply</Button>
+                                <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">View Applied Jobs</Button>
+                                </>
+                            }
+                                <br />
+                                <br />
+                            </div>
                             {/* <pre>
                                 {JSON.stringify(this.state)}
                             </pre> */}
                             {this.state.toApplyButtonClicked ?
-                                <NewJobs history={this.props.history}/>
+                                <NewJobs history={this.props.history} />
                                 :
                                 <AppliedJobs history={this.props.history} />
                             }

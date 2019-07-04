@@ -14,11 +14,13 @@ const styles = {
     paper: {
         width: '80%',
         margin: '10px auto',
-        padding: '100px',
+        padding: '100px 50px',
+        paddingTop: '50px',
     },
     title: {
         textAlign: 'center',
         color: '#F7882F',
+        fontSize: '28px'
     },
     detail: {
         marginTop: 60,
@@ -30,14 +32,15 @@ const styles = {
     },
     button: {
         margin: 20,
+        float: 'right',
     },
     skills: {
         display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     chip: {
-        margin: 3,
+        margin: 5,
     }
 };
 
@@ -68,7 +71,7 @@ class JobDetail extends Component {
                         i don't know what to put
                         <br />
                         i am stuck with styling
-                        </Grid>
+                    </Grid>
                     <Grid item xs={12} sm={9}>
                         <Paper style={styles.paper}>
                             <div style={styles.title}>
@@ -81,7 +84,8 @@ class JobDetail extends Component {
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={6}>
                                         <span style={styles.jobTitle}>Job Title: </span> {this.props.jobDetail.title}
-                                        <br />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
                                         <span style={styles.jobTitle}>Post URL: </span>{this.props.jobDetail.post_url}
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
@@ -89,54 +93,62 @@ class JobDetail extends Component {
                                     </Grid>
                                 </Grid>
                                 <Grid container spacing={3}>
-                                    <Grid item xs={12} sm={6}>
-                                    <span style={styles.jobTitle}>Company Name: </span>{this.props.jobDetail.company}
-                                        <br />
-                                        <span style={styles.jobTitle}>Company Address: </span>{this.props.jobDetail.address}
-                                        <br />
-                                        <span style={styles.jobTitle}>Website: </span>{this.props.jobDetail.website}
+                                    <Grid item xs={12} sm={12}>
+                                        <span style={styles.jobTitle}>Company Name: </span>{this.props.jobDetail.company}
                                     </Grid>
-                                    <Grid item xs={12} sm={6}>
-                                    
-                                    <br />
-                                    <span style={styles.jobTitle}>Email: </span>{this.props.jobDetail.email}
-                                    <br />
-                                    <span style={styles.jobTitle}>Phone: </span>{this.props.jobDetail.phone}
-                                    </Grid>
-                                </Grid>
+                                    <Grid item xs={12} sm={12}>
 
-                                <Grid container spacing={3}>
-                                    <Grid item xs={12} sm={6}>
-                                    <span style={styles.jobTitle}>Comment: </span>{this.props.jobDetail.note}
+                                        <span style={styles.jobTitle}>Company Address: </span>{this.props.jobDetail.address}
                                     </Grid>
-                                    <Grid item xs={12} sm={6}>
-                                        <div style={styles.skills}>
-                                    <span style={styles.jobTitle}>Job Skills: </span>
+                                    <Grid item xs={12} sm={4}>
+
+                                        <span style={styles.jobTitle}>Website: </span>{this.props.jobDetail.website}
+                                        </Grid>
+
+                                        <Grid item xs={12} sm={4}>
+
+                                            <span style={styles.jobTitle}>Email: </span>{this.props.jobDetail.email}
+                                        </Grid>
+                                        <Grid item xs={12} sm={4}>
+
+                                            <span style={styles.jobTitle}>Phone: </span>{this.props.jobDetail.phone}
+                                        </Grid>
+                                    </Grid>
                                     <br />
-                                    {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                                        this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} key={skill.skill_id} label={skill.skill} color="primary" />)
-                                        :
-                                        'null'
-                                    }
-                                    </div>
+
+                                    <Grid container spacing={3}>
+                                        <Grid item xs={12} sm={12}>
+                                            <span style={styles.jobTitle}>Comment: </span>{this.props.jobDetail.note}
+                                        </Grid>
+                                        <Grid item xs={12} sm={12}>
+                                            <span style={styles.jobTitle}>Job Skills: </span>
+                                            <br />
+                                            <br />
+                                            <div >
+                                                {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
+                                                    this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} key={skill.skill_id} label={skill.skill} color="primary" />)
+                                                    :
+                                                    ''
+                                                }
+                                            </div>
+                                        </Grid>
                                     </Grid>
-                                </Grid>
                             </div>
-                            
-                            <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
-                            <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
-                            <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
+
+                                <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
+                                <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
+                                <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
                         </Paper>
                     </Grid>
-                </Grid>
+                    </Grid>
             </div>
-        )
-    }
-}
+                )
+            }
+        }
 
 const mapReduxStateToProps = reduxState => ({
-    reduxState,
-    jobDetail: reduxState.jobList.jobDetailReducer,
-    skills: reduxState.skill,
-})
+                    reduxState,
+                jobDetail: reduxState.jobList.jobDetailReducer,
+                skills: reduxState.skill,
+            })
 export default connect(mapReduxStateToProps)(JobDetail);
