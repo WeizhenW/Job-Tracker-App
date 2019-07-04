@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FileDisplay from '../FileDisplay/FileDisplay';
+
 
 //material ui
 
@@ -138,6 +140,9 @@ class JobDetail extends Component {
                                                     ''
                                                 }
                                             </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12}>                                                
+                                            <FileDisplay job_id={this.props.match.params.id} />
                                         </Grid>
                                     </Grid>
                             </div>
