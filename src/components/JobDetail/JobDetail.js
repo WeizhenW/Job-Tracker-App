@@ -91,6 +91,13 @@ class JobDetail extends Component {
                                     <Grid item xs={12} sm={6}>
                                         <span style={styles.jobTitle}>Job Status: </span> {this.props.jobDetail.status_name}
                                     </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <span style={styles.jobTitle}>Job Status: </span> 
+                                        {this.props.jobDetail.follow_up?
+                                        'YES'
+                                        :
+                                        'NO'}
+                                    </Grid>
                                 </Grid>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={12}>

@@ -32,6 +32,12 @@ const styles = {
     button: {
         fontSize: '10px',
     },
+    paper: {
+        width: '80%',
+        margin: '10px auto',
+        padding: '100px',
+        paddingTop: '50px',
+    },
 }
 
 class FollowUp extends Component {
