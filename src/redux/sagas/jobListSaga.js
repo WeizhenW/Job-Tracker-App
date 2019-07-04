@@ -29,7 +29,7 @@ function* deleteJob(action) {
     }
 }
 
-//generator to delete one job
+//generator to get one job detail
 function* fetchOneJobDetail(action) {
     const oneJobDetailResponse = yield axios.get(`/api/job/${action.payload.id}`);
     yield put({type: 'SET_ONE_JOB_DETAIL', payload: oneJobDetailResponse.data})

@@ -10,8 +10,11 @@ router.post('/new', rejectUnauthenticated, (req, res) => {
     const newJob = req.body;
     console.log('req.user', req.user);
     pool.query(`INSERT INTO "job" ("title", "post_url", "company", "status_id", "user_id")
-    VALUES($1, $2, $3, $4, $5);`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
-    .then(() => res.sendStatus(200))
+    VALUES($1, $2, $3, $4, $5) returning "id";`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
+    .then((result) => {
+        console.log('id', result);
+        res.send(result.rows[0]);
+    })
     .catch(error => {
         console.log('error with post new job', error);
         res.sendStatus(500);

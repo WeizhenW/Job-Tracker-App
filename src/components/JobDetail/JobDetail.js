@@ -39,8 +39,6 @@ const styles = {
     chip: {
         margin: 3,
     }
-
-
 };
 
 class JobDetail extends Component {
@@ -125,8 +123,9 @@ class JobDetail extends Component {
                                 </Grid>
                             </div>
                             
-                            <Button style={styles.button} variant="contained" color="primary" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
-                            <Link to="/job-list"><Button style={styles.button} variant="contained" color="secondary">Back to List</Button></Link>
+                            <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
+                            <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
+                            <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
                         </Paper>
                     </Grid>
                 </Grid>

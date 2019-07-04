@@ -13,8 +13,8 @@ const styles = {
 
     skills: {
         display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
     },
     chip: {
         margin: 3,
@@ -82,7 +82,13 @@ class SkillsPerJob extends Component {
                     {/* {JSON.stringify(this.state)} */}
                 </pre>
                 <InputLabel htmlFor="skill">Job Skills Required</InputLabel>
-                <Select value={this.state.skill_id} type="text" name="skill" displayEmpty fullWidth onChange={this.handleChange}>
+                <Select 
+                    value={this.state.skill_id} 
+                    type="text" 
+                    name="skill" 
+                    displayEmpty 
+                    fullWidth 
+                    onChange={this.handleChange}>
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
@@ -91,12 +97,12 @@ class SkillsPerJob extends Component {
                 <Button variant="contained" onClick={this.handleAdd}>Add</Button>
                 <br />
                 <span style={styles.jobTitle}>Job Skills: </span>
-                                    <br />
-                                    {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
-                                        this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} onClick = {() => this.handleRemove(skill)} key={skill.skill_id} label={skill.skill} color="primary" />)
-                                        :
-                                        'null'
-                                    }
+                <br />
+                {this.props.skills.skillsForOneJobReducer && this.props.skills.skillsForOneJobReducer[0] ?
+                    this.props.skills.skillsForOneJobReducer.map(skill => <Chip style={styles.chip} onClick={() => this.handleRemove(skill)} key={skill.skill_id} label={skill.skill} color="primary" />)
+                    :
+                    ''
+                }
 
             </div>
         )

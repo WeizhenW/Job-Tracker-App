@@ -8,6 +8,10 @@ import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+
 
 const styles = {
     container: {
@@ -17,7 +21,7 @@ const styles = {
         width: '80%',
 
     },
-    
+
     title: {
         textAlign: 'center',
         color: '#F7882F',
@@ -84,6 +88,10 @@ class EditDetail extends Component {
         return (
             <div>
                 <div>
+                    {/* <pre>
+                        {JSON.stringify(this.state, null, 2)}
+                        {JSON.stringify(this.props.status, null, 2)}
+                    </pre> */}
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={3}>
                             this is the side
@@ -92,120 +100,123 @@ class EditDetail extends Component {
                         <br />
                             i am stuck with styling
                         </Grid>
-                        <Grid item xs={12} sm={9}>
-                            <div className="inputPage">
-                                <div style={styles.title}>
-                                    <h2>Edit the Job Detail</h2>
-                                </div>
-                                <form style={styles.container} onSubmit={this.handleSubmit}>
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                id="job-title"
-                                                label="Job Title"
-                                                onChange={this.handleChangeFor('title')}
-                                                value={this.state.job.title}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                            <br />
-                                            <TextField
-                                                id="post-url"
-                                                label="Post URL"
-                                                onChange={this.handleChangeFor('post_url')}
-                                                value={this.state.job.post_url}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                id="job-status"
-                                                label="Job Status"
-                                                onChange={this.handleChangeFor('status_id')}
-                                                value={this.state.job.status_id}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                        </Grid>
-                                    </Grid>
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                id="company-name"
-                                                label="Company Name"
-                                                onChange={this.handleChangeFor('company')}
-                                                value={this.state.job.company}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                            <br />
-                                            <TextField
-                                                id="address"
-                                                label="Company Address"
-                                                onChange={this.handleChangeFor('address')}
-                                                value={this.state.job.address}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                            <br />
-                                            <TextField
-                                                id="website"
-                                                label="Company Website"
-                                                onChange={this.handleChangeFor('website')}
-                                                value={this.state.job.website}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />                                          </Grid>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                id="email"
-                                                label="Email"
-                                                onChange={this.handleChangeFor('email')}
-                                                value={this.state.job.email}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                            <br />
-                                            <TextField
-                                                id="phone"
-                                                label="Phone Number"
-                                                onChange={this.handleChangeFor('phone')}
-                                                value={this.state.job.phone}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />                                          
-                                            </Grid>
-                                    </Grid>
-                                    <Grid container spacing={3}>
-                                        <Grid item xs={12} sm={6}>
-                                            <TextField
-                                                multiline
-                                                id="note"
-                                                label="Notes"
-                                                onChange={this.handleChangeFor('note')}
-                                                value={this.state.job.note}
-                                                margin="normal"
-                                                fullWidth
-                                                style={styles.TextField}
-                                            />
-                                        </Grid>
-                                        <Grid item xs={12} sm={6}>
-                                            <Skills job_id={this.props.match.params.id} />
-                                        </Grid>
-                                        <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
-                                            <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
-                                    </Grid>
-                                </form>
+
+                        <Grid item xs={12} sm={9} className="inputPage">
+                            <div style={styles.title}>
+                                <h2>Edit the Job Detail</h2>
                             </div>
+                            <form style={styles.container} onSubmit={this.handleSubmit}>
+                                <Grid container spacing={3}>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            id="job-title"
+                                            label="Job Title"
+                                            onChange={this.handleChangeFor('title')}
+                                            value={this.state.job.title}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                        <br />
+                                        <TextField
+                                            id="post-url"
+                                            label="Post URL"
+                                            onChange={this.handleChangeFor('post_url')}
+                                            value={this.state.job.post_url}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <InputLabel htmlFor="status">Job Status</InputLabel>
+                                        <Select
+                                            id="status"
+                                            name="status"
+                                            displayEmpty
+                                            value={this.state.job.status_id}
+                                            onChange={this.handleChangeFor('status_id')}
+                                            margin="normal"
+                                            fullWidth
+                                        >
+                                            <MenuItem value="">
+                                                <em>None</em>
+                                            </MenuItem>
+                                            {this.props.status.map(status => <MenuItem value={status.id}>{status.status_name}</MenuItem>)}
+                                        </Select>
+                                    </Grid>
+                                
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            id="company-name"
+                                            label="Company Name"
+                                            onChange={this.handleChangeFor('company')}
+                                            value={this.state.job.company}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                        <br />
+                                        <TextField
+                                            id="address"
+                                            label="Company Address"
+                                            onChange={this.handleChangeFor('address')}
+                                            value={this.state.job.address}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                        <br />
+                                        <TextField
+                                            id="website"
+                                            label="Company Website"
+                                            onChange={this.handleChangeFor('website')}
+                                            value={this.state.job.website}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />                                          </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            id="email"
+                                            label="Email"
+                                            onChange={this.handleChangeFor('email')}
+                                            value={this.state.job.email}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                        <br />
+                                        <TextField
+                                            id="phone"
+                                            label="Phone Number"
+                                            onChange={this.handleChangeFor('phone')}
+                                            value={this.state.job.phone}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                    </Grid>
+                                
+                                    <Grid item xs={12} sm={6}>
+                                        <TextField
+                                            multiline
+                                            id="note"
+                                            label="Notes"
+                                            onChange={this.handleChangeFor('note')}
+                                            value={this.state.job.note}
+                                            margin="normal"
+                                            fullWidth
+                                            style={styles.TextField}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <Skills job_id={this.props.match.params.id} />
+                                    </Grid>
+                                    <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
+                                    <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
+                                </Grid>
+                            </form>
                         </Grid>
                     </Grid>
                 </div>

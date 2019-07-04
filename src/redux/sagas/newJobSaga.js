@@ -3,10 +3,12 @@ import axios from 'axios';
 
 //generator to get all job status
 function* postNewJob(action) {
-    yield axios.post('/api/job/new', action.payload);
-    // yield put({
-    //     type: 'GET_NEW_JOBS_LIST',
-    // })
+    const postNewJobResponse = yield axios.post('/api/job/new', action.payload);
+    console.log(postNewJobResponse.data);
+    yield put({
+        type: 'SET_NEW_JOB_ID',
+        payload: postNewJobResponse.data,
+    })
 }
 
 

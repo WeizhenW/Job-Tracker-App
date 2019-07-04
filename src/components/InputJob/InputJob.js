@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './InputJob.css';
 
 //material ui
@@ -21,7 +22,6 @@ const styles = {
         flexWrap: 'wrap',
         backgroundColor: 'white',
         width: '80%',
-
     },
     textField: {
         marginLeft: 10,
@@ -31,20 +31,19 @@ const styles = {
     paper: {
         width: '80%',
         margin: '10px auto',
-        padding: '100px',
+        padding: '100px 50px',
+        paddingTop: '50px'
     },
     title: {
         textAlign: 'center',
         color: '#F7882F',
+        fontSize: '28px'
     },
-    buttonDiv: {
-        // marginTop: '50px',
-    },
+
     button: {
         display: 'inline-flex',
-        alignItems: 'right',
-        marginTop: '20px',
-        marginLeft: '200px',
+        marginTop: '30px',
+        marginLeft: '250px',
     },
 
 };
@@ -72,11 +71,10 @@ class InputJob extends Component {
     //on click => dispatch action to post
     handleSubmit = () => {
         if (this.state.companyName && this.state.jobTitle && this.state.postUrl && this.state.status_id) {
-            this.props.dispatch({
-                type: 'POST_NEW_JOB',
-                payload: this.state,
+            axios.post('/api/job/new', this.state)
+            .then(response => {
+                this.props.history.push(`/job-list/detail/${response.data.id}`);
             })
-            this.props.history.push('/new-job');
         } else {
             alert('input field cannot be empty');
             return;
@@ -93,7 +91,7 @@ class InputJob extends Component {
                         this is the side
                         <br />
                         i don't know what to put
-                        <br/>
+                        <br />
                         i am stuck with styling
                         </Grid>
                     <Grid item xs={12} sm={9}>
@@ -124,7 +122,7 @@ class InputJob extends Component {
                                     margin="normal"
                                     fullWidth
                                 />
-                                
+
                                 <FormControl fullWidth>
                                     <br />
                                     <InputLabel htmlFor="status">
@@ -145,8 +143,8 @@ class InputJob extends Component {
                                     </Select>
                                 </FormControl>
                                 <div style={styles.buttonDiv} >
-                                <Link to='/home'><Button style={styles.button} variant="contained" color="secondary" >Cancel</Button></Link>
-                                <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
+                                    <Link to='/home'><Button style={styles.button} variant="contained" color="secondary" >Cancel</Button></Link>
+                                    <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
                                 </div>
                             </form>
                             <pre>
