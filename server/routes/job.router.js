@@ -3,6 +3,19 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
+//route to get all jobs
+router.get('/', rejectUnauthenticated, (req, res) => {
+    pool.query(`SELECT "status_id", "status"."status_name", COUNT(*) FROM "job" 
+    JOIN "status" ON "status"."id"="job"."status_id"
+    WHERE "user_id" = $1
+    GROUP BY "status_id", "status_name"
+    ORDER BY "status_id";`, [req.user.id])
+        .then((result) => res.send(result.rows))
+        .catch(error => {
+            console.log('error with get all jobs list', error);
+            res.sendStatus(500);
+        })
+})
 
 // route to post a new job to db
 router.post('/new', rejectUnauthenticated, (req, res) => {

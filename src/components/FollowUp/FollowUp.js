@@ -119,18 +119,9 @@ class FollowUp extends Component {
         return (
 
             <div>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={3}>
-                        this is the side
-                        <br />
-                        i don't know what to put
-                        <br />
-                        i am stuck with styling
-                        </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <Paper style={styles.paper}>
-                            {this.props.reduxState.followup.followUpReducer.length?
-                            <>
+                <Paper style={styles.paper}>
+                    {this.props.reduxState.followup.followUpReducer.length ?
+                        <>
                             <div style={styles.title}>
                                 <h2>Your Task List</h2>
                             </div>
@@ -187,18 +178,15 @@ class FollowUp extends Component {
                                     </TableRow>)}
                                 </TableBody>
                             </Table>
-                            </>
-                            :
-                            <div>
-                                <h3 style={styles.announce}>Your task list is empty - why not applying for more job!</h3>
-                                <Link to='/new-job'><Button>Go to Add New Jobs</Button></Link> 
-                                <Link to='/job-list'><Button>Look at My Job List</Button></Link> 
-                            </div>
-                            }
-                        </Paper>
-                    </Grid>
-                </Grid>
-
+                        </>
+                        :
+                        <div>
+                            <h3 style={styles.announce}>Your task list is empty - why not applying for more job!</h3>
+                            <Link to='/new-job'><Button>Go to Add New Jobs</Button></Link>
+                            <Link to='/job-list'><Button>Look at My Job List</Button></Link>
+                        </div>
+                    }
+                </Paper>
             </div>
         )
     }
