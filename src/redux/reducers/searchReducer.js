@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-const searchByCompanyReducer = (state = [], action) => {
+const searchResultReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_SEARCH_BY_COMPANY_RESULTS':
+        case 'SET_SEARCH_RESULTS':
             return action.payload;
         default:
             return state;
@@ -19,5 +19,5 @@ const searchByCompanyReducer = (state = [], action) => {
 // }
 
 export default combineReducers({
-    searchByCompanyReducer,
+    searchResultReducer,
 });

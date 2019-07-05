@@ -135,7 +135,7 @@ class InputJob extends Component {
                                     </InputLabel>
                                     <Select
                                         onChange={this.handleChangeFor('status_id')}
-                                        input={<Input name="age" id="status" />}
+                                        input={<Input name="status" id="status" />}
                                         displayEmpty
                                         value={this.state.status_id}
                                         fullWidth
