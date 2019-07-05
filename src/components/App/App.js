@@ -18,12 +18,12 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import InputJob from '../InputJob/InputJob';
 import MyJobList from '../MyJobList/MyJobList';
-import FollowUp from '../FollowUp/FollowUp';
 import Search from '../Search/Search';
 import JobDetail from '../JobDetail/JobDetail';
 import EditDetail from '../EditDetail/EditDetail';
 import NewJobList from '../NewJobList/NewJobList';
 import AppliedJobList from '../AppliedJobList/AppliedJobList';
+import WebScraping from '../WebScraping/WebScraping';
 
 import './App.css';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -92,12 +92,12 @@ class App extends Component {
               component={AppliedJobList}
             />
 
-            {/* follow up page */}
-            {/* <ProtectedRoute
+            {/* scraping */}
+            <ProtectedRoute
               exact
-              path="/follow-up"
-              component={FollowUp}
-            /> */}
+              path="/scraping"
+              component={WebScraping}
+            />
 
             {/* dashboard page */}
             <ProtectedRoute
