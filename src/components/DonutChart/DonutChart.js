@@ -13,7 +13,7 @@ const styles = {
     },
 }
 
-class Chart extends Component {
+class DonutChart extends Component {
     componentDidMount() {
         this.props.dispatch({
             type: 'FETCH_ALL_JOBS',
@@ -70,4 +70,4 @@ class Chart extends Component {
 const mapReduxStateToProps = reduxState => ({
     reduxState,
 })
-export default connect(mapReduxStateToProps)(Chart);
+export default connect(mapReduxStateToProps)(DonutChart);

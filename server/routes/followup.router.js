@@ -1,12 +1,14 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 /**
  * GET route template
  */
 //get all follow up jobs
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated,(req, res) => {
     pool.query(`SELECT * FROM "job" 
         WHERE (("status_date" < CURRENT_DATE - 10 AND "status_id" = 2) 
         OR ("status_date" < CURRENT_DATE - 5 AND ("status_id" = 3 OR "status_id" = 4)))
@@ -21,7 +23,7 @@ router.get('/', (req, res) => {
 });
 
 //update the follow up mode for one job
-router.put('/', (req, res) => {
+router.put('/', rejectUnauthenticated, (req, res) => {
     pool.query(`UPDATE "job" SET "follow_up"=$1 WHERE "id"=$2 AND "user_id"=$3;`, 
     [req.body.follow_up, req.body.job_id,req.user.id]
     ).then(() => res.sendStatus(200)

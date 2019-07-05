@@ -16,6 +16,7 @@ const skillRouter = require('./routes/skill.router');
 const followUpRouter = require('./routes/followup.router');
 const s3Router = require('./routes/s3.router');
 const fileRouter = require('./routes/file.router');
+const chartRouter = require('./routes/chart.router');
 
 
 // Body parser middleware
@@ -37,6 +38,7 @@ app.use('/api/skill', skillRouter);
 app.use('/api/followup', followUpRouter)
 app.use('/api/s3', s3Router);
 app.use('/api/file', fileRouter);
+app.use('/api/chart', chartRouter);
 
 
 // Serve static files

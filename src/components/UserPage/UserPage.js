@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import FollowUp from '../FollowUp/FollowUp';
-import Chart from '../Chart/Chart';
+import DonutChart from '../DonutChart/DonutChart';
 import Grid from '@material-ui/core/Grid';
+import BarChart from '../BarChart/BarChart';
 
 const styles = {
   paper: {
@@ -34,9 +35,11 @@ const UserPage = (props) => (
       <Grid item xs={12} sm={9}>
         {/* <Paper style={styles.paper}> */}
           <FollowUp />
-          <Chart />
+          <DonutChart />
+          <BarChart />
         {/* </Paper> */}
       </Grid>
+      
     </Grid>
 
   </div>
