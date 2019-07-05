@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 //get route to get most demanding job skills
-router.get('/skills', (req, res) => {
+router.get('/skills', rejectUnauthenticated, (req, res) => {
     pool.query(`SELECT "skill", COUNT("job_id") FROM "job_skill"
         JOIN "skill" ON "skill"."id"="job_skill"."skill_id"
         JOIN "job" ON "job"."id" = "job_skill"."job_id"

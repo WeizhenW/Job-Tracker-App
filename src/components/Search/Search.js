@@ -14,6 +14,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -51,125 +52,93 @@ const styles = {
 }
 
 class SearchJob extends Component {
+    state = {
+        companyName: '',
+    }
     componentDidMount() {
-        this.props.dispatch({ type: 'FETCH_FOLLOW_UP_LIST' });
-        this.props.dispatch({
-            type: 'FETCH_ALL_STATUS',
-        });
+        // this.props.dispatch({ type: 'FETCH_FOLLOW_UP_LIST' });
+        // this.props.dispatch({
+        //     type: 'FETCH_ALL_STATUS',
+        // });
         //fetch full list of status
         // this.props.dispatch({
         //     type: 'FETCH_ALL_STATUS',
         // });
     }
-    //function to move jobs to applied list
-    // handleMove = (job) => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_JOB_STATUS',
-    //         payload: {
-    //             job_id: job.id,
-    //             status_id: 1,
-    //         },
-    //     })
-    // }
-    //get input and dispatch the update action immediately
-    handleChange = (job) => (event) => {
-        this.props.dispatch({
-            type: 'UPDATE_JOB_STATUS',
-            payload: {
-                status_id: event.target.value,
-                job_id: job.id,
-            },
+    //function to get input value
+    handleChangeFor = (propertyName) => (event) => {
+        this.setState({
+            [propertyName]: event.target.value,
         })
     }
 
-    //function to update status date
-    
-
-    //function to update follow up mode
-    handleChangeFollowUp = (job) => (event) => {
-        this.props.dispatch({
-            type: 'UPDATE_FOLLOW_UP_MODE',
-            payload: {
-                job_id: job.id,
-                follow_up: event.target.checked,
-            }
-        })
+    //function to dispatch the action to search   
+    handleSearch = (propertyName) => {
+        if (propertyName === 'companyName') {
+            this.props.dispatch({
+                type: 'SEARCH_JOB_BY_COMPANY',
+                payload: this.state
+            })
+        }
     }
-    
 
-    
+
 
     render() {
         return (
 
             <div>
                 <Paper style={styles.paper}>
-                    {this.props.reduxState.followup.followUpReducer.length ?
-                        <>
-                            <div style={styles.title}>
-                                <h2>Your Task List</h2>
-                            </div>
-                            <pre>
-                                {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
-                            </pre>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={styles.tableHeader} >Job Title</TableCell>
-                                        <TableCell style={styles.tableHeader}>company</TableCell>
-                                        {/* <TableCell style={styles.tableHeader}>Post URL</TableCell> */}
-                                        <TableCell style={styles.tableHeader}>Status</TableCell>
-                                        <TableCell style={styles.tableHeader}>Follow Up Done</TableCell>
-                                        <TableCell style={styles.tableHeader}>Follow Up Mode</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.props.reduxState.followup.followUpReducer.map(job => <TableRow key={job.id}>
-                                        <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
-                                        <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                                        {/* <TableCell style={styles.tableBody}>{job.post_url}</TableCell> */}
-                                        <TableCell style={styles.tableBody}>
-                                            <Select
-                                                variant="outlined"
-                                                id="status"
-                                                name="status"
-                                                displayEmpty
-                                                value={job.status_id}
-                                                onChange={this.handleChange(job)}
-                                                fullWidth
-                                            >
-                                                <MenuItem value="">
-                                                    <em>None</em>
-                                                </MenuItem>
-                                                {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
-                                            </Select>
-
+                    <div>
+                        <TextField
+                            id="searchCompany"
+                            onChange={this.handleChangeFor('companyName')}
+                            margin="normal"
+                            variant="outlined"
+                            value={this.state.companyName}
+                            placeholder="Search by company name"
+                            fullWidth
+                        />
+                        <Button onClick={() => this.handleSearch('companyName')} variant="contained">Go</Button>
+                    </div>
+                    <div>
+                        <pre>
+                            {JSON.stringify(this.props.reduxState.search)}
+                        </pre>
+                        {this.props.reduxState.search.searchByCompanyReducer.data && this.props.reduxState.search.searchByCompanyReducer.data.length?
+                        
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Job Title</TableCell>
+                                    <TableCell>Company</TableCell>
+                                    <TableCell>Post URL</TableCell>
+                                    <TableCell>Status</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.props.reduxState.search.searchByCompanyReducer.data.map(job =>
+                                    <TableRow key={job.id}>
+                                        <TableCell>
+                                            {job.title}
                                         </TableCell>
-                                        <TableCell style={styles.tableBody}>
-                                            <Button onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
+                                        <TableCell>
+                                            {job.title}
                                         </TableCell>
-                                        <TableCell style={styles.tableBody}>
-                                            <FormGroup row>
-                                                <FormControlLabel
-                                                    control={
-                                                        <Switch checked={job.follow_up} onChange={this.handleChangeFollowUp(job)} value="follow_up" />
-                                                    }
-                                                    label="Follow Up"
-                                                />
-                                            </FormGroup>
+                                        <TableCell>
+                                            {job.post_url}
                                         </TableCell>
-
+                                        <TableCell>
+                                            {job.status_name}
+                                        </TableCell>
                                     </TableRow>)}
-                                </TableBody>
-                            </Table>
-                        </>
+                            </TableBody>
+                        </Table>
                         :
-                        <div>
-                            <h3 style={styles.announce}>Your task list is empty - why not applying for more job!</h3>
-                            <Link to='/new-job'><Button>Go to Add New Jobs</Button></Link>
-                            <Link to='/job-list'><Button>Look at My Job List</Button></Link>
-                        </div>
+                        'no result found'
                     }
+                    </div>
+
                 </Paper>
             </div>
         )

@@ -19,7 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import InputJob from '../InputJob/InputJob';
 import MyJobList from '../MyJobList/MyJobList';
 import FollowUp from '../FollowUp/FollowUp';
-import Dashboard from '../Dashboard/Dashboard';
+import Search from '../Search/Search';
 import JobDetail from '../JobDetail/JobDetail';
 import EditDetail from '../EditDetail/EditDetail';
 import NewJobList from '../NewJobList/NewJobList';
@@ -102,8 +102,8 @@ class App extends Component {
             {/* dashboard page */}
             <ProtectedRoute
               exact
-              path="/dashboard"
-              component={Dashboard}
+              path="/search"
+              component={Search}
             />
 
             {/* job detail page */}
