@@ -21,11 +21,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/new', rejectUnauthenticated, (req, res) => {
     // console.log(req.body);
     const newJob = req.body;
-    console.log('req.user', req.user);
     pool.query(`INSERT INTO "job" ("title", "post_url", "company", "status_id", "user_id")
     VALUES($1, $2, $3, $4, $5) returning "id";`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
         .then((result) => {
-            console.log('id', result);
+            console.log(result.rows[0]);
             res.send(result.rows[0]);
         })
         .catch(error => {
