@@ -37,10 +37,17 @@ function* fetchOneJobDetail(action) {
 
 //generator to update the job detail
 function* updateJobDetail (action) {
-    console.log('in update job detail reducer', action.payload);
     yield axios.put('/api/job/edit', action.payload);
     yield put({type: 'FETCH_ONE_JOB_DETAIL', payload: {id: action.payload.job_id}});
 }
+
+//generator to get all the jobs
+function* fetchAllJobs () {
+    const allJobsResponse = yield axios.get('/api/job');
+    yield put({type: 'SET_ALL_JOBS', payload: allJobsResponse.data});
+}
+
+
 
 
 
@@ -50,6 +57,7 @@ function* jobListSaga() {
     yield takeEvery('FETCH_APPLIED_JOBS_LIST', fetchAppliedJobsList);
     yield takeEvery('FETCH_ONE_JOB_DETAIL', fetchOneJobDetail);
     yield takeEvery('UPDATE_JOB_DETAIL', updateJobDetail);
+    yield takeEvery('FETCH_ALL_JOBS', fetchAllJobs);
 
   }
   

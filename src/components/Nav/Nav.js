@@ -28,12 +28,12 @@ const Nav = (props) => (
           <Link className="nav-link" to="/job-list">
             My Job List
           </Link>
-          {/* <Link className="nav-link" to="/follow-up">
-            Follow-ups
-          </Link> */}
-          <Link className="nav-link" to="/dashboard">
-            Dashboard
+          <Link className="nav-link" to="/search">
+            Search
           </Link>
+          {/* <Link className="nav-link" to="/dashboard">
+            Dashboard
+          </Link> */}
           <LogOutButton className="nav-link"/>
         </>
       )}
