@@ -69,11 +69,16 @@ class InputJob extends Component {
         })
     }
     //on click => dispatch action to post
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault()
+
         if (this.state.companyName && this.state.jobTitle && this.state.postUrl && this.state.status_id) {
-            axios.post('/api/job/new', this.state)
-            .then(response => {
-                this.props.history.push(`/job-list/detail/${response.data.id}`);
+            this.props.dispatch({
+                type: 'POST_NEW_JOB',
+                payload: {
+                    history: this.props.history,
+                    job: this.state,
+                }
             })
         } else {
             alert('input field cannot be empty');
@@ -130,7 +135,7 @@ class InputJob extends Component {
                                     </InputLabel>
                                     <Select
                                         onChange={this.handleChangeFor('status_id')}
-                                        input={<Input name="age" id="status" />}
+                                        input={<Input name="status" id="status" />}
                                         displayEmpty
                                         value={this.state.status_id}
                                         fullWidth

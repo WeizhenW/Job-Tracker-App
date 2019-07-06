@@ -18,7 +18,17 @@ const skillsForOneJobReducer = (state = [], action) => {
     }
 }
 
+const topSkillsReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_TOP_SKILLS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 export default combineReducers({
     allSkillsReducer,
     skillsForOneJobReducer,
+    topSkillsReducer,
 });

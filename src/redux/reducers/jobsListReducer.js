@@ -27,6 +27,15 @@ const jobDetailReducer = (state={}, action) => {
     }
 }
 
+const allJobsReducer = (state=[], action) => {
+    switch(action.type) {
+        case 'SET_ALL_JOBS':
+            return action.payload;
+        default:
+            return state;
+    }
+}
+
 const newJobIdReducer = (state={}, action) => {
     switch(action.type) {
         case 'SET_NEW_JOB_ID':
@@ -41,4 +50,5 @@ export default combineReducers({
     appliedJobsListReducer,
     jobDetailReducer,
     newJobIdReducer,
+    allJobsReducer,
 }) 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import FileDisplay from '../FileDisplay/FileDisplay';
+
 
 //material ui
 
@@ -91,6 +93,13 @@ class JobDetail extends Component {
                                     <Grid item xs={12} sm={6}>
                                         <span style={styles.jobTitle}>Job Status: </span> {this.props.jobDetail.status_name}
                                     </Grid>
+                                    <Grid item xs={12} sm={6}>
+                                        <span style={styles.jobTitle}>Follow Up: </span> 
+                                        {this.props.jobDetail.follow_up?
+                                        'YES'
+                                        :
+                                        'NO'}
+                                    </Grid>
                                 </Grid>
                                 <Grid container spacing={3}>
                                     <Grid item xs={12} sm={12}>
@@ -131,6 +140,9 @@ class JobDetail extends Component {
                                                     ''
                                                 }
                                             </div>
+                                        </Grid>
+                                        <Grid item xs={12} sm={12}>                                                
+                                            <FileDisplay job_id={this.props.match.params.id} />
                                         </Grid>
                                     </Grid>
                             </div>
