@@ -48,38 +48,54 @@ class WebScraping extends Component {
     }
     componentDidMount() {
         axios.get('/api/scraping')
-        .then(
-            response => {
-                this.setState({
-                    jobList: response.data
-                })
+            .then(
+                response => {
+                    this.setState({
+                        jobList: response.data
+                    })
+                }
+            )
+    }
+
+    handleMove = (job) => {
+        this.props.dispatch({
+            type: 'POST_NEW_JOB',
+            payload: {
+                history: this.props.history,
+                job: {
+                    companyName: job.company,
+                    jobTitle: job.title,
+                    postUrl: job.href,
+                    status_id: 1
+                },
             }
-        )
+        })
     }
     render() {
-        return(
+        return (
             <div>
                 <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={styles.tableHeader} >Job Title</TableCell>
-                                        <TableCell style={styles.tableHeader}>URL</TableCell>
-                                        <TableCell style={styles.tableHeader}>Company</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.state.jobList.map(job => <TableRow>
-                                        <TableCell>{job.title}</TableCell>
-                                        <TableCell><a href={job.href}>See Job Post</a></TableCell>
-                                        <TableCell>{job.company}</TableCell>
-                                    </TableRow>)}
+                    <TableHead>
+                        <TableRow>
+                            <TableCell style={styles.tableHeader} >Job Title</TableCell>
+                            <TableCell style={styles.tableHeader}>URL</TableCell>
+                            <TableCell style={styles.tableHeader}>Company</TableCell>
+                            <TableCell style={styles.tableHeader}>Add to List</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.jobList.map(job => <TableRow>
+                            <TableCell>{job.title}</TableCell>
+                            <TableCell><a href={job.href}>See Job Post</a></TableCell>
+                            <TableCell>{job.company}</TableCell>
+                            <TableCell><Button variant="contained" onClick={()=>this.handleMove(job)}>Add</Button></TableCell>
+                        </TableRow>)}
 
-                                </TableBody>
-                                </Table>
-                                <pre>
-                                    {JSON.stringify(this.state.jobList, null, 2)}
-                                    </pre>
-
+                    </TableBody>
+                </Table>
+                <pre>
+                    {JSON.stringify(this.state.jobList, null, 2)}
+                </pre>
             </div>
         )
     }
@@ -87,6 +103,6 @@ class WebScraping extends Component {
 
 const mapReduxStateToProps = reduxState => ({
     jobDetail: reduxState.jobList.jobDetailReducer,
-status: reduxState.status,
+    status: reduxState.status,
 })
 export default connect(mapReduxStateToProps)(WebScraping);

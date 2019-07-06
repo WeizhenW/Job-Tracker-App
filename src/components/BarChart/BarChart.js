@@ -17,19 +17,22 @@ const styles = {
 class DonutChart extends Component {
     skillArray = [];
     componentDidMount() {
-        axios.get('/api/chart/skills')
-            .then(
-                response => {
-                    this.skillArray = response.data;
-                }
-            )
-            .catch(error => console.log('error with axios get', error));
+        this.props.dispatch({
+            type: 'FETCH_TOP_JOB_SKILLS',
+        })
+        // axios.get('/api/chart/skills')
+        //     .then(
+        //         response => {
+        //             this.skillArray = response.data;
+        //         }
+        //     )
+        //     .catch(error => console.log('error with axios get', error));
     }
 
     createData = () => {
         let skillNameArray = [];
         let countArray = [];
-        this.skillArray.forEach(skill => {
+        this.props.reduxState.skill.topSkillsReducer.forEach(skill => {
             skillNameArray.push(skill.skill);
             countArray.push(skill.count);
         })

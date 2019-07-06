@@ -67,89 +67,95 @@ class SearchJob extends Component {
             })
         }
     }
-
-
-
     render() {
         return (
-
             <div>
-                <Paper style={styles.paper}>
-                    <div>
-                        <TextField
-                            id="searchCompany"
-                            onChange={this.handleChangeFor('companyName')}
-                            margin="normal"
-                            variant="outlined"
-                            value={this.state.companyName}
-                            placeholder="Search by company name"
-                            fullWidth
-                        />
-                        <Button onClick={() => this.handleSearch('companyName')} variant="contained">Go</Button>
-                        <h3>OR</h3>
-                        <FormControl  fullWidth variant="outlined">
-                            <br />
-                            <InputLabel htmlFor="status">
-                                Search by job status
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={3}>
+                        this is the side
+                        <br />
+                        i don't know what to put
+                        <br />
+                        i am stuck with styling
+                        </Grid>
+                    <Grid item xs={12} sm={9}>
+                        <Paper style={styles.paper}>
+                            <div>
+                                <TextField
+                                    id="searchCompany"
+                                    onChange={this.handleChangeFor('companyName')}
+                                    margin="normal"
+                                    variant="outlined"
+                                    value={this.state.companyName}
+                                    placeholder="Search by company name"
+                                    fullWidth
+                                />
+                                <Button onClick={() => this.handleSearch('companyName')} variant="contained">Go</Button>
+                                <h3>OR</h3>
+                                <FormControl fullWidth variant="outlined">
+                                    <br />
+                                    <InputLabel htmlFor="status">
+                                        Search by job status
                             </InputLabel>
-                            <Select
-                                onChange={this.handleChangeFor('status_id')}
-                                input={<OutlinedInput name="status" id="status" />}
-                                displayEmpty
-                                value={this.state.status_id}
-                                // variant="outlined"
-                                name="status"
-                            >
-                                <MenuItem value="">
-                                    <em></em>
-                                </MenuItem>
-                                {this.props.reduxState.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
-                            </Select>
-                        </FormControl>
-                        <Button onClick={() => this.handleSearch('status_id')} variant="contained">Go</Button>
+                                    <Select
+                                        onChange={this.handleChangeFor('status_id')}
+                                        input={<OutlinedInput name="status" id="status" />}
+                                        displayEmpty
+                                        value={this.state.status_id}
+                                        // variant="outlined"
+                                        name="status"
+                                    >
+                                        <MenuItem value="">
+                                            <em></em>
+                                        </MenuItem>
+                                        {this.props.reduxState.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                    </Select>
+                                </FormControl>
+                                <Button onClick={() => this.handleSearch('status_id')} variant="contained">Go</Button>
 
-                    </div>
-                    <div>
-                        {/* <pre>
+                            </div>
+                            <div>
+                                {/* <pre>
                             {JSON.stringify(this.props.reduxState.search, null, 2)}
                             <br />
                             {JSON.stringify(this.state, null, 2)}
                         </pre> */}
-                        {this.props.reduxState.search.searchResultReducer.data && this.props.reduxState.search.searchResultReducer.data.length ?
+                                {this.props.reduxState.search.searchResultReducer.data && this.props.reduxState.search.searchResultReducer.data.length ?
 
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Job Title</TableCell>
-                                        <TableCell>Company</TableCell>
-                                        <TableCell>Post URL</TableCell>
-                                        <TableCell>Status</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.props.reduxState.search.searchResultReducer.data.map(job =>
-                                        <TableRow key={job.job_id}>
-                                            <TableCell>
-                                                {job.title}
-                                            </TableCell>
-                                            <TableCell>
-                                                {job.title}
-                                            </TableCell>
-                                            <TableCell>
-                                                {job.post_url}
-                                            </TableCell>
-                                            <TableCell>
-                                                {job.status_name}
-                                            </TableCell>
-                                        </TableRow>)}
-                                </TableBody>
-                            </Table>
-                            :
-                            'no result found'
-                        }
-                    </div>
-
-                </Paper>
+                                    <Table>
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell>Job Title</TableCell>
+                                                <TableCell>Company</TableCell>
+                                                <TableCell>Post URL</TableCell>
+                                                <TableCell>Status</TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {this.props.reduxState.search.searchResultReducer.data.map(job =>
+                                                <TableRow key={job.job_id}>
+                                                    <TableCell><Link to={`/job-list/detail/${job.job_id}`} >
+                                                        {job.title}
+                                                        </Link></TableCell>
+                                                    <TableCell>
+                                                        {job.company}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {job.post_url}
+                                                    </TableCell>
+                                                    <TableCell>
+                                                        {job.status_name}
+                                                    </TableCell>
+                                                </TableRow>)}
+                                        </TableBody>
+                                    </Table>
+                                    :
+                                    'no result found'
+                                }
+                            </div>
+                        </Paper>
+                    </Grid>
+                </Grid>
             </div>
         )
     }

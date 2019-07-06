@@ -37,11 +37,21 @@ function* removeSkillOneJob(action) {
     })
 }
 
+//generator to get top skills
+function* getTopSkills(action) {
+    const topSkillsResponse = yield axios.get('/api/chart/skills')
+    yield put({
+        type: 'SET_TOP_SKILLS',
+        payload: topSkillsResponse.data,
+    })
+}
+
 function* jobSkillSaga() {
     yield takeEvery('FETCH_ALL_SKILLS', fetchAllSkills);
     yield takeEvery('FETCH_ONE_JOB_SKILLS', fetchSkillsForOneJob);
     yield takeEvery('ADD_ONE_SKILL', addSkillToJob);
     yield takeEvery('REMOVE_SKILL', removeSkillOneJob);
+    yield takeEvery('FETCH_TOP_JOB_SKILLS', getTopSkills);
 
   }
   
