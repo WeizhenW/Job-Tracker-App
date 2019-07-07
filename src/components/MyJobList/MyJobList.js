@@ -12,18 +12,26 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '28px'
+        fontSize: '22px',
+        marginTop: '80px',
     },
-    button: {
-        marginLeft: '200px',
+    button1: {
+        // marginLeft: '100px',
+        marginTop: '50px',
+        float:'left'
     },
- 
-    paper: {
-        width: '80%',
-        margin: '10px auto',
-        padding: '100px',
-        paddingTop: '50px',
+    button2: {
+        // marginLeft: '100px',
+        marginTop: '50px',
+        float:'right'
     },
+
+    // paper: {
+    //     width: '80%',
+    //     margin: '10px auto',
+    //     padding: '100px',
+    //     paddingTop: '50px',
+    // },
 }
 
 class MyJobList extends Component {
@@ -52,42 +60,60 @@ class MyJobList extends Component {
         return (
             <div>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={3}>
-                        this is the side
-                        <br />
-                        i don't know what to put
-                        <br />
-                        i am stuck with styling
-                        </Grid>
-                    <Grid item xs={12} sm={9}>
-                        <Paper style={styles.paper}>
-                            <div style={styles.title}>
-                                <h2>My Job List</h2>
-                            </div>
-                            <div style={styles.buttonDiv}>
+                    <Grid item xs={12} sm={2}>
+                    </Grid>
+                    {/* <Paper style={styles.paper}> */}
+                    <Grid item xs={12} sm={8}>
+                        <div>
                             {this.state.toApplyButtonClicked ?
-                            <>
-                                <Button onClick={() => this.handleClick('toApply')} style={styles.button} color="primary" variant="contained">Backlog</Button>
-                                <Button onClick={() => this.handleClick('applied')} style={styles.button}  variant="contained">Applied Jobs</Button>                                
-                            </>
-                            :
-                            <>
-                                <Button onClick={() => this.handleClick('toApply')} style={styles.button}  variant="contained">Backlog</Button>
-                                <Button onClick={() => this.handleClick('applied')} style={styles.button} color="primary" variant="contained">Applied Jobs</Button>
+                                <>
+                                    <Grid container spacing={1}>
+                                        <Grid item sm={2}>
+                                        </Grid>
+                                        <Grid item sm={8}>
+                                            <div style={styles.title}>
+                                                <h2>My Job Application Backlog</h2>
+                                            </div>
+                                            <Button onClick={() => this.handleClick('toApply')} style={styles.button1} color="primary" variant="contained">Backlog</Button>
+                                            <Button onClick={() => this.handleClick('applied')} style={styles.button2} variant="contained">Applied Jobs</Button>
+                                        </Grid>
+                                        <Grid item sm={2}>
+                                        </Grid>
+                                    </Grid>
+
+                                </>
+                                :
+                                <>
+                                <Grid container spacing={1}>
+                                <Grid item sm={2}>
+                                </Grid>
+                                <Grid item sm={8}>
+                                    <div style={styles.title}>
+                                        <h2>My Applied Job List</h2>
+                                    </div>
+                                    <Button onClick={() => this.handleClick('toApply')} style={styles.button1} variant="contained">Backlog</Button>
+                                    <Button onClick={() => this.handleClick('applied')} style={styles.button2} color="primary" variant="contained">Applied Jobs</Button>
+                                    </Grid>
+                                        <Grid item sm={2}>
+                                        </Grid>
+                                    </Grid>
                                 </>
                             }
-                                <br />
-                                <br />
-                            </div>
-                            {/* <pre>
-                                {JSON.stringify(this.state)}
+                            <br />
+                            <br />
+                        </div>
+                        {/* <pre>
+                            {JSON.stringify(this.state)}
                             </pre> */}
-                            {this.state.toApplyButtonClicked ?
-                                <NewJobs history={this.props.history} />
-                                :
-                                <AppliedJobs history={this.props.history} />
-                            }
-                        </Paper>
+                        {this.state.toApplyButtonClicked ?
+                            <NewJobs history={this.props.history} />
+                            :
+                            <AppliedJobs history={this.props.history} />
+                        }
+                    </Grid>
+
+                    {/* </Paper> */}
+                    <Grid item xs={12} sm={2}>
                     </Grid>
                 </Grid>
             </div>

@@ -24,9 +24,6 @@ const styles = {
     },
     jobTitle: {
         fontSize: '14px',
-        // textDecoration: 'underline',
-        // color: 'blue',
-        // curser: 'pointer',
     },
     button: {
         fontSize: '10px',
@@ -41,16 +38,6 @@ class AppliedList extends Component {
             type: 'FETCH_ALL_STATUS',
         });
     }
-    //function to move jobs to applied list
-    // handleMove = (job) => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_JOB_STATUS',
-    //         payload: {
-    //             job_id: job.id,
-    //             status_id: 1,
-    //         },
-    //     })
-    // }
     //get input and dispatch the update action immediately
     handleChange = (job) => (event) => {
         this.props.dispatch({
@@ -72,17 +59,12 @@ class AppliedList extends Component {
 
     //function to get job details for one job
     handleGetDetail = (job) => {
-        // this.props.dispatch({
-        //     type: 'FETCH_ONE_JOB_DETAIL',
-        //     payload: job,
-        // });
         this.props.history.push(`/job-list/detail/${job.id}`);
     }
 
     render() {
         return (
             <div>
-                <h2>List of jobs to apply</h2>
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                 </pre>
@@ -93,8 +75,6 @@ class AppliedList extends Component {
                             <TableCell style={styles.tableHeader}>company</TableCell>
                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
                             <TableCell style={styles.tableHeader}>Status</TableCell>
-                            {/* <TableCell style={styles.tableHeader}>Delete Job</TableCell> */}
-                            {/* <TableCell style={styles.tableHeader}>See Detail</TableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -117,10 +97,7 @@ class AppliedList extends Component {
                                     </MenuItem>
                                     {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>               
-
                             </TableCell>
-                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell> */}
-                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Detail</Button></TableCell> */}
                         </TableRow>)}
                     </TableBody>
                     </Table>

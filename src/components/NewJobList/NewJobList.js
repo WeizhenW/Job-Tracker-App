@@ -35,18 +35,10 @@ class NewJobList extends Component {
             type: 'FETCH_ALL_STATUS',
         });
     }
-    //local state to hold the status id
-    // state = {
-    //     job_id: '',
-    //     status_id: '',
-    // }
+
     //get input and dispatch the update action immediately
     handleChange = (job) => (event) => {
-        // console.log('event', event);
-        // this.setState({
-        //     status_id: event.target.value,
-        //     job_id: job.id,            
-        // })
+
         this.props.dispatch({
             type: 'UPDATE_JOB_STATUS',
             payload: {
@@ -55,13 +47,6 @@ class NewJobList extends Component {
             },
         })
     }
-    //function to update the job status
-    // handleUpdateStatus = () => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_JOB_STATUS',
-    //         payload: this.state,
-    //     })
-    // }
 
     //function to delete job
     handleDelete = (job) => {
@@ -79,7 +64,6 @@ class NewJobList extends Component {
     render() {
         return (
             <div>
-                <h2>List of jobs to apply</h2>
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.jobList.newJobsListReducer, null, 2)} */}
                     {/* {JSON.stringify(this.state, null, 2)} */}
@@ -93,9 +77,7 @@ class NewJobList extends Component {
                             <TableCell style={styles.tableHeader}>Company</TableCell>
                             <TableCell style={styles.tableHeader} >Post URL</TableCell>
                             <TableCell style={styles.tableHeader}>Status</TableCell>
-                            {/* <TableCell style={styles.tableHeader}>Applied?</TableCell> */}
                             <TableCell style={styles.tableHeader}>Delete</TableCell>
-                            {/* <TableCell style={styles.tableHeader}>Detail</TableCell> */}
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -104,14 +86,12 @@ class NewJobList extends Component {
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
                             <TableCell style={styles.tableBody}><a href={job.post_url}>Go to the post</a></TableCell>
                             <TableCell style={styles.tableBody}>
-                                {/* <InputLabel htmlFor="status">Job Status</InputLabel> */}
                                 <Select
                                     id="status"
                                     name="status"
                                     displayEmpty
                                     value={job.status_id}
                                     onChange={this.handleChange(job)}
-                                    // margin="normal"
                                     fullWidth
                                 >
                                     <MenuItem value="">
@@ -119,10 +99,8 @@ class NewJobList extends Component {
                                     </MenuItem>
                                     {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>                               
-                                {/* <Button style={styles.button} variant="contained" onClick={this.handleUpdateStatus}>Update</Button> */}
                             </TableCell>
                             <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
-                            {/* <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleGetDetail(job)} id={job.id}>Go</Button></TableCell> */}
                         </TableRow>)}
                     </TableBody>
                 </Table>

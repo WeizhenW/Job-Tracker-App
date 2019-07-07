@@ -59,7 +59,7 @@ class DonutChart extends Component {
                     {JSON.stringify(this.props.reduxState.jobList.allJobsReducer, null, 2)}
                 </pre> */}
                 <Paper style={styles.paper}>
-                    <h2># of Jobs in Each Status Category</h2>
+                    <h2>My job pipelines:</h2>
                     <Doughnut data={this.createData} />
                 </Paper>
             </div>
