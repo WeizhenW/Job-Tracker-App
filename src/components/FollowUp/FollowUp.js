@@ -25,6 +25,9 @@ const styles = {
         backgroundColor: 'black',
         color: 'white',
     },
+    table: {
+        marginTop: '50px',
+    },
     tableBody: {
         fontSize: '14px',
     },
@@ -34,16 +37,17 @@ const styles = {
     button: {
         fontSize: '10px',
     },
-    paper: {
-        width: '80%',
-        margin: '10px auto',
-        padding: '100px',
-        paddingTop: '20px',
-    },
+    // paper: {
+    //     width: '80%',
+    //     margin: '10px auto',
+    //     padding: '100px',
+    //     paddingTop: '20px',
+    // },
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '28px'
+        fontSize: '22px',
+        marginTop: '80px',
     },
     announce: {
         color: '#F7882F',
@@ -56,21 +60,8 @@ class FollowUp extends Component {
         this.props.dispatch({
             type: 'FETCH_ALL_STATUS',
         });
-        //fetch full list of status
-        // this.props.dispatch({
-        //     type: 'FETCH_ALL_STATUS',
-        // });
     }
-    //function to move jobs to applied list
-    // handleMove = (job) => {
-    //     this.props.dispatch({
-    //         type: 'UPDATE_JOB_STATUS',
-    //         payload: {
-    //             job_id: job.id,
-    //             status_id: 1,
-    //         },
-    //     })
-    // }
+    
     //get input and dispatch the update action immediately
     handleChange = (job) => (event) => {
         this.props.dispatch({
@@ -102,13 +93,6 @@ class FollowUp extends Component {
             }
         })
     }
-    //function to delete job
-    // handleDelete = (job) => {
-    //     this.props.dispatch({
-    //         type: 'DELETE_JOB',
-    //         payload: job,
-    //     })
-    // }
 
     //function to get job details for one job
     handleGetDetail = (job) => {
@@ -117,18 +101,17 @@ class FollowUp extends Component {
 
     render() {
         return (
-
             <div>
-                <Paper style={styles.paper}>
+                {/* <Paper style={styles.paper}> */}
                     {this.props.reduxState.followup.followUpReducer.length ?
                         <>
                             <div style={styles.title}>
-                                <h2>Your Task List</h2>
+                                <h2>My Follow Up Task List</h2>
                             </div>
                             <pre>
                                 {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                             </pre>
-                            <Table>
+                            <Table style={styles.table}>
                                 <TableHead>
                                     <TableRow>
                                         <TableCell style={styles.tableHeader} >Job Title</TableCell>
@@ -186,7 +169,7 @@ class FollowUp extends Component {
                             <Link to='/job-list'><Button>Look at My Job List</Button></Link>
                         </div>
                     }
-                </Paper>
+                {/* </Paper> */}
             </div>
         )
     }

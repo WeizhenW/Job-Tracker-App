@@ -99,7 +99,7 @@ class SearchJob extends Component {
                     <Grid item xs={12} sm={8}>
                         {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
-                            <h2 >Search jobs in my pipeline</h2>
+                            <h2 >Search Jobs in My Pipeline</h2>
                         </div>
                         <div style={styles.search}>
                             <Grid container spacing={2}>
