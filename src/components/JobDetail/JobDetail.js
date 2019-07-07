@@ -18,6 +18,7 @@ const styles = {
         margin: '10px auto',
         padding: '100px 50px',
         paddingTop: '50px',
+        whiteSpace: 'pre-line',
     },
     title: {
         textAlign: 'center',
@@ -88,7 +89,7 @@ class JobDetail extends Component {
                                         <span style={styles.jobTitle}>Job Title: </span> {this.props.jobDetail.title}
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
-                                        <span style={styles.jobTitle}>Post URL: </span>{this.props.jobDetail.post_url}
+                                        <span style={styles.jobTitle}>Post URL: </span><a href={this.props.jobDetail.post_url} target="_blank">Click</a>
                                     </Grid>
                                     <Grid item xs={12} sm={6}>
                                         <span style={styles.jobTitle}>Job Status: </span> {this.props.jobDetail.status_name}
@@ -127,7 +128,7 @@ class JobDetail extends Component {
 
                                     <Grid container spacing={3}>
                                         <Grid item xs={12} sm={12}>
-                                            <span style={styles.jobTitle}>Comment: </span>{this.props.jobDetail.note}
+                                            <span style={styles.jobTitle}>Comment: </span> <br /> {this.props.jobDetail.note}
                                         </Grid>
                                         <Grid item xs={12} sm={12}>
                                             <span style={styles.jobTitle}>Job Skills: </span>

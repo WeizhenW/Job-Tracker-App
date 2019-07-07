@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // get route to retrieve all status from db
 router.get('/', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "status"`)
+    pool.query(`SELECT * FROM "status" ORDER BY "id";`)
     .then(result => res.send(result.rows))
     .catch(error => {
         console.log('error with get status', error);

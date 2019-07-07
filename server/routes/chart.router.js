@@ -10,7 +10,8 @@ router.get('/skills', rejectUnauthenticated, (req, res) => {
         JOIN "job" ON "job"."id" = "job_skill"."job_id"
         WHERE "user_id" = $1
         GROUP BY "skill"
-        ORDER BY COUNT DESC;`, [req.user.id])
+        ORDER BY COUNT DESC
+        LIMIT 10;`, [req.user.id])
     .then(result => res.send(result.rows))
     .catch(error => {
         console.log('error with get most demanding skills', error);

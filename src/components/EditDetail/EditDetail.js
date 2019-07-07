@@ -41,6 +41,7 @@ const styles = {
         padding: '100px 50px',
         paddingTop: '50px',
         minHeight: '200vh',
+        whiteSpace: 'pre-line',
     },
 
 };
@@ -81,7 +82,6 @@ class EditDetail extends Component {
                 }
             })
         }
-        
     }
 
     //dispatch to save new input to database
@@ -241,9 +241,8 @@ class EditDetail extends Component {
                                             <Grid item xs={12} sm={6}>
                                                 <FileDisplay job_id={this.props.match.params.id} />
                                             </Grid>
-
-                                            <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
                                             <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
+                                            <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
                                         </Grid>
                                 </form>
                             </Paper>

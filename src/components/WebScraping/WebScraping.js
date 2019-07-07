@@ -86,16 +86,16 @@ class WebScraping extends Component {
                     <TableBody>
                         {this.state.jobList.map(job => <TableRow>
                             <TableCell>{job.title}</TableCell>
-                            <TableCell><a href={job.href}>See Job Post</a></TableCell>
+                            <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
                             <TableCell>{job.company}</TableCell>
                             <TableCell><Button variant="contained" onClick={()=>this.handleMove(job)}>Add</Button></TableCell>
                         </TableRow>)}
 
                     </TableBody>
                 </Table>
-                <pre>
+                {/* <pre>
                     {JSON.stringify(this.state.jobList, null, 2)}
-                </pre>
+                </pre> */}
             </div>
         )
     }

@@ -33,7 +33,7 @@ CREATE TABLE "job" (
     "status_date" DATE DEFAULT CURRENT_DATE,
     "note" VARCHAR(2000),
     "user_id" INT REFERENCES "user",
-    "follow_up" BOOL
+    "follow_up" BOOL DEFAULT TRUE
 );
 
 CREATE TABLE "job_skill" (

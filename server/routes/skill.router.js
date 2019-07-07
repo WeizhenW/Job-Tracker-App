@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 // get route to retrieve all skills from db
 router.get('/', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "skill"`)
+    pool.query(`SELECT * FROM "skill" ORDER BY LOWER("skill") ASC;`)
         .then(result => res.send(result.rows))
         .catch(error => {
             console.log('error with get all skills', error);

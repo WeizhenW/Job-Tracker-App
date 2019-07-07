@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Bar } from 'react-chartjs-2';
-import axios from 'axios';
 
 //material ui
 import Paper from '@material-ui/core/Paper';
@@ -39,8 +38,8 @@ class DonutChart extends Component {
         const data = {
             labels: skillNameArray,
             datasets: [{
-                // label: '# of Jobs',
-                backgroundColor: ['#71B37C','#ff8a65', '#2ccce4', '#dce775'],
+                label: '# of Jobs',
+                backgroundColor: ['#71B37C','#ff8a65', '#2ccce4', '#dce775', "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", '#FFDD00'],
                 data: countArray,
             }]
         }
