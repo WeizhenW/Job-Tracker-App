@@ -140,7 +140,6 @@ class InputJob extends Component {
                                 <Select
                                     onChange={this.handleChangeFor('status_id')}
                                     input={<OutlinedInput name="status" id="status" />}
-                                    // displayEmpty
                                     value={this.state.status_id}
                                 // name="status"
                                 >
