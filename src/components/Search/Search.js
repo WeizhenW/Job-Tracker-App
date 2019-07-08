@@ -26,12 +26,7 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 
 const styles = {
-    // paper: {
-    //     width: '80%',
-    //     margin: '10px auto',
-    //     padding: '100px',
-    //     paddingTop: '20px',
-    // },
+
     title: {
         textAlign: 'center',
         color: '#F7882F',
@@ -43,14 +38,19 @@ const styles = {
     },
     button: {
         marginTop: '30px',
-        float:'right',
+        float: 'right',
     },
     search: {
         marginTop: '30px',
     },
     searchResult: {
         marginTop: '50px',
-    }
+    },
+    tableHeader: {
+        fontSize: '16px',
+        backgroundColor: 'black',
+        color: 'white',
+    },
 }
 
 class SearchJob extends Component {
@@ -58,6 +58,7 @@ class SearchJob extends Component {
         companyName: '',
         status_id: '',
         search: false,
+        searchBy: 'company',
     }
 
     componentDidMount() {
@@ -74,21 +75,28 @@ class SearchJob extends Component {
     }
 
     //function to dispatch the action to search   
-    handleSearch = (propertyName) => {
+    handleSearch = () => {
         this.setState({
             search: true,
         })
-        if (propertyName === 'companyName') {
+        if (this.state.searchBy === 'company') {
             this.props.dispatch({
                 type: 'SEARCH_JOB_BY_COMPANY',
                 payload: this.state
             })
-        } else if (propertyName === 'status_id') {
+        } else if (this.state.searchBy === 'status') {
             this.props.dispatch({
                 type: 'SEARCH_JOB_BY_STATUS',
                 payload: this.state,
             })
         }
+    }
+
+    handleSelect = (event) => {
+        console.log(event.target);
+        this.setState({
+            searchBy: event.target.value,
+        });
     }
     render() {
         return (
@@ -102,46 +110,59 @@ class SearchJob extends Component {
                             <h2 >Search Jobs in My Pipeline</h2>
                         </div>
                         <div style={styles.search}>
-                            <Grid container spacing={2}>
-                                <Grid item xm={12} sm={5}>
-                                    <TextField
-                                        id="searchCompany"
-                                        onChange={this.handleChangeFor('companyName')}
-                                        margin="normal"
-                                        variant="outlined"
-                                        value={this.state.companyName}
-                                        placeholder="Search by company name"
-                                        fullWidth
-                                    />
-                                    <Button style={styles.button} onClick={() => this.handleSearch('companyName')} variant="contained">Go</Button>
-
-                                </Grid>
-                                <Grid item xm={12} sm={2}>
-                                    <h4>OR</h4>
-                                </Grid>
-
-                                <Grid item xm={12} sm={5}>
-                                    <FormControl style={styles.dropdown} fullWidth variant="outlined">
-                                        <br />
+                            <Grid container spacing={4}>
+                                <Grid item xm={12} sm={4}>
+                                    <FormControl style={styles.search} fullWidth>
                                         <InputLabel htmlFor="status">
-                                            Search by job status
+                                            Search Field
                                         </InputLabel>
                                         <Select
-                                            onChange={this.handleChangeFor('status_id')}
-                                            input={<OutlinedInput name="status" id="status" />}
-                                            value={this.state.status_id}
-                                        // name="status"
+                                            onChange={this.handleSelect}
+                                            value={this.state.searchBy}
+                                            input={<OutlinedInput name="search" id="search" />}
                                         >
-                                            <MenuItem value="">
-                                                <em>None</em>
+                                            <MenuItem value="status">
+                                                <em>Job Status</em>
                                             </MenuItem>
-                                            {this.props.reduxState.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                            <MenuItem value="company">
+                                                <em>Company Name</em>
+                                            </MenuItem>
                                         </Select>
                                     </FormControl>
-                                    <Button style={styles.button} onClick={() => this.handleSearch('status_id')} variant="contained">Go</Button>
+                                </Grid>
+                                <Grid item xm={12} sm={8}>
+                                    {this.state.searchBy === 'company' ?
+                                        <TextField
+                                            id="searchCompany"
+                                            onChange={this.handleChangeFor('companyName')}
+                                            margin="normal"
+                                            variant="outlined"
+                                            value={this.state.companyName}
+                                            style={styles.search}
+                                            placeholder="Enter Company Name"
+                                            fullWidth
+                                        />
+                                        :
+                                        <FormControl style={styles.search} fullWidth>
+                                            {/* <br /> */}
+                                            <InputLabel htmlFor="status">
+                                                Select Job Status
+                                            </InputLabel>
+                                            <Select
+                                                onChange={this.handleChangeFor('status_id')}
+                                                input={<OutlinedInput name="status" id="status" />}
+                                                value={this.state.status_id}
+                                            >
+                                                <MenuItem value="">
+                                                    <em>None</em>
+                                                </MenuItem>
+                                                {this.props.reduxState.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                            </Select>
+                                        </FormControl>
+                                    }
+                                    <Button style={styles.button} onClick={this.handleSearch} variant="contained">Go</Button>
                                 </Grid>
                             </Grid>
-
                         </div>
                         <div >
                             {/* <pre>
@@ -150,14 +171,13 @@ class SearchJob extends Component {
                             {JSON.stringify(this.state, null, 2)}
                         </pre> */}
                             {this.props.reduxState.search.searchResultReducer.data && this.props.reduxState.search.searchResultReducer.data.length ?
-
                                 <Table style={styles.searchResult}>
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell>Job Title</TableCell>
-                                            <TableCell>Company</TableCell>
-                                            <TableCell>Post URL</TableCell>
-                                            <TableCell>Status</TableCell>
+                                            <TableCell style={styles.tableHeader}>Job Title</TableCell>
+                                            <TableCell style={styles.tableHeader}>Company</TableCell>
+                                            <TableCell style={styles.tableHeader}>Post URL</TableCell>
+                                            <TableCell style={styles.tableHeader}>Status</TableCell>
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -179,10 +199,10 @@ class SearchJob extends Component {
                                     </TableBody>
                                 </Table>
                                 :
-                                this.state.search?
-                                <h4>No Result Found - Please Try Again</h4>
-                                :
-                                ''
+                                this.state.search ?
+                                    <h4>No Result Found - Please Try Again</h4>
+                                    :
+                                    ''
                             }
                         </div>
                         {/* </Paper> */}
