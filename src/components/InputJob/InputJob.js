@@ -90,7 +90,7 @@ class InputJob extends Component {
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
-                    <Grid item xs={12} sm={9}>
+                    <Grid item xs={12} sm={8}>
                         {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
                             <h2 >Enter a New Job: </h2>
