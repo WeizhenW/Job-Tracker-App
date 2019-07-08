@@ -15,7 +15,8 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-
+//sweet alert
+import Swal from 'sweetalert2'
 
 const styles = {
     container: {
@@ -79,8 +80,11 @@ class InputJob extends Component {
                 }
             })
         } else {
-            alert('input field cannot be empty');
-            return;
+            Swal.fire(
+                'All fields are mandatory',
+                'Please fill in the blanks',
+                'error'
+              )
         }
     }
 
