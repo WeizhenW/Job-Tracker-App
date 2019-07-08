@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
+//sweet alert
+import Swal from 'sweetalert2'
 
 //material ui
 import Table from '@material-ui/core/Table';
@@ -12,6 +15,10 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+import LinkIcon from '@material-ui/icons/Link';
+
+
 
 const styles = {
     tableHeader: {
@@ -28,6 +35,10 @@ const styles = {
     specialFont: {
         fontSize: '12px',
     },
+    deleteButton: {
+        color: '#990000',
+        fontSize: '28px'
+    }
 }
 
 class NewJobList extends Component {
@@ -53,10 +64,36 @@ class NewJobList extends Component {
 
     //function to delete job
     handleDelete = (job) => {
-        this.props.dispatch({
-            type: 'DELETE_JOB',
-            payload: job,
-        })
+        //add sweet alert
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your job record has been deleted.',
+                    'success'
+                  )
+                this.props.dispatch({
+                    type: 'DELETE_JOB',
+                    payload: job,
+                })
+            // For more information about handling dismissals please visit
+            // https://sweetalert2.github.io/#handling-dismissals
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    '',
+                    'error'
+                  )
+            }
+          })
+        
     }
 
     //function to get job details for one job
@@ -86,7 +123,7 @@ class NewJobList extends Component {
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
                             <TableCell style={styles.tableBody}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><a href={job.post_url}>Go to the post</a></TableCell>
+                            <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /></a></TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
                                     id="status"
@@ -100,7 +137,10 @@ class NewJobList extends Component {
                                     {this.props.status.map(status => <MenuItem style={styles.specialFont} key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>                               
                             </TableCell>
-                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
+                            <TableCell style={styles.tableBody}>
+                                {/* <Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button> */}
+                                <DeleteRoundedIcon style={styles.deleteButton} onClick={() => this.handleDelete(job)} />
+                            </TableCell>
                         </TableRow>)}
                     </TableBody>
                 </Table>

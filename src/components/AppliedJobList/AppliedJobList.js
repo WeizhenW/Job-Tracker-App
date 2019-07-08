@@ -12,6 +12,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import LinkIcon from '@material-ui/icons/Link';
 
 
 const styles = {
@@ -85,7 +86,7 @@ class AppliedList extends Component {
                         {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <TableRow key={job.id}>
                             <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><a href={job.post_url}>Go to the post </a></TableCell>
+                            <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /> </a></TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
                                     variant="outlined"
