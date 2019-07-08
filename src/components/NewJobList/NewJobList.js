@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+//sweet alert
+import Swal from 'sweetalert2'
 
 //material ui
 import Table from '@material-ui/core/Table';
@@ -53,10 +55,36 @@ class NewJobList extends Component {
 
     //function to delete job
     handleDelete = (job) => {
-        this.props.dispatch({
-            type: 'DELETE_JOB',
-            payload: job,
-        })
+        //add sweet alert
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You will not be able to recover this imaginary file!',
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, keep it'
+          }).then((result) => {
+            if (result.value) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your job record has been deleted.',
+                    'success'
+                  )
+                this.props.dispatch({
+                    type: 'DELETE_JOB',
+                    payload: job,
+                })
+            // For more information about handling dismissals please visit
+            // https://sweetalert2.github.io/#handling-dismissals
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    '',
+                    'error'
+                  )
+            }
+          })
+        
     }
 
     //function to get job details for one job
