@@ -18,6 +18,8 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Done from '@material-ui/icons/Done';
+
 
 const styles = {
     tableHeader: {
@@ -54,6 +56,10 @@ const styles = {
     },
     announce: {
         color: '#F7882F',
+    },
+    checked: {
+        fontSize: '28px',
+        color: 'green',
     }
 }
 
@@ -139,7 +145,8 @@ class FollowUp extends Component {
                                             </Select>
                                         </TableCell>
                                         <TableCell style={styles.tableBody}>
-                                            <Button style={styles.specialFont} onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button>
+                                            <Done onClick={() => this.handleFollowUp(job)} style={styles.checked}/>
+                                            {/* <Button style={styles.specialFont} onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button> */}
                                         </TableCell>
                                         <TableCell style={styles.tableBody}>
                                             <FormGroup row>

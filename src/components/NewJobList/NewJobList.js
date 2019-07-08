@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 //sweet alert
 import Swal from 'sweetalert2'
@@ -15,6 +16,8 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+import LinkIcon from '@material-ui/icons/Link';
+
 
 
 const styles = {
@@ -120,7 +123,7 @@ class NewJobList extends Component {
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
                             <TableCell style={styles.tableBody}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><a href={job.post_url}>Go to the post</a></TableCell>
+                            <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /></a></TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
                                     id="status"
