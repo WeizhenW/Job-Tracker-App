@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 // import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 
 const styles = {
@@ -27,6 +28,9 @@ const styles = {
     },
     button: {
         fontSize: '10px',
+    },
+    specialFont: {
+        fontSize: '12px',
     },
 }
 
@@ -87,15 +91,13 @@ class AppliedList extends Component {
                                     variant="outlined"
                                     id="status"
                                     name="status"
-                                    displayEmpty
+                                    input={<OutlinedInput name="status" id="status" />}
                                     value={job.status_id}
                                     onChange={this.handleChange(job)}
+                                    style={styles.specialFont}
                                     fullWidth
                                 >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                    {this.props.status.map(status => <MenuItem style={styles.specialFont} key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>               
                             </TableCell>
                         </TableRow>)}

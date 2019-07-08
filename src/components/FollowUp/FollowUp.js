@@ -152,7 +152,6 @@ class FollowUp extends Component {
                                                 />
                                             </FormGroup>
                                         </TableCell>
-
                                     </TableRow>)}
                                 </TableBody>
                             </Table>

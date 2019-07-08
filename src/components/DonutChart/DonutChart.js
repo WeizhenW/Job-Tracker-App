@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Doughnut } from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+
 
 //material ui
 import Paper from '@material-ui/core/Paper';
@@ -42,14 +44,19 @@ class DonutChart extends Component {
                     '#37d67a',
                     '#697689',
                 ],
-            }]
+            }],
+            options: {
+                plugins: {
+                    // Change options for ALL labels of THIS CHART
+                    datalabels: {
+                        color: '#36A2EB',
+                        anchor: 'end',  
+                    }
+                }
+            },
         }
-
         return data;
     }
-
-
-
 
     render() {
         return (
@@ -59,7 +66,7 @@ class DonutChart extends Component {
                     {JSON.stringify(this.props.reduxState.jobList.allJobsReducer, null, 2)}
                 </pre> */}
                 <Paper style={styles.paper}>
-                    <h2>My job pipelines:</h2>
+                    <h2>My Job Pipelines:</h2>
                     <Doughnut data={this.createData} />
                 </Paper>
             </div>

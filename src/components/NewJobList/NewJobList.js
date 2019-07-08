@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 const styles = {
     tableHeader: {
@@ -23,7 +24,10 @@ const styles = {
     },
     button: {
         fontSize: '10px',
-    }
+    },
+    specialFont: {
+        fontSize: '12px',
+    },
 }
 
 class NewJobList extends Component {
@@ -38,7 +42,6 @@ class NewJobList extends Component {
 
     //get input and dispatch the update action immediately
     handleChange = (job) => (event) => {
-
         this.props.dispatch({
             type: 'UPDATE_JOB_STATUS',
             payload: {
@@ -64,13 +67,12 @@ class NewJobList extends Component {
     render() {
         return (
             <div>
-                <pre>
+                {/* <pre> */}
                     {/* {JSON.stringify(this.props.reduxState.jobList.newJobsListReducer, null, 2)} */}
                     {/* {JSON.stringify(this.state, null, 2)} */}
-                </pre>
+                {/* </pre> */}
 
                 <Table style={styles.table}>
-                    
                     <TableHead>
                         <TableRow >
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>
@@ -89,15 +91,13 @@ class NewJobList extends Component {
                                 <Select
                                     id="status"
                                     name="status"
-                                    displayEmpty
+                                    input={<OutlinedInput name="status" id="status" />}
                                     value={job.status_id}
+                                    style={styles.specialFont}
                                     onChange={this.handleChange(job)}
                                     fullWidth
                                 >
-                                    <MenuItem value="">
-                                        <em>None</em>
-                                    </MenuItem>
-                                    {this.props.status.map(status => <MenuItem key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
+                                    {this.props.status.map(status => <MenuItem style={styles.specialFont} key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>                               
                             </TableCell>
                             <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>

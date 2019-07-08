@@ -59,7 +59,8 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
         [req.params.id, req.user.id]).then(
             result => {
                 if (result) {
-                    pool.query(`DELETE FROM "job_skill" WHERE "job_id" = $1;`, [req.params.id])
+                    pool.query(`DELETE FROM "job_skill" WHERE "job_id" = $1;`, [req.params.id]);
+                    pool.query(`DELETE FROM "aws_document" WHERE "job_id" = $1;`, [req.params.id])
                     .then(
                         () => {
                             pool.query(`DELETE FROM "job" WHERE "id" = $1;`, [req.params.id])

@@ -22,7 +22,7 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         backgroundColor: 'white',
-        width: '60%',
+        width: '80%',
     },
     dropdown: {
         marginTop: 10,
@@ -105,10 +105,8 @@ class InputJob extends Component {
                                         id="company-name"
                                         label="Company Name *"
                                         onChange={this.handleChangeFor('companyName')}
-                                        // margin="normal"
                                         fullWidth
                                         variant="outlined"
-                                        // style={styles.TextField}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
@@ -141,7 +139,6 @@ class InputJob extends Component {
                                     onChange={this.handleChangeFor('status_id')}
                                     input={<OutlinedInput name="status" id="status" />}
                                     value={this.state.status_id}
-                                // name="status"
                                 >
                                     <MenuItem value="">
                                         <em>None</em>

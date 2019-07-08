@@ -37,6 +37,9 @@ class DonutChart extends Component {
         })
         const data = {
             labels: skillNameArray,
+            legend: {
+                display: false
+              },
             datasets: [{
                 label: '# of Jobs',
                 backgroundColor: ['#71B37C','#ff8a65', '#2ccce4', '#dce775', "#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850", '#FFDD00'],
