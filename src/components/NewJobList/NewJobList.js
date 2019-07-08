@@ -14,6 +14,8 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+
 
 const styles = {
     tableHeader: {
@@ -30,6 +32,10 @@ const styles = {
     specialFont: {
         fontSize: '12px',
     },
+    deleteButton: {
+        color: '#990000',
+        fontSize: '28px'
+    }
 }
 
 class NewJobList extends Component {
@@ -128,7 +134,10 @@ class NewJobList extends Component {
                                     {this.props.status.map(status => <MenuItem style={styles.specialFont} key={status.id} value={status.id}>{status.status_name}</MenuItem>)}
                                 </Select>                               
                             </TableCell>
-                            <TableCell style={styles.tableBody}><Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button></TableCell>
+                            <TableCell style={styles.tableBody}>
+                                {/* <Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button> */}
+                                <DeleteRoundedIcon style={styles.deleteButton} onClick={() => this.handleDelete(job)} />
+                            </TableCell>
                         </TableRow>)}
                     </TableBody>
                 </Table>
