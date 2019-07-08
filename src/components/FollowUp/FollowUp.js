@@ -117,7 +117,7 @@ class FollowUp extends Component {
                             <Table style={styles.table}>
                                 <TableHead>
                                     <TableRow>
-                                        <TableCell style={styles.tableHeader} >Job Title</TableCell>
+                                        <TableCell style={styles.tableHeader}>Job Title</TableCell>
                                         <TableCell style={styles.tableHeader}>Company</TableCell>
                                         <TableCell style={styles.tableHeader}>Status</TableCell>
                                         <TableCell style={styles.tableHeader}>Action</TableCell>
