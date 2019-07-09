@@ -43,7 +43,7 @@ const styles = {
 
 class ContactItem extends Component {
     state = {
-        showNote: true,
+        showNote: false,
     }
 
     handleClick = () => {
@@ -64,6 +64,7 @@ class ContactItem extends Component {
                         <>
                             <h3>{this.props.contact.first_name} {this.props.contact.last_name}</h3>
                             <h4>Company: {this.props.contact.company}</h4>
+                            <h4>Title: {this.props.contact.job_title}</h4>
                             <h4>Phone: {this.props.contact.phone}</h4>
                             <h4>Email: {this.props.contact.email}</h4>
                         </>

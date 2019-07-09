@@ -13,11 +13,17 @@ function* fetchContact() {
     yield put({type: 'SET_CONTACT', payload: contactResponse.data});
 }
 
+function* addContactToJob(action) {
+    yield axios.post(`/api/contact/${action.payload.job_id}`, action.payload);
+    // yield put({type: 'FETCH_CONTACT'});
+}
+
 //watcher saga
 function* contactSaga() {
     //take every action with type = SET_ELEMENT dispatched
     yield takeEvery('ADD_CONTACT', postContact)
     yield takeEvery('FETCH_CONTACT', fetchContact)
+    yield takeEvery('ADD_CONTACT_TO_JOB', addContactToJob)
 }
 
 export default contactSaga;

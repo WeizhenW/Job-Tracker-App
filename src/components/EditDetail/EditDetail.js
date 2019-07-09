@@ -4,6 +4,7 @@ import Skills from '../SkillsPerJob/SkillsPerJob';
 import './EditDetail.css';
 import FileUpload from '../FileUpload/FileUpload';
 import FileDisplay from '../FileDisplay/FileDisplay';
+import ContactEntry from '../ContactEntry/ContactEntry';
 
 //material ui
 import TextField from '@material-ui/core/TextField';
@@ -234,6 +235,9 @@ class EditDetail extends Component {
                                             </Grid>
                                             <Grid item xs={12} sm={12}>
                                                 <Skills job_id={this.props.match.params.id} />
+                                            </Grid>
+                                            <Grid item xs={12} sm={12}>
+                                                <ContactEntry job_id={this.props.match.params.id} />
                                             </Grid>
                                             <Grid item xs={12} sm={6}>
                                                 <FileUpload job_id={this.props.match.params.id} />
