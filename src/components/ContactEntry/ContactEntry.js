@@ -92,7 +92,7 @@ class ContactEntry extends Component {
                         <MenuItem value="">
                             <em>None</em>
                         </MenuItem>
-                        {this.props.reduxState.contact.map(contact => <MenuItem key={contact.id} value={contact.id}>{contact.first_name} {contact.last_name}</MenuItem>)}
+                        {this.props.reduxState.contact.contactReducer.map(contact => <MenuItem key={contact.id} value={contact.id}>{contact.first_name} {contact.last_name}</MenuItem>)}
                     </Select>
                 </FormControl>
                 <Button variant="contained" onClick={this.handleSubmit}>Add Contact</Button>

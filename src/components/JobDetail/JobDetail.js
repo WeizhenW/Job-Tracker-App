@@ -58,6 +58,10 @@ class JobDetail extends Component {
             type: 'FETCH_ONE_JOB_SKILLS',
             payload: { id: this.props.match.params.id },
         });
+        this.props.dispatch({
+            type: 'GET_CONTACT_FOR_ONE_JOB',
+            payload: {job_id: this.props.match.params.id }
+        })
     }
 
     handleGoToEdit = (id) => {
@@ -76,7 +80,7 @@ class JobDetail extends Component {
                         i am stuck with styling
                     </Grid>
                     <Grid item xs={12} sm={9}>
-                        <Paper style={styles.paper}>
+                        {/* <Paper style={styles.paper}> */}
                             <div style={styles.title}>
                                 <h2>Job Detail Page</h2>
                             </div>
@@ -142,6 +146,14 @@ class JobDetail extends Component {
                                                 }
                                             </div>
                                         </Grid>
+                                        <Grid item xs={12} sm={12}>
+                                            <h4>Reference</h4>
+               
+                                            {/* {JSON.stringify(this.props.reduxState.contact, null, 2)} */}
+                                            <p>First Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].first_name}</p>
+                                            <p>Last Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].last_name} </p>
+
+                                        </Grid>
                                         <Grid item xs={12} sm={12}>                                                
                                             <FileDisplay job_id={this.props.match.params.id} />
                                         </Grid>
@@ -151,7 +163,7 @@ class JobDetail extends Component {
                                 <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
                                 <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
                                 <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
-                        </Paper>
+                        {/* </Paper> */}
                     </Grid>
                     </Grid>
             </div>

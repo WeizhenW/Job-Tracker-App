@@ -41,5 +41,18 @@ router.post('/:job_id', rejectUnauthenticated, (req, res) => {
     })
 })
 
+//post route to add a contact to a job
+router.get('/:job_id', rejectUnauthenticated, (req, res) => {
+    pool.query(`SELECT * FROM "job" 
+        JOIN "contact" ON "job"."contact_id" = "contact"."id"
+        WHERE "job"."id" = $1 AND "job"."user_id" = $2;`, 
+    [req.params.job_id, req.user.id])
+    .then( (result) => res.send(result.rows))
+    .catch(error => {
+        console.log('error with post contact', error);
+        res.sendStatus(500);
+    })
+})
+
 
 module.exports = router;

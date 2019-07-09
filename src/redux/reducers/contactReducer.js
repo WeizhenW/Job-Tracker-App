@@ -9,5 +9,17 @@ const contactReducer = (state = [], action) => {
     }
 }
 
+const contactOneJobReducer = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_CONTACT_FOR_ONE_JOB':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
-export default contactReducer;
+
+export default combineReducers({
+    contactReducer,
+    contactOneJobReducer,
+});
