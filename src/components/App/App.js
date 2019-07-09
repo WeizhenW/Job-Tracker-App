@@ -24,6 +24,7 @@ import EditDetail from '../EditDetail/EditDetail';
 import NewJobList from '../NewJobList/NewJobList';
 import AppliedJobList from '../AppliedJobList/AppliedJobList';
 import WebScraping from '../WebScraping/WebScraping';
+import Contact from '../Contact/Contact';
 
 import './App.css';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -125,6 +126,13 @@ class App extends Component {
               exact
               path="/logout"
               component={LogOutButton}
+            />
+
+            {/* contact page */}
+            <ProtectedRoute
+              exact
+              path="/contact"
+              component={Contact}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

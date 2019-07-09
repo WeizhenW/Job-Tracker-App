@@ -97,12 +97,12 @@ class InputJob extends Component {
                     <Grid item xs={12} sm={8}>
                         {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
-                            <h2 >Enter a New Job: </h2>
+                            <h2 >Enter a New Job </h2>
                         </div>
                         <form style={styles.container} onSubmit={this.handleSubmit}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
-                                    <h4>Basic info:</h4>
+                                    <h4>Core info:</h4>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -119,7 +119,6 @@ class InputJob extends Component {
                                         label="Job Title *"
                                         variant="outlined"
                                         onChange={this.handleChangeFor('jobTitle')}
-                                        // margin="normal"
                                         fullWidth
                                     />
                                 </Grid>
