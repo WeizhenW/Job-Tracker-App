@@ -70,7 +70,16 @@ class Contact extends Component {
             type: 'ADD_CONTACT',
             payload: this.state,
         })
-
+        this.setState({
+            firstName: '',
+            lastName: '',
+            company: '',
+            title: '',
+            phone: '',
+            email: '',
+            note: '',
+            role: '',
+        })
     }
 
     render() {
@@ -97,6 +106,7 @@ class Contact extends Component {
                                         id="first-name"
                                         label="First Name"
                                         onChange={this.handleChangeFor('firstName')}
+                                        value={this.state.firstName}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -106,6 +116,7 @@ class Contact extends Component {
                                         id="last-name"
                                         label="Last Name"
                                         onChange={this.handleChangeFor('lastName')}
+                                        value={this.state.lastName}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -118,6 +129,7 @@ class Contact extends Component {
                                         id="company-name"
                                         label="Company Name"
                                         onChange={this.handleChangeFor('company')}
+                                        value={this.state.company}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -127,6 +139,7 @@ class Contact extends Component {
                                         id="title"
                                         label="Job Title"
                                         onChange={this.handleChangeFor('title')}
+                                        value={this.state.title}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -140,6 +153,7 @@ class Contact extends Component {
                                         id="phone"
                                         label="Phone"
                                         onChange={this.handleChangeFor('phone')}
+                                        value={this.state.phone}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -149,6 +163,7 @@ class Contact extends Component {
                                         id="email"
                                         label="Email"
                                         onChange={this.handleChangeFor('email')}
+                                        value={this.state.email}
                                         fullWidth
                                         variant="outlined"
                                     />
@@ -160,6 +175,7 @@ class Contact extends Component {
                                         label="Note"
                                         variant="outlined"
                                         onChange={this.handleChangeFor('note')}
+                                        value={this.state.note}
                                         fullWidth
                                     />
                                 </Grid>
@@ -182,8 +198,11 @@ class Contact extends Component {
                                             <MenuItem value="Recruiter">
                                                 <em>Recruiter</em>
                                             </MenuItem>
-                                            <MenuItem value="Contact">
-                                                <em>Contact</em>
+                                            <MenuItem value="Hiring Manager">
+                                                <em>Hiring Manager</em>
+                                            </MenuItem>
+                                            <MenuItem value="Other Contact">
+                                                <em>Other Contact</em>
                                             </MenuItem>
                                         </Select>
                                     </FormControl>
