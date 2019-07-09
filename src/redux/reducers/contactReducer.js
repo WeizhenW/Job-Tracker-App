@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-const followUpReducer = (state = [], action) => {
+const contactReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_FOLLOW_UP_LIST':
+        case 'SET_CONTACT':
             return action.payload;
         default:
             return state;
@@ -10,6 +10,4 @@ const followUpReducer = (state = [], action) => {
 }
 
 
-export default combineReducers({
-    followUpReducer,
-});
+export default contactReducer;

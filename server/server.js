@@ -19,6 +19,7 @@ const fileRouter = require('./routes/file.router');
 const chartRouter = require('./routes/chart.router');
 const searchRouter = require('./routes/search.router');
 const webScrapingRouter = require('./routes/webScraping.router');
+const contactRouter = require('./routes/contact.router');
 
 
 // Body parser middleware
@@ -43,6 +44,7 @@ app.use('/api/file', fileRouter);
 app.use('/api/chart', chartRouter);
 app.use('/api/search', searchRouter);
 app.use('/api/scraping', webScrapingRouter);
+app.use('/api/contact', contactRouter);
 
 
 // Serve static files

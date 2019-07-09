@@ -48,10 +48,14 @@ class Contact extends Component {
     };
     //local state to temporarily hold the inputs
     state = {
-        companyName: '',
-        jobTitle: '',
-        postUrl: '',
-        status_id: '',
+        firstName: '',
+        lastName: '',
+        company: '',
+        title: '',
+        phone: '',
+        email: '',
+        note: '',
+        role: '',
     }
     //capture input
     handleChangeFor = (propertyName) => (event) => {
@@ -61,13 +65,20 @@ class Contact extends Component {
     }
     //on click => dispatch action to post
     handleSubmit = (event) => {
-        event.preventDefault()
+        event.preventDefault();
+        this.props.dispatch({
+            type: 'ADD_CONTACT',
+            payload: this.state,
+        })
 
     }
 
     render() {
         return (
             <div>
+                <pre>
+                    {JSON.stringify(this.props.reduxState.contact)}
+                </pre>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
@@ -168,10 +179,10 @@ class Contact extends Component {
                                             <MenuItem value="">
                                                 <em>None</em>
                                             </MenuItem>
-                                            <MenuItem value="">
+                                            <MenuItem value="Recruiter">
                                                 <em>Recruiter</em>
                                             </MenuItem>
-                                            <MenuItem value="">
+                                            <MenuItem value="Contact">
                                                 <em>Contact</em>
                                             </MenuItem>
                                         </Select>
