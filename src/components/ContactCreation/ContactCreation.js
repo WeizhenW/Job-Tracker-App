@@ -42,8 +42,6 @@ const styles = {
 };
 
 class ContactEntry extends Component {
-
-
     //local state to temporarily hold the inputs
     state = {
         firstName: '',
@@ -64,6 +62,8 @@ class ContactEntry extends Component {
     }
     //on click => dispatch action to post
     handleSubmit = (event) => {
+        event.preventDefault()
+
         console.log('in handle click');
         this.props.dispatch({
             type: 'ADD_CONTACT',

@@ -65,7 +65,7 @@ class ContactDisplay extends Component {
                             <h2 >Directory </h2>
                         </div>
                         <Grid container spacing={2}>
-                            {this.props.reduxState.contact.map(contact =>
+                            {this.props.reduxState.contact.contactReducer.map(contact =>
                                 <Grid key={contact.id} item xs={12} sm={4}>
                                     <ContactItem key={contact.id} contact={contact} />
                                 </Grid>

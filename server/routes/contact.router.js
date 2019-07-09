@@ -21,7 +21,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id";`, 
     [contact.firstName, contact.lastName, contact.company, contact.title, contact.phone, contact.email, contact.note, contact.role, req.user.id])
     .then( (result) => {
-        console.log(result.rows);
+        console.log(result.rows[0]);
         res.send(result.rows[0])
     })
     .catch(error => {
