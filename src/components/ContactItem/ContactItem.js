@@ -17,8 +17,6 @@ import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
-import ContactItem from '../ContactItem/ContactItem';
-
 const styles = {
     container: {
         display: 'flex',
@@ -43,40 +41,35 @@ const styles = {
     },
 };
 
-class ContactDisplay extends Component {
-    //in component did mount => fetch all status to populate the ddl
-    componentDidMount() {
-        this.props.dispatch({
-            type: 'FETCH_CONTACT',
+class ContactItem extends Component {
+    state = {
+        showNote: true,
+    }
+
+    handleClick = () => {
+        console.log('clicked');
+        this.setState({
+            showNote: !this.state.showNote,
         })
-    };
+    }
 
     render() {
         return (
-            <div>
-                <pre>
-                    {JSON.stringify(this.props.reduxState.contact)}
-                </pre>
-                <Grid container spacing={2}>
-                    <Grid item xs={12} sm={2}>
-                    </Grid>
-                    <Grid item xs={12} sm={8}>
-                        <div style={styles.title}>
-                            <h2 >Directory </h2>
-                        </div>
-                        <Grid container spacing={2}>
-                            {this.props.reduxState.contact.map(contact =>
-                                <Grid key={contact.id} item xs={12} sm={4}>
-                                    <ContactItem key={contact.id} contact={contact} />
-                                </Grid>
-                            )}
 
-                        </Grid>
-                    </Grid>
-                    <Grid item xs={12} sm={2}>
-                    </Grid>
-                </Grid>
-            </div>
+            <Card onClick={this.handleClick}>
+                <CardContent>
+                    {this.state.showNote ?
+                        <h4>Note: {this.props.contact.note}</h4>
+                        :
+                        <>
+                            <h3>{this.props.contact.first_name} {this.props.contact.last_name}</h3>
+                            <h4>Company: {this.props.contact.company}</h4>
+                            <h4>Phone: {this.props.contact.phone}</h4>
+                            <h4>Email: {this.props.contact.email}</h4>
+                        </>
+                    }
+                </CardContent>
+            </Card>
         )
     }
 }
@@ -84,4 +77,4 @@ class ContactDisplay extends Component {
 const mapReduxStateToProps = reduxState => ({
     reduxState,
 })
-export default connect(mapReduxStateToProps)(ContactDisplay);
+export default connect(mapReduxStateToProps)(ContactItem);
