@@ -2,9 +2,15 @@ import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postContact(action) {
-    console.log('in saga');
-    yield axios.post('/api/contact', action.payload);
-    yield put({type: 'FETCH_CONTACT'});
+    const postContactResponse = yield axios.post('/api/contact', action.payload);
+    console.log(postContactResponse);
+    if(action.payload.job_id) {
+        yield put({
+            type: 'ADD_CONTACT_TO_JOB', 
+            payload: {job_id: action.payload.job_id, contact_id:postContactResponse.data.id}})
+    } else {
+        yield put({type: 'FETCH_CONTACT'});
+    }
 }
 
 function* fetchContact() {
