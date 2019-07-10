@@ -20,6 +20,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { connect } from 'react-redux';
+import Grid from '@material-ui/core/Grid';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+
+
 
 
 
@@ -109,26 +113,43 @@ function NavAll(props) {
                 })}
             >
                 <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="Open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        Job Tracker
-                    </Typography>
-                    {props.user.id ?
-                        <Typography className={classes.logoutButton} variant="h6" noWrap>
-                            Hello  {props.user.username}
-                            <LogOutButton />
-                        </Typography>
-                        :
-                        ''
-                    }
+                    <Grid container spacing={2}>
+                        <Grid item xs={1}>
+                            <IconButton
+                                color="inherit"
+                                aria-label="Open drawer"
+                                onClick={handleDrawerOpen}
+                                edge="start"
+                                className={clsx(classes.menuButton, open && classes.hide)}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                        </Grid>
+                        <Grid item xs={8}>
+                            <Typography variant="h4" noWrap>
+                                MY JOB
+                            </Typography>
+                        </Grid>
+                        {props.user.id ?
+                            <>
+                                <Grid item xs={2}>
+                                    <Typography className={classes.logoutButton} variant="h6" noWrap>
+                                        Hello  {props.user.username}
+                                        {/* <AccountCircle /> */}
+                                    </Typography>
+
+                                </Grid>
+                                <Grid item xs={1}>
+                                    <LogOutButton />
+                                </Grid>
+                            </>
+                            :
+                            <Grid item xs={3}>
+                                ''
+                                </Grid>
+                        }
+
+                    </Grid>
 
                 </Toolbar>
             </AppBar>
@@ -192,7 +213,7 @@ function NavAll(props) {
                             <ListItemIcon></ListItemIcon>
                             <Link to='/about'><ListItemText primary='About this App' /></Link>
                         </ListItem>
-                  
+
                     </List>
                     :
                     <List>

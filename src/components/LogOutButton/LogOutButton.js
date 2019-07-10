@@ -1,20 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import PowerSettingsNew from '@material-ui/icons/PowerSettingsNew';
+
 
 
 const LogOutButton = props => (
-  <IconButton
+  <PowerSettingsNew
     // This button shows up in multiple locations and is styled differently
     // because it's styled differently depending on where it is used, the className
     // is passed to it from it's parents through React props
     className={props.className}
+    fontSize='large'
     onClick={() => 
       props.dispatch({ type: 'LOGOUT' })
     }
-  >
-    Log Out
-  </IconButton>
+  />
 );
 
 // This component doesn't need 'mapStateToProps'
