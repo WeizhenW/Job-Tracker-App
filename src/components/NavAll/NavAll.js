@@ -21,7 +21,14 @@ import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { connect } from 'react-redux';
 import Grid from '@material-ui/core/Grid';
-import AccountCircle from '@material-ui/icons/AccountCircle';
+import Home from '@material-ui/icons/Home';
+import Contacts from '@material-ui/icons/Contacts';
+import ListAlt from '@material-ui/icons/ListAlt';
+import Search from '@material-ui/icons/Search';
+import PlaylistAdd from '@material-ui/icons/PlaylistAdd';
+import GroupAdd from '@material-ui/icons/GroupAdd';
+import NotificationsActive from '@material-ui/icons/NotificationsActive';
+import Info from '@material-ui/icons/Info';
 
 
 
@@ -181,36 +188,36 @@ function NavAll(props) {
 
                     <List>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Home /></ListItemIcon>
                             <Link to='/home'><ListItemText primary='Home' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><PlaylistAdd /></ListItemIcon>
                             <Link to='/new-job'><ListItemText primary='New Job' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><ListAlt /></ListItemIcon>
                             <Link to='/job-list'><ListItemText primary='My Job List' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Search /></ListItemIcon>
                             <Link to='/search'><ListItemText primary='Search' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><NotificationsActive /></ListItemIcon>
                             <Link to='/scraping'><ListItemText primary='Indeed Feed' /></Link>
                         </ListItem>
                         <Divider />
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><GroupAdd /></ListItemIcon>
                             <Link to='/newcontact'><ListItemText primary='New Contact' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Contacts /></ListItemIcon>
                             <Link to='/contact'><ListItemText primary='Directory' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Info /></ListItemIcon>
                             <Link to='/about'><ListItemText primary='About this App' /></Link>
                         </ListItem>
 
@@ -218,11 +225,11 @@ function NavAll(props) {
                     :
                     <List>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Home /></ListItemIcon>
                             <Link to='/home'><ListItemText primary='Home' /></Link>
                         </ListItem>
                         <ListItem button >
-                            <ListItemIcon></ListItemIcon>
+                            <ListItemIcon><Info /></ListItemIcon>
                             <Link to='/about'><ListItemText primary='About this App' /></Link>
                         </ListItem>
                     </List>

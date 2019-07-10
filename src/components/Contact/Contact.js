@@ -85,9 +85,9 @@ class Contact extends Component {
     render() {
         return (
             <div>
-                <pre>
+                {/* <pre>
                     {JSON.stringify(this.props.reduxState.contact)}
-                </pre>
+                </pre> */}
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
