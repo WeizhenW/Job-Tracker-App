@@ -20,7 +20,6 @@ const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundColor: 'white',
         width: '80%',
     },
     dropdown: {
@@ -29,7 +28,8 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '20px',
+        fontSize: '24px',
+        width: '80%',
     },
     button: {
         marginTop: '30px',
@@ -96,7 +96,7 @@ class InputJob extends Component {
                         <div style={styles.title}>
                             <h2 >Enter a New Job </h2>
                         </div>
-                        <form style={styles.container} onSubmit={this.handleSubmit}>
+                        <div style={styles.container}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
                                     <h4>Core info:</h4>
@@ -150,9 +150,9 @@ class InputJob extends Component {
                             </FormControl>
                             <div>
                                 <Link to='/home'><Button style={styles.button} variant="contained" color="secondary" >Cancel</Button></Link>
-                                <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
+                                <Button style={styles.button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
                             </div>
-                        </form>
+                        </div>
                         <pre>
                             {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                             {/* {JSON.stringify(this.state, null, 2)} */}

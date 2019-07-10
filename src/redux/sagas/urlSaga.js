@@ -2,14 +2,22 @@ import { takeEvery, put } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* postUrl(action) {
-    yield axios.post('/api/file', action.payload);
-    yield put({type: 'FETCH_URL', payload: action.payload});
+    try {
+        yield axios.post('/api/file', action.payload);
+        yield put({type: 'FETCH_URL', payload: action.payload});
+    } catch(error) {
+        console.log('error with post url', error);
+    } 
 }
 
 function* fetchUrl(action) {
-    const fileResponse = yield axios.get(`/api/file/${action.payload.job_id}`);
-    console.log('file array', fileResponse);
-    yield put({type: 'SET_URL', payload: fileResponse.data});
+    try {
+        const fileResponse = yield axios.get(`/api/file/${action.payload.job_id}`);
+        console.log('file array', fileResponse);
+        yield put({type: 'SET_URL', payload: fileResponse.data});
+    } catch(error) {
+        console.log('error with fetch url', error);
+    }
 }
 
 //watcher saga
