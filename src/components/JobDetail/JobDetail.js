@@ -5,7 +5,6 @@ import FileDisplay from '../FileDisplay/FileDisplay';
 
 
 //material ui
-
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
@@ -64,10 +63,10 @@ class JobDetail extends Component {
         return (
             <div>
                 <Grid container spacing={2}>
-                    <Grid item xs={12} sm={2}>
+                    <Grid item xs={12} sm={3}>
 
                     </Grid>
-                    <Grid item xs={12} sm={8}>
+                    <Grid item xs={12} sm={6}>
                         {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
                             <h2>{this.props.jobDetail.title}</h2>
@@ -165,7 +164,7 @@ class JobDetail extends Component {
                         <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
                         {/* </Paper> */}
                     </Grid>
-                    <Grid item xs={12} sm={2}>
+                    <Grid item xs={12} sm={3}>
 
                     </Grid>
                 </Grid>
