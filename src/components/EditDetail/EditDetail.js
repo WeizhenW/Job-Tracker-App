@@ -30,7 +30,7 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '28px'
+        fontSize: '20px'
     },
     button: {
         display: 'inline- flex',
@@ -38,14 +38,6 @@ const styles = {
         marginTop: '20px',
         marginLeft: '200px',
     },
-    paper: {
-        margin: '10px auto',
-        padding: '100px 50px',
-        paddingTop: '50px',
-        minHeight: '200vh',
-        whiteSpace: 'pre-line',
-    },
-
 };
 
 class EditDetail extends Component {
@@ -104,32 +96,21 @@ class EditDetail extends Component {
         this.props.history.push(`/job-list/detail/${id}`);
     }
 
-
-
     render() {
         return (
-            <div>
                 <div>
                     <pre>
                         {/* {JSON.stringify(this.state, null, 2)} */}
                         {/* {JSON.stringify(this.props.status, null, 2)} */}
                     </pre>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={3}>
-                            this is the side
-                        <br />
-                            i don't know what to put
-                        <br />
-                            i am stuck with styling
+                        <Grid item xs={12} sm={2}>
                         </Grid>
-
-                        <Grid item xs={12} sm={9}>
-                            {/* <Paper style={styles.paper}> */}
-
+                        <Grid item xs={12} sm={8}>
                             <div style={styles.title}>
                                 <h2>Edit the Job Detail</h2>
                             </div>
-                            <form style={styles.container} onSubmit={this.handleSubmit}>
+                            <div>
                                 <Grid container spacing={4}>
                                     <Grid item xs={12} sm={6}>
                                         <TextField
@@ -165,9 +146,7 @@ class EditDetail extends Component {
                                                 label="Follow Up"
                                             />
                                         </FormGroup>
-
                                     </Grid>
-
                                     <Grid item xs={12} sm={12}>
                                         <TextField
                                             id="company-name"
@@ -223,7 +202,6 @@ class EditDetail extends Component {
                                             style={styles.TextField}
                                         />
                                     </Grid>
-
                                     <Grid item xs={12} sm={12}>
                                         <TextField
                                             multiline
@@ -249,11 +227,11 @@ class EditDetail extends Component {
 
                                     <Grid item xs={12} sm={12}>
                                         <h4>My Reference</h4>
-                                        <Button onClick={() => {this.setState({contactSelection: !this.state.contactSelection})}}>Toggle</Button>
+                                        <Button onClick={() => { this.setState({ contactSelection: !this.state.contactSelection }) }}>Toggle</Button>
                                         {this.state.contactSelection ?
                                             <ContactEntry job_id={this.props.match.params.id} />
                                             :
-                                            <ContactCreation job_id={this.props.match.params.id}/>
+                                            <ContactCreation job_id={this.props.match.params.id} />
                                         }
                                     </Grid>
                                     <Grid item xs={12} sm={12}>
@@ -261,12 +239,12 @@ class EditDetail extends Component {
                                         <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
                                     </Grid>
                                 </Grid>
-                            </form>
-                            {/* </Paper> */}
+                            </div>
+                        </Grid>
+                        <Grid item xs={12} sm={2}>
                         </Grid>
                     </Grid>
                 </div>
-            </div>
         )
     }
 }

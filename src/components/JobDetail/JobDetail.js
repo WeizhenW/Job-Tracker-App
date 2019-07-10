@@ -14,7 +14,7 @@ const styles = {
 
     title: {
         textAlign: 'center',
-        fontSize: '28px'
+        fontSize: '20px'
     },
     detail: {
         marginTop: 60,
@@ -161,7 +161,7 @@ class JobDetail extends Component {
 
                         <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
                         <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
-                        <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link>
+                        {/* <Link to="/new-job"><Button style={styles.button} variant="contained">Add Job</Button></Link> */}
                         {/* </Paper> */}
                     </Grid>
                     <Grid item xs={12} sm={3}>

@@ -12,26 +12,16 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
+        fontSize: '20px',
     },
     button1: {
-        // marginLeft: '100px',
         marginTop: '50px',
         float:'left'
     },
     button2: {
-        // marginLeft: '100px',
         marginTop: '50px',
         float:'right'
     },
-
-    // paper: {
-    //     width: '80%',
-    //     margin: '10px auto',
-    //     padding: '100px',
-    //     paddingTop: '50px',
-    // },
 }
 
 class MyJobList extends Component {

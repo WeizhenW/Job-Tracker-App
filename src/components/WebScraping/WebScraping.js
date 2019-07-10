@@ -22,6 +22,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
+//import sweetalert2
+import Swal from 'sweetalert2'
+
+
 const styles = {
     container: {
         display: 'flex',
@@ -33,8 +37,7 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
+        fontSize: '20px',
     },
     tableHeader: {
         fontSize: '16px',
@@ -76,7 +79,7 @@ class WebScraping extends Component {
         this.props.dispatch({
             type: 'POST_NEW_JOB',
             payload: {
-                history: this.props.history,
+                // history: this.props.history,
                 job: {
                     companyName: job.company,
                     jobTitle: job.title,
@@ -84,6 +87,10 @@ class WebScraping extends Component {
                     status_id: 1
                 },
             }
+        })
+        Swal.fire({
+            text: 'Job added to the backlog!',
+            type: 'success'
         })
     }
     render() {

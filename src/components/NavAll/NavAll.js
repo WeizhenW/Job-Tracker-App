@@ -55,7 +55,7 @@ const useStyles = makeStyles(theme => ({
         }),
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(3),
     },
     hide: {
         display: 'none',
@@ -94,7 +94,11 @@ const useStyles = makeStyles(theme => ({
         float: 'right',
         alignItems: 'right',
         marginRight: 0,
-    }
+    },
+    toolbar: {
+        minHeight: 84,
+        padding: 10,
+      }
 }));
 
 function NavAll(props) {
@@ -119,7 +123,7 @@ function NavAll(props) {
                     [classes.appBarShift]: open,
                 })}
             >
-                <Toolbar>
+                <Toolbar className={classes.toolbar}>
                     <Grid container spacing={2}>
                         <Grid item xs={1}>
                             <IconButton
@@ -134,7 +138,7 @@ function NavAll(props) {
                         </Grid>
                         <Grid item xs={8}>
                             <Typography variant="h4" noWrap>
-                                MY JOB
+                                JOB TRACKER
                             </Typography>
                         </Grid>
                         {props.user.id ?
@@ -142,9 +146,7 @@ function NavAll(props) {
                                 <Grid item xs={2}>
                                     <Typography className={classes.logoutButton} variant="h6" noWrap>
                                         Hello  {props.user.username}
-                                        {/* <AccountCircle /> */}
                                     </Typography>
-
                                 </Grid>
                                 <Grid item xs={1}>
                                     <LogOutButton />
@@ -155,9 +157,7 @@ function NavAll(props) {
                                 ''
                                 </Grid>
                         }
-
                     </Grid>
-
                 </Toolbar>
             </AppBar>
             <Drawer

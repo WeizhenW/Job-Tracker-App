@@ -60,7 +60,7 @@ class DonutChart extends Component {
                     {JSON.stringify(this.createData())}
                 </pre> */}
                 <Paper style={styles.paper}>
-                <h2>Most Demanding Skills (by # of Jobs)</h2>
+                <h2>Most Demanding Skills</h2>
                     <Bar
                         data={this.createData}
                         width={10}
