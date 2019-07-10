@@ -30,8 +30,8 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
+        fontSize: '20px',
+        // marginTop: '80px',
     },
     dropdown: {
         // marginTop: 10,

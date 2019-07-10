@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import './FollowUp.css';
+
 //material ui
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
@@ -31,36 +32,31 @@ const styles = {
         marginTop: '50px',
     },
     tableBody: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     jobTitle: {
-        fontSize: '14px',
+        textDecoration: 'underline',
     },
     button: {
         fontSize: '14px',
     },
     specialFont: {
-        fontSize: '12px',
+        fontSize: '14px',
     },
-    // paper: {
-    //     width: '80%',
-    //     margin: '10px auto',
-    //     padding: '100px',
-    //     paddingTop: '20px',
-    // },
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
-    },
-    announce: {
-        color: '#F7882F',
+        fontSize: '24px',
     },
     checked: {
         fontSize: '28px',
         color: 'green',
-    }
+    },
+    paper: {
+        width: '80%',
+        margin: '10px auto',
+        padding: '20px 100px',
+    },
 }
 
 class FollowUp extends Component {
@@ -111,7 +107,6 @@ class FollowUp extends Component {
     render() {
         return (
             <div>
-                {/* <Paper style={styles.paper}> */}
                     {this.props.reduxState.followup.followUpReducer.length ?
                         <>
                             <div style={styles.title}>
@@ -146,7 +141,6 @@ class FollowUp extends Component {
                                         </TableCell>
                                         <TableCell style={styles.tableBody}>
                                             <Done onClick={() => this.handleFollowUp(job)} style={styles.checked}/>
-                                            {/* <Button style={styles.specialFont} onClick={() => this.handleFollowUp(job)} variant="contained">Done</Button> */}
                                         </TableCell>
                                         <TableCell style={styles.tableBody}>
                                             <FormGroup row>
@@ -164,13 +158,14 @@ class FollowUp extends Component {
                             </Table>
                         </>
                         :
-                        <div>
-                            <h3 style={styles.announce}>Your task list is empty - why not applying for more job!</h3>
-                            <Link to='/new-job'><Button>Go to Add New Jobs</Button></Link>
-                            <Link to='/job-list'><Button>Look at My Job List</Button></Link>
-                        </div>
+                        <Paper style={styles.paper}>
+                            <h2>Great job! You have cleaned up all your tasks! 
+                                <br />
+                                <br />
+                                It's time to <Link to='/new-job'>apply for more jobs</Link> or look at the <Link to='/job-list'>Job List</Link>!
+                            </h2>
+                        </Paper>
                     }
-                {/* </Paper> */}
             </div>
         )
     }

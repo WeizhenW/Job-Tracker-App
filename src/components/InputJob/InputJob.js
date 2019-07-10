@@ -10,9 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Input } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 //sweet alert
@@ -28,20 +26,12 @@ const styles = {
     dropdown: {
         marginTop: 10,
     },
-    // paper: {
-    //     width: '80%',
-    //     margin: '10px auto',
-    //     padding: '100px 50px',
-    //     paddingTop: '50px'
-    // },
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
+        fontSize: '20px',
     },
     button: {
-        // display: 'inline-flex',
         marginTop: '30px',
         marginLeft: '200px',
     },
@@ -69,8 +59,7 @@ class InputJob extends Component {
     }
     //on click => dispatch action to post
     handleSubmit = (event) => {
-        event.preventDefault()
-
+        event.preventDefault();
         if (this.state.companyName && this.state.jobTitle && this.state.postUrl && this.state.status_id) {
             this.props.dispatch({
                 type: 'POST_NEW_JOB',
@@ -78,13 +67,22 @@ class InputJob extends Component {
                     history: this.props.history,
                     job: this.state,
                 }
+            });
+            this.setState({
+                companyName: '',
+                jobTitle: '',
+                postUrl: '',
+                status_id: '',
+            });
+            Swal.fire({
+                text: 'Job added to the list',
+                type: 'success'
             })
         } else {
-            Swal.fire(
-                'All fields are mandatory',
-                'Please fill in the blanks',
-                'error'
-              )
+            Swal.fire({
+                text: 'All fields are mandatory',
+                type: 'error'
+            })
         }
     }
 
@@ -95,19 +93,19 @@ class InputJob extends Component {
                     <Grid item xs={12} sm={2}>
                     </Grid>
                     <Grid item xs={12} sm={8}>
-                        {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
-                            <h2 >Enter a New Job: </h2>
+                            <h2 >Enter a New Job </h2>
                         </div>
                         <form style={styles.container} onSubmit={this.handleSubmit}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
-                                    <h4>Basic info:</h4>
+                                    <h4>Core info:</h4>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
                                         id="company-name"
                                         label="Company Name *"
+                                        value={this.state.companyName}
                                         onChange={this.handleChangeFor('companyName')}
                                         fullWidth
                                         variant="outlined"
@@ -118,17 +116,17 @@ class InputJob extends Component {
                                         id="job-title"
                                         label="Job Title *"
                                         variant="outlined"
+                                        value={this.state.jobTitle}
                                         onChange={this.handleChangeFor('jobTitle')}
-                                        // margin="normal"
                                         fullWidth
                                     />
                                 </Grid>
                             </Grid>
-
                             <TextField
                                 id="post-url"
                                 label="Post URL *"
                                 variant="outlined"
+                                value={this.state.postUrl}
                                 onChange={this.handleChangeFor('postUrl')}
                                 margin="normal"
                                 fullWidth
@@ -159,7 +157,6 @@ class InputJob extends Component {
                             {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                             {/* {JSON.stringify(this.state, null, 2)} */}
                         </pre>
-                        {/* </Paper> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>

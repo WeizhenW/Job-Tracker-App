@@ -8,7 +8,7 @@ import {
 
 import {connect} from 'react-redux';
 
-import Nav from '../Nav/Nav';
+import NavAll from '../NavAll/NavAll';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
@@ -24,6 +24,8 @@ import EditDetail from '../EditDetail/EditDetail';
 import NewJobList from '../NewJobList/NewJobList';
 import AppliedJobList from '../AppliedJobList/AppliedJobList';
 import WebScraping from '../WebScraping/WebScraping';
+import Contact from '../Contact/Contact';
+import ContactDisplay from '../ContactDisplay/ContactDisplay';
 
 import './App.css';
 import LogOutButton from '../LogOutButton/LogOutButton';
@@ -36,7 +38,7 @@ class App extends Component {
   render() {
     return (
       <Router>
-          <Nav />
+          <NavAll />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -125,6 +127,20 @@ class App extends Component {
               exact
               path="/logout"
               component={LogOutButton}
+            />
+
+            {/* contact page */}
+            <ProtectedRoute
+              exact
+              path="/newcontact"
+              component={Contact}
+            />
+
+            {/* contact page */}
+            <ProtectedRoute
+              exact
+              path="/contact"
+              component={ContactDisplay}
             />
 
             {/* If none of the other routes matched, we will show a 404. */}

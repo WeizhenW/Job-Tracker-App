@@ -42,7 +42,7 @@ class DonutChart extends Component {
                     '#FFCE56',
                     '#36A2EB',
                     '#37d67a',
-                    '#697689',
+                    '#ca70d4',
                 ],
             }],
             options: {
@@ -66,7 +66,7 @@ class DonutChart extends Component {
                     {JSON.stringify(this.props.reduxState.jobList.allJobsReducer, null, 2)}
                 </pre> */}
                 <Paper style={styles.paper}>
-                    <h2>My Job Pipelines:</h2>
+                    <h2>My Job Pipeline</h2>
                     <Doughnut data={this.createData} />
                 </Paper>
             </div>

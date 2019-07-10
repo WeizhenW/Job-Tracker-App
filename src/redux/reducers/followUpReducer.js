@@ -9,14 +9,6 @@ const followUpReducer = (state = [], action) => {
     }
 }
 
-// const skillsForOneJobReducer = (state = [], action) => {
-//     switch (action.type) {
-//         case 'SET_SKILLS_FOR_ONE_JOB':
-//             return action.payload;
-//         default:
-//             return state;
-//     }
-// }
 
 export default combineReducers({
     followUpReducer,
