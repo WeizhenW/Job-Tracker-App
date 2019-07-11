@@ -28,7 +28,7 @@ const styles = {
     },
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
         width: '80%',
         margin: '0 auto',

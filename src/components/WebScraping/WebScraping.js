@@ -35,7 +35,7 @@ const styles = {
     },
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
     },
     tableHeader: {
@@ -106,12 +106,12 @@ class WebScraping extends Component {
                             <Grid container spacing={3} style={styles.searchKeyword}>
                                 
                                 <Grid item sm={4}>
-                                    <Button variant="contained" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
+                                    <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
                                 </Grid>
                                 <Grid item sm={4}>
                                 </Grid>
                                 <Grid item sm={4}>
-                                    <Button variant="contained" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
+                                    <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
                                 </Grid>
                             </Grid>
                         <div style={styles.container}>
@@ -130,7 +130,7 @@ class WebScraping extends Component {
                                             <TableCell>{job.title}</TableCell>
                                             <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
                                             <TableCell>{job.company}</TableCell>
-                                            <TableCell><Button variant="contained" onClick={() => this.handleMove(job)}>Add</Button></TableCell>
+                                            <TableCell><Button variant="contained"  onClick={() => this.handleMove(job)}>Add</Button></TableCell>
                                         </TableRow>)}
                                     </TableBody>
                                 </Table>

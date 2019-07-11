@@ -29,7 +29,7 @@ const styles = {
 
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
     },
     dropdown: {
@@ -159,7 +159,7 @@ class SearchJob extends Component {
                                             </Select>
                                         </FormControl>
                                     }
-                                    <Button style={styles.button} onClick={this.handleSearch} variant="contained">Go</Button>
+                                    <Button style={styles.button} onClick={this.handleSearch} color="secondary" variant="contained">Go</Button>
                                 </Grid>
                             </Grid>
                         </div>

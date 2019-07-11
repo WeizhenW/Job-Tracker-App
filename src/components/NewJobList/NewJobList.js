@@ -23,7 +23,7 @@ import LinkIcon from '@material-ui/icons/Link';
 const styles = {
     tableHeader: {
         fontSize: '16px',
-        backgroundColor: 'black',
+        backgroundColor: '#333333',
         fontWeight: 600,
         color: 'white',
     },
@@ -41,7 +41,7 @@ const styles = {
         fontSize: '14px',
     },
     deleteButton: {
-        color: '#990000',
+        color: '#FC574E',
         fontSize: '28px'
     }
 }

@@ -33,7 +33,8 @@ CREATE TABLE "job" (
     "status_date" DATE DEFAULT CURRENT_DATE,
     "note" VARCHAR(2000),
     "user_id" INT REFERENCES "user",
-    "follow_up" BOOL DEFAULT TRUE
+    "follow_up" BOOL DEFAULT TRUE,
+    "contact_id" INT REFERENCES "contact"
 );
 
 CREATE TABLE "job_skill" (
@@ -48,4 +49,17 @@ CREATE TABLE "aws_document" (
 	"url" VARCHAR(200),
 	"user_id" INT REFERENCES "user",
 	"job_id" INT REFERENCES "job"
+	);
+
+CREATE TABLE "contact" (
+	"id" SERIAL PRIMARY KEY,
+	"first_name" VARCHAR(100),
+	"last_name" VARCHAR(100),
+	"company" VARCHAR(100),
+	"job_title" VARCHAR(50),
+	"phone" VARCHAR(20),
+	"email" VARCHAR(30),
+	"note" VARCHAR(500),
+	"role" VARCHAR(20),
+    "user_id" INT REFERENCES "user"
 	);
