@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import './FileUpload.css';
+//material ui
+import Button from '@material-ui/core/Button';
 
 class FileUpload extends Component {
     state = {
@@ -13,7 +16,6 @@ class FileUpload extends Component {
   }
   // Perform the upload
   handleUpload = (ev) => {
-    // console.log(this.uploadInput.files);
     let file = this.uploadInput.files[0];
     // Split the filename to get the name and type
     let fileParts = this.uploadInput.files[0].name.split('.');
@@ -66,21 +68,24 @@ class FileUpload extends Component {
   render() {
     const Success_message = () => (
       <div style={{padding:50}}>
-        <h3 style={{color: 'green'}}>SUCCESSFUL UPLOAD</h3>
-        <a href={this.state.url}>Access the file here</a>
+        <h2 style={{color: 'green'}}>SUCCESS!</h2>
+        {/* <a href={this.state.url}>Access the file here</a> */}
         <br/>
       </div>
     )
     return (
       <div className="chooseFile">
-          <h3>PLEASE CHOOSE A FILE</h3>
+          <h2>Upload Application Document</h2>
           <pre>
             {/* {JSON.stringify(this.state)} */}
           </pre>
           {this.state.success ? <Success_message/> : null}
-          <input onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file"/>
+          <label for="chooseFile" class="customize-file-upload">
+            Choose your file
+          </label>
+          <input id="chooseFile" onChange={this.handleChange} ref={(ref) => { this.uploadInput = ref; }} type="file"/>
           <br/>
-          <button className='uploadButton' onClick={this.handleUpload}>UPLOAD</button>
+          <Button variant="outlined" color="primary" className='uploadButton' onClick={this.handleUpload}>UPLOAD</Button>
       </div>
     );
   }

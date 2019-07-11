@@ -13,7 +13,7 @@ class FileDisplay extends Component {
     render() {
         return(
             <div>
-                <h2>Application Document</h2>
+                <h2>Document Uploaded</h2>
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.s3Url.s3UrlReducer, null, 2)} */}
                 </pre>

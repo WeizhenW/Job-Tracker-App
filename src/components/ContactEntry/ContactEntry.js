@@ -77,13 +77,13 @@ class ContactEntry extends Component {
     render() {
         return (
             <div>
-                <pre>
+                {/* <pre>
                     {JSON.stringify(this.state)}
-                </pre>
+                </pre> */}
                 <FormControl style={styles.dropdown} fullWidth variant="outlined">
                     <InputLabel htmlFor="contact">
                         Select a contact
-                                </InputLabel>
+                    </InputLabel>
                     <Select
                         onChange={this.handleChange}
                         input={<OutlinedInput name="contact" id="contact" />}

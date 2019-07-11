@@ -187,7 +187,7 @@ class ContactEntry extends Component {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Button style={styles.button} variant="contained" color="primary" type="submit" onClick={this.handleSubmit}>Add Reference</Button>
+                            <Button style={styles.button} variant="contained" color="primary" type="submit" onClick={this.handleSubmit}>CREATE</Button>
                         </Grid>
                     </Grid>
                 </div>
