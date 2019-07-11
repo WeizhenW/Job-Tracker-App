@@ -31,36 +31,36 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         backgroundColor: 'white',
-        width: '80%',
         margin: '30px auto'
     },
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '20px',
+        fontSize: '24px',
     },
     tableHeader: {
         fontSize: '16px',
         backgroundColor: 'black',
         color: 'white',
+        fontWeight: 600,
     },
     tableBody: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     jobTitle: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     button: {
         fontSize: '10px',
     },
+    searchKeyword: {
+        marginTop: '30px',
+    }
 }
 
 class WebScraping extends Component {
     state = {
         jobs: [],
-
-    }
-    componentDidMount() {
 
     }
 
@@ -101,34 +101,42 @@ class WebScraping extends Component {
                     </Grid>
                     <Grid item xs={12} sm={8} >
                         <div style={styles.title}>
-                            <h2>Indeed Jobs</h2>
+                            <h2>Indeed Job Search</h2>
                         </div>
-                        <div>
-                            <h4>JavaScript Developer @ Indeed</h4>
-                            <Button variant="contained" onClick={() => this.handleGetJobs('javascript')}>Search Jobs</Button>
-                            <h4>Software Engineer @ Indeed</h4>
-                            <Button variant="contained" onClick={() => this.handleGetJobs('software')}>Search Jobs</Button>
-                        </div>
+                            <Grid container spacing={3} style={styles.searchKeyword}>
+                                
+                                <Grid item sm={4}>
+                                    <Button variant="contained" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
+                                </Grid>
+                                <Grid item sm={4}>
+                                </Grid>
+                                <Grid item sm={4}>
+                                    <Button variant="contained" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
+                                </Grid>
+                            </Grid>
                         <div style={styles.container}>
-                            <Table>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={styles.tableHeader} >Job Title</TableCell>
-                                        <TableCell style={styles.tableHeader}>URL</TableCell>
-                                        <TableCell style={styles.tableHeader}>Company</TableCell>
-                                        <TableCell style={styles.tableHeader}>Add to List</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {this.state.jobs.map(job => <TableRow key={job.href}>
-                                        <TableCell>{job.title}</TableCell>
-                                        <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
-                                        <TableCell>{job.company}</TableCell>
-                                        <TableCell><Button variant="contained" onClick={() => this.handleMove(job)}>Add</Button></TableCell>
-                                    </TableRow>)}
-                                </TableBody>
-                            </Table>
-
+                            {this.state.jobs.length ?
+                                <Table>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell style={styles.tableHeader} >Job Title</TableCell>
+                                            <TableCell style={styles.tableHeader}>URL</TableCell>
+                                            <TableCell style={styles.tableHeader}>Company</TableCell>
+                                            <TableCell style={styles.tableHeader}>Add to List</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {this.state.jobs.map(job => <TableRow key={job.href}>
+                                            <TableCell>{job.title}</TableCell>
+                                            <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
+                                            <TableCell>{job.company}</TableCell>
+                                            <TableCell><Button variant="contained" onClick={() => this.handleMove(job)}>Add</Button></TableCell>
+                                        </TableRow>)}
+                                    </TableBody>
+                                </Table>
+                            :
+                            ''
+                            }
                         </div>
                     </Grid>
                     <Grid item xs={12} sm={2}>

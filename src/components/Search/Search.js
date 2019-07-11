@@ -30,8 +30,7 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '20px',
-        // marginTop: '80px',
+        fontSize: '24px',
     },
     dropdown: {
         // marginTop: 10,
@@ -113,9 +112,9 @@ class SearchJob extends Component {
                             <Grid container spacing={4}>
                                 <Grid item xm={12} sm={4}>
                                     <FormControl style={styles.search} fullWidth>
-                                        <InputLabel htmlFor="status">
+                                        {/* <InputLabel htmlFor="status">
                                             Search Field
-                                        </InputLabel>
+                                        </InputLabel> */}
                                         <Select
                                             onChange={this.handleSelect}
                                             value={this.state.searchBy}
