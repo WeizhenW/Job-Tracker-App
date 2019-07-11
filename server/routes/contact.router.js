@@ -5,7 +5,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 //get route to get contact persons
 router.get('/', rejectUnauthenticated, (req, res) => {
-    pool.query(`SELECT * FROM "contact" WHERE "user_id" = $1;`, [req.user.id])
+    pool.query(`SELECT * FROM "contact" WHERE "user_id" = $1 ORDER BY "last_name";`, [req.user.id])
     .then(result => res.send(result.rows))
     .catch(error => {
         console.log('error with get contacts', error);

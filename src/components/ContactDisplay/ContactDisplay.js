@@ -33,8 +33,8 @@ const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '22px',
-        marginTop: '80px',
+        fontSize: '24px',
+        // marginTop: '80px',
     },
     button: {
         // display: 'inline-flex',
