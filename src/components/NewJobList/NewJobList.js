@@ -24,19 +24,21 @@ const styles = {
     tableHeader: {
         fontSize: '16px',
         backgroundColor: 'black',
+        fontWeight: 600,
         color: 'white',
     },
     tableBody: {
-        fontSize: '14px',
+        fontSize: '16px',
+    },
+    jobTitle: {
+        fontSize: '16px',
+        textDecoration: 'underline',
     },
     table: {
         marginBottom: '50px',
     },
-    button: {
-        fontSize: '10px',
-    },
     specialFont: {
-        fontSize: '12px',
+        fontSize: '14px',
     },
     deleteButton: {
         color: '#990000',
@@ -69,30 +71,19 @@ class NewJobList extends Component {
     handleDelete = (job) => {
         //add sweet alert
         Swal.fire({
-            title: 'Are you sure?',
-            text: 'You will not be able to recover this imaginary file!',
+            // title: 'Are you sure?',
+            text: 'You will delete the job',
             type: 'warning',
             showCancelButton: true,
+            cancelButtonText: 'No, keep it',
             confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, keep it'
           }).then((result) => {
             if (result.value) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your job record has been deleted.',
-                    'success'
-                  )
                 this.props.dispatch({
                     type: 'DELETE_JOB',
                     payload: job,
                 })
-            } else if (result.dismiss === Swal.DismissReason.cancel) {
-                Swal.fire(
-                    'Cancelled',
-                    '',
-                    'error'
-                  )
-            }
+            } 
           })
         
     }
@@ -122,7 +113,7 @@ class NewJobList extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.reduxState.jobList.newJobsListReducer.map(job => <TableRow key={job.id}>
-                            <TableCell style={styles.tableBody}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
+                            <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
                             <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /></a></TableCell>
                             <TableCell style={styles.tableBody}>

@@ -8,7 +8,6 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -19,22 +18,21 @@ const styles = {
     tableHeader: {
         fontSize: '16px',
         backgroundColor: 'black',
+        fontWeight: 600,
         color: 'white',
     },
     tableBody: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     table: {
         marginBottom: '50px',
     },
     jobTitle: {
-        fontSize: '14px',
-    },
-    button: {
-        fontSize: '10px',
+        fontSize: '16px',
+        textDecoration: 'underline',
     },
     specialFont: {
-        fontSize: '12px',
+        fontSize: '14px',
     },
 }
 

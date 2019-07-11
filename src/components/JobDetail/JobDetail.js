@@ -65,9 +65,17 @@ class JobDetail extends Component {
                     </Grid>
                     <Grid item xs={12} sm={8}>
                         <div style={styles.title}>
-                            <Link to="/job-list"><Button style={styles.buttonBack} variant="contained">Back to List</Button></Link>
-                            <h2>{this.props.jobDetail.title}</h2>
-                            <Link to={`/job-list/edit/${this.props.match.params.id}`}><Button style={styles.button} variant="contained">Edit</Button></Link>
+                            <Grid container spacing={2}>
+                                <Grid item xs={12} sm={3}>
+                                    <Link to="/job-list"><Button style={styles.buttonBack} variant="contained">Back to List</Button></Link>
+                                </Grid>
+                                <Grid item xs={12} sm={6}>
+                                    <h2>{this.props.jobDetail.title}</h2>
+                                </Grid>
+                                <Grid item xs={12} sm={3}>
+                                    <Link to={`/job-list/edit/${this.props.match.params.id}`}><Button style={styles.button} variant="contained">Edit</Button></Link>
+                                </Grid>
+                            </Grid>
                         </div>
                         <div className='company'>
                             <Grid container spacing={3}>
@@ -147,21 +155,23 @@ class JobDetail extends Component {
                             </Grid>
                         </div>
                         <div className='reference'>
-                            <Grid item xs={12} sm={12}>
-                                <h4>Reference</h4>
+                            <Grid container spacing={3}>
+                                <Grid item xs={12} sm={12}>
+                                    <h4>Reference</h4>
 
-                                {/* {JSON.stringify(this.props.reduxState.contact, null, 2)} */}
-                                <p>First Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].first_name}</p>
-                                <p>Last Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].last_name} </p>
+                                    {/* {JSON.stringify(this.props.reduxState.contact, null, 2)} */}
+                                    <p>First Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].first_name}</p>
+                                    <p>Last Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].last_name} </p>
 
-                            </Grid>
-                            <Grid item xs={12} sm={12}>
-                                <FileDisplay job_id={this.props.match.params.id} />
+                                </Grid>
+                                <Grid item xs={12} sm={12}>
+                                    <FileDisplay job_id={this.props.match.params.id} />
+                                </Grid>
                             </Grid>
                         </div>
 
-                        <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button>
-                        <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link>
+                        {/* <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button> */}
+                        {/* <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>
