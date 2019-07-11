@@ -1,0 +1,19 @@
+.company {
+    border: solid 1px grey;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.jobDetail {
+    border: solid 1px grey;
+    padding: 20px;
+    margin: 10px;
+    margin-top: 20px;
+}
+
+.reference {
+    border: solid 1px grey;
+    padding: 20px;
+    margin: 10px;
+}

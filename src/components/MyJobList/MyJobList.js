@@ -1,49 +1,34 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import AppliedJobs from '../AppliedJobList/AppliedJobList';
 import NewJobs from '../NewJobList/NewJobList';
 
 //material ui
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Button from '@material-ui/core/Button';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 const styles = {
     title: {
         textAlign: 'center',
         color: '#F7882F',
-        fontSize: '20px',
+        fontSize: '24px',
     },
-    button1: {
-        marginTop: '50px',
-        float:'left'
-    },
-    button2: {
-        marginTop: '50px',
-        float:'right'
-    },
+    
 }
 
 class MyJobList extends Component {
 
     state = {
-        toApplyButtonClicked: true,
-        appliedButtonClicked: false,
+        display: 'backlog',
     }
 
-    handleClick = (type) => {
-        if (type === 'toApply') {
-            this.setState({
-                toApplyButtonClicked: true,
-                appliedButtonClicked: false,
-            })
-
-        } else {
-            this.setState({
-                toApplyButtonClicked: false,
-                appliedButtonClicked: true,
-            })
-        }
+    handleChange = (event) => {
+        this.setState({
+            display: event.target.value,
+        })
     }
 
     render() {
@@ -52,10 +37,30 @@ class MyJobList extends Component {
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
-                    {/* <Paper style={styles.paper}> */}
                     <Grid item xs={12} sm={8}>
+                        <FormControl component="fieldset">
+                            <RadioGroup
+                                aria-label="job"
+                                name="job"
+                                value={this.state.display}
+                                onChange={this.handleChange}
+                            >
+                                <FormControlLabel
+                                    value='backlog'
+                                    control={<Radio color="primary" />}
+                                    label="Backlog"
+                                    labelPlacement="start"
+                                />
+                                <FormControlLabel
+                                    value='applied'
+                                    control={<Radio color="primary" />}
+                                    label="Applied"
+                                    labelPlacement="start"
+                                />
+                            </RadioGroup>
+                        </FormControl>
                         <div>
-                            {this.state.toApplyButtonClicked ?
+                            {this.state.display === 'backlog' ?
                                 <>
                                     <Grid container spacing={1}>
                                         <Grid item sm={2}>
@@ -64,8 +69,8 @@ class MyJobList extends Component {
                                             <div style={styles.title}>
                                                 <h2>My Job Application Backlog</h2>
                                             </div>
-                                            <Button onClick={() => this.handleClick('toApply')} style={styles.button1} color="primary" variant="contained">Backlog</Button>
-                                            <Button onClick={() => this.handleClick('applied')} style={styles.button2} variant="contained">Applied Jobs</Button>
+                                            {/* <Button onClick={() => this.handleClick('toApply')} style={styles.button1} color="primary" variant="contained">Backlog</Button> */}
+                                            {/* <Button onClick={() => this.handleClick('applied')} style={styles.button2} variant="contained">Applied Jobs</Button> */}
                                         </Grid>
                                         <Grid item sm={2}>
                                         </Grid>
@@ -74,16 +79,16 @@ class MyJobList extends Component {
                                 </>
                                 :
                                 <>
-                                <Grid container spacing={1}>
-                                <Grid item sm={2}>
-                                </Grid>
-                                <Grid item sm={8}>
-                                    <div style={styles.title}>
-                                        <h2>My Applied Job List</h2>
-                                    </div>
-                                    <Button onClick={() => this.handleClick('toApply')} style={styles.button1} variant="contained">Backlog</Button>
-                                    <Button onClick={() => this.handleClick('applied')} style={styles.button2} color="primary" variant="contained">Applied Jobs</Button>
-                                    </Grid>
+                                    <Grid container spacing={1}>
+                                        <Grid item sm={2}>
+                                        </Grid>
+                                        <Grid item sm={8}>
+                                            <div style={styles.title}>
+                                                <h2>My Applied Job List</h2>
+                                            </div>
+                                            {/* <Button onClick={() => this.handleClick('toApply')} style={styles.button1} variant="contained">Backlog</Button> */}
+                                            {/* <Button onClick={() => this.handleClick('applied')} style={styles.button2} color="primary" variant="contained">Applied Jobs</Button> */}
+                                        </Grid>
                                         <Grid item sm={2}>
                                         </Grid>
                                     </Grid>
@@ -95,14 +100,12 @@ class MyJobList extends Component {
                         {/* <pre>
                             {JSON.stringify(this.state)}
                             </pre> */}
-                        {this.state.toApplyButtonClicked ?
+                        {this.state.display === 'backlog' ?
                             <NewJobs history={this.props.history} />
                             :
                             <AppliedJobs history={this.props.history} />
                         }
                     </Grid>
-
-                    {/* </Paper> */}
                     <Grid item xs={12} sm={2}>
                     </Grid>
                 </Grid>

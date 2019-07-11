@@ -10,7 +10,6 @@ import ContactCreation from '../ContactCreation/ContactCreation';
 //material ui
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 
 import FormGroup from '@material-ui/core/FormGroup';
@@ -34,7 +33,6 @@ const styles = {
     },
     button: {
         display: 'inline- flex',
-        // float: 'right',
         marginTop: '20px',
         marginLeft: '200px',
     },

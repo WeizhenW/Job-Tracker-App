@@ -24,6 +24,9 @@ const styles = {
     tableBody: {
         fontSize: '14px',
     },
+    table: {
+        marginBottom: '50px',
+    },
     jobTitle: {
         fontSize: '14px',
     },
@@ -73,7 +76,7 @@ class AppliedList extends Component {
                 <pre>
                     {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}
                 </pre>
-                <Table>
+                <Table style={styles.table}>
                     <TableHead>
                         <TableRow>
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>

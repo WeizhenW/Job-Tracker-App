@@ -20,6 +20,7 @@ const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        margin: '0 auto',
         width: '80%',
     },
     dropdown: {
@@ -30,6 +31,7 @@ const styles = {
         color: '#F7882F',
         fontSize: '24px',
         width: '80%',
+        margin: '0 auto',
     },
     button: {
         marginTop: '30px',
@@ -92,7 +94,7 @@ class InputJob extends Component {
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
-                    <Grid item xs={12} sm={8}>
+                    <Grid  item xs={12} sm={8}>
                         <div style={styles.title}>
                             <h2 >Enter a New Job </h2>
                         </div>

@@ -29,6 +29,9 @@ const styles = {
     tableBody: {
         fontSize: '14px',
     },
+    table: {
+        marginBottom: '50px',
+    },
     button: {
         fontSize: '10px',
     },
@@ -83,8 +86,6 @@ class NewJobList extends Component {
                     type: 'DELETE_JOB',
                     payload: job,
                 })
-            // For more information about handling dismissals please visit
-            // https://sweetalert2.github.io/#handling-dismissals
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 Swal.fire(
                     'Cancelled',
@@ -138,7 +139,6 @@ class NewJobList extends Component {
                                 </Select>                               
                             </TableCell>
                             <TableCell style={styles.tableBody}>
-                                {/* <Button style={styles.button} variant="contained" onClick={() => this.handleDelete(job)}>Delete</Button> */}
                                 <DeleteRoundedIcon style={styles.deleteButton} onClick={() => this.handleDelete(job)} />
                             </TableCell>
                         </TableRow>)}

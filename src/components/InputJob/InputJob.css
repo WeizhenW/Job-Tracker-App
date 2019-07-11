@@ -1,8 +1,9 @@
 .inputJob {
     width: 80%;
-    float: right;
-    display: block;
+    /* float: right; */
+    /* display: block; */
     height: 120vh;
+    margin: 0px auto;
 }
 
 a {
