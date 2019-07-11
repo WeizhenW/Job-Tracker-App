@@ -80,6 +80,11 @@ class JobDetail extends Component {
                         <div className='company'>
                             <Grid container spacing={3}>
                                 <Grid item xs={12} sm={4}>
+                                    <h2>Company</h2>
+                                </Grid>
+                                <Grid item xs={12} sm={8}>
+                                </Grid>
+                                <Grid item xs={12} sm={4}>
                                     <span style={styles.jobTitle}>Company Name: </span>
                                 </Grid>
                                 <Grid item xs={12} sm={8}>
@@ -101,6 +106,11 @@ class JobDetail extends Component {
                         </div>
                         <div className='jobDetail'>
                             <Grid container spacing={3}>
+                                <Grid item xs={12} sm={4}>
+                                    <h2>Job</h2>
+                                </Grid>
+                                <Grid item xs={12} sm={8}>
+                                </Grid>
                                 <Grid item xs={12} sm={4}>
                                     <span style={styles.jobTitle}>Post URL: </span>
                                 </Grid>
@@ -156,22 +166,29 @@ class JobDetail extends Component {
                         </div>
                         <div className='reference'>
                             <Grid container spacing={3}>
-                                <Grid item xs={12} sm={12}>
-                                    <h4>Reference</h4>
-
+                                <Grid item xs={12} sm={4}>
+                                    <h2>Reference</h2>
+                                    {/* </Grid>
+                                <Grid item xs={12} sm={8}> */}
                                     {/* {JSON.stringify(this.props.reduxState.contact, null, 2)} */}
-                                    <p>First Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].first_name}</p>
-                                    <p>Last Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].last_name} </p>
-
+                                    <ul>
+                                        <li>
+                                            First Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].first_name}
+                                        </li>
+                                        <li>
+                                            Last Name: {this.props.reduxState.contact.contactOneJobReducer[0] && this.props.reduxState.contact.contactOneJobReducer[0].last_name}
+                                        </li>
+                                    </ul>
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
                                     <FileDisplay job_id={this.props.match.params.id} />
                                 </Grid>
+                                <Grid item xs={12} sm={12}>
+                                    <h2>Prime Alumni Search</h2>
+                                    <a target="_blank" href={`https://www.linkedin.com/school/prime-digital-academy/people/?keywords=${this.props.jobDetail.company}`}>Open Linkedin</a>
+                                </Grid>
                             </Grid>
                         </div>
-
-                        {/* <Button style={styles.button} variant="contained" onClick={() => this.handleGoToEdit(this.props.match.params.id)}>Edit</Button> */}
-                        {/* <Link to="/job-list"><Button style={styles.button} variant="contained">Back to List</Button></Link> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>
