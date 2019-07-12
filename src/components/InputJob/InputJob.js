@@ -88,6 +88,15 @@ class InputJob extends Component {
         }
     }
 
+    //fill content for demo purpose
+    handleFillContent = () => {
+        this.setState({
+            companyName: 'UnitedHealth Group',
+            jobTitle: 'Associate Software Designer - Telecommute – USA',
+            postUrl: 'https://www.linkedin.com/jobs/view/1365017608/',
+        })
+    }
+
     render() {
         return (
             <div>
@@ -101,7 +110,7 @@ class InputJob extends Component {
                         <div style={styles.container}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
-                                    <h2>Core info:</h2>
+                                    <h2 onClick={this.handleFillContent}>Core info:</h2>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField

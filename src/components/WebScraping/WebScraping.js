@@ -34,7 +34,7 @@ const styles = {
     },
     tableHeader: {
         fontSize: '16px',
-        backgroundColor: 'black',
+        backgroundColor: '#5AB5D1',
         color: 'white',
         fontWeight: 600,
     },
@@ -59,6 +59,9 @@ class WebScraping extends Component {
     }
     //get request to server to fetch jobs from indeed
     handleGetJobs = (propertyName) => {
+        this.setState({
+            jobs: [],
+        })
         axios.get(`/api/scraping/${propertyName}`)
             .then(
                 response => {
