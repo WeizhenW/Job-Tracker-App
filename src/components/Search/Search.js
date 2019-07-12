@@ -189,7 +189,7 @@ class SearchJob extends Component {
                                                     {job.company}
                                                 </TableCell>
                                                 <TableCell>
-                                                    <a href={job.post_url} alt="post">Go to the post</a>
+                                                    <a href={job.post_url}>Go to the post</a>
                                                 </TableCell>
                                                 <TableCell>
                                                     {job.status_name}

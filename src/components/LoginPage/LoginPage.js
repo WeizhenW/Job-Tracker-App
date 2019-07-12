@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import './Login.css';
 import Techniques from '../Techniques/Techniques';
 import TextField from '@material-ui/core/TextField';
-
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
@@ -87,7 +86,7 @@ class LoginPage extends Component {
                     color="primary"
                   >
                     Sign In
-          </Button>
+                  </Button>
                   <button
                     type="button"
                     className="link-button"

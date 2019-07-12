@@ -87,7 +87,7 @@ class AppliedList extends Component {
                         {this.props.reduxState.jobList.appliedJobsListReducer.map(job => <TableRow key={job.id}>
                             <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
-                            <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank" alt="job post"><LinkIcon /> </a></TableCell>
+                            <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /> </a></TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
                                     variant="outlined"

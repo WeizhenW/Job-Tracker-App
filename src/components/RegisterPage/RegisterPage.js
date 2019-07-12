@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import './RegisterPage.css';
+
 
 class RegisterPage extends Component {
   state = {
@@ -19,7 +23,7 @@ class RegisterPage extends Component {
         },
       });
     } else {
-      this.props.dispatch({type: 'REGISTRATION_INPUT_ERROR'});
+      this.props.dispatch({ type: 'REGISTRATION_INPUT_ERROR' });
     }
   } // end registerUser
 
@@ -40,48 +44,53 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <form onSubmit={this.registerUser}>
+        <div className='registerBox' onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
-          </div>
-          <div>
-            <input
-              className="register"
-              type="submit"
-              name="submit"
-              value="Register"
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="User Name"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChangeFor('username')}
+              autoFocus
             />
-          </div>
-        </form>
-        <center>
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
-          >
-            Login
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              value={this.state.password}
+              onChange={this.handleInputChangeFor('password')}
+
+            />
+            <Button
+              type="submit"
+              id="loginButton"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              Register
+                  </Button>
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_LOGIN_MODE' }) }}
+            >
+              Login
           </button>
-        </center>
+          </div>
+        </div>
       </div>
     );
   }

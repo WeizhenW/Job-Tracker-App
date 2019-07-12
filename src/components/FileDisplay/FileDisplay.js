@@ -19,7 +19,7 @@ class FileDisplay extends Component {
                 </pre>
                 <div className='images'>
                     <ul>                    
-                        {this.props.reduxState.s3Url.s3UrlReducer.map(file => <li key={file.id}><a href={file.url} alt="file">{file.file}</a></li>)}
+                        {this.props.reduxState.s3Url.s3UrlReducer.map(file => <li key={file.id}><a href={file.url}>{file.file}</a></li>)}
                     </ul>
                 </div>
             </div>
