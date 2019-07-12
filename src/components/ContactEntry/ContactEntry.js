@@ -1,21 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 //material ui
-import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Input } from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+
 
 const styles = {
     container: {
@@ -27,7 +20,6 @@ const styles = {
     dropdown: {
         marginTop: 10,
     },
-
     title: {
         textAlign: 'center',
         color: '#F7882F',
@@ -35,10 +27,12 @@ const styles = {
         marginTop: '80px',
     },
     button: {
-        // display: 'inline-flex',
         marginTop: '30px',
         marginLeft: '200px',
     },
+    addContactBtn: {
+        marginTop: '20px',
+    }
 };
 
 class ContactEntry extends Component {
@@ -95,13 +89,12 @@ class ContactEntry extends Component {
                         {this.props.reduxState.contact.contactReducer.map(contact => <MenuItem key={contact.id} value={contact.id}>{contact.first_name} {contact.last_name}</MenuItem>)}
                     </Select>
                 </FormControl>
-                <Button variant="contained" onClick={this.handleSubmit}>Add Contact</Button>
+                <Button variant="outlined" color="primary" style={styles.addContactBtn} onClick={this.handleSubmit}>Add Contact</Button>
                 {this.state.displayMessage ?
                     'Contact added'
                     :
                     ''
                 }
-
             </div>
 
         )

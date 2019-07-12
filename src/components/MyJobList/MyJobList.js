@@ -13,7 +13,7 @@ import FormControl from '@material-ui/core/FormControl';
 const styles = {
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
     },
     

@@ -88,7 +88,7 @@ const useStyles = makeStyles(theme => ({
             easing: theme.transitions.easing.easeOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
-        marginLeft: 0,
+        margin: 0,
     },
     logoutButton: {
         float: 'right',
@@ -96,8 +96,8 @@ const useStyles = makeStyles(theme => ({
         marginRight: 0,
     },
     toolbar: {
-        minHeight: 84,
-        padding: 10,
+        minHeight: 105,
+        // padding: 10,
       }
 }));
 
@@ -205,7 +205,7 @@ function NavAll(props) {
                         </ListItem>
                         <ListItem button >
                             <ListItemIcon><NotificationsActive /></ListItemIcon>
-                            <Link to='/scraping'><ListItemText primary='Indeed Feed' /></Link>
+                            <Link to='/indeed'><ListItemText primary='Indeed Feed' /></Link>
                         </ListItem>
                         <Divider />
                         <ListItem button >

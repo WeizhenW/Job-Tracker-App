@@ -30,6 +30,22 @@ import ContactDisplay from '../ContactDisplay/ContactDisplay';
 import './App.css';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { createMuiTheme } from '@material-ui/core/styles';
+
+const ourTheme = createMuiTheme({
+  palette: { 
+    primary: {
+      main: '#0288d1'
+    },
+    secondary: {
+      main: '#FC574E', 
+    }
+    // error: red,
+  }
+
+})
+
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
@@ -37,6 +53,8 @@ class App extends Component {
 
   render() {
     return (
+      <MuiThemeProvider theme={ourTheme}>
+
       <Router>
           <NavAll />
           <Switch>
@@ -97,7 +115,7 @@ class App extends Component {
             {/* scraping */}
             <ProtectedRoute
               exact
-              path="/scraping"
+              path="/indeed"
               component={WebScraping}
             />
 
@@ -149,6 +167,8 @@ class App extends Component {
           {/* <Footer /> */}
 
       </Router>
+      </MuiThemeProvider>
+
   )}
 }
 

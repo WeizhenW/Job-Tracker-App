@@ -19,8 +19,9 @@ const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         width: '80%',
+        padding: '10px',
     },
     dropdown: {
         marginTop: 10,
@@ -28,9 +29,9 @@ const styles = {
 
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
-        // marginTop: '80px',
+        width: '80%',
     },
     button: {
         // display: 'inline-flex',
@@ -92,11 +93,10 @@ class Contact extends Component {
                     <Grid item xs={12} sm={2}>
                     </Grid>
                     <Grid item xs={12} sm={8}>
-                        {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
                             <h2 >Enter a New Contact </h2>
                         </div>
-                        <form style={styles.container} onSubmit={this.handleSubmit}>
+                        <div style={styles.container} onSubmit={this.handleSubmit}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
                                     <h4>Name:</h4>
@@ -144,7 +144,6 @@ class Contact extends Component {
                                         variant="outlined"
                                     />
                                 </Grid>
-
                                 <Grid item xs={12} sm={12}>
                                     <h4>Contact info:</h4>
                                 </Grid>
@@ -180,13 +179,12 @@ class Contact extends Component {
                                     />
                                 </Grid>
                                 <br />
-                                {/* <h4>Have you applied for the job?</h4> */}
                                 <Grid item xs={12} sm={6}>
                                     <h4>How did you know this person:</h4>
                                     <FormControl style={styles.dropdown} fullWidth variant="outlined">
                                         <InputLabel htmlFor="role">
                                             Role
-                                </InputLabel>
+                                        </InputLabel>
                                         <Select
                                             onChange={this.handleChangeFor('role')}
                                             input={<OutlinedInput name="role" id="role" />}
@@ -212,13 +210,11 @@ class Contact extends Component {
                                     <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
                                 </div>
                             </Grid>
-
-                        </form>
+                        </div>
                         <pre>
                             {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                             {/* {JSON.stringify(this.state, null, 2)} */}
                         </pre>
-                        {/* </Paper> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>
