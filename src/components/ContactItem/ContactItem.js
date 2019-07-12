@@ -62,7 +62,7 @@ class ContactItem extends Component {
                         <h4>Note: {this.props.contact.note}</h4>
                         :
                         <>
-                            <h2>{this.props.contact.first_name} {this.props.contact.last_name}</h2>
+                            <h2 className="cardName">{this.props.contact.first_name} {this.props.contact.last_name}</h2>
                             <hr />
                                 <span className="title">Company:</span>
                                 {this.props.contact.company}

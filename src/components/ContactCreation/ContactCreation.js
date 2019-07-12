@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 //material ui
 import TextField from '@material-ui/core/TextField';
@@ -8,26 +7,21 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Input } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+
 
 const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundColor: 'white',
         width: '80%',
+        margin: '0 auto',
     },
     dropdown: {
         marginTop: 10,
     },
-
     title: {
         textAlign: 'center',
         color: '#F7882F',
@@ -63,8 +57,6 @@ class ContactEntry extends Component {
     //on click => dispatch action to post
     handleSubmit = (event) => {
         event.preventDefault()
-
-        console.log('in handle click');
         this.props.dispatch({
             type: 'ADD_CONTACT',
             payload: this.state,
@@ -187,11 +179,10 @@ class ContactEntry extends Component {
                             </FormControl>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Button style={styles.button} variant="contained" color="primary" type="submit" onClick={this.handleSubmit}>CREATE</Button>
+                            <Button style={styles.button} variant="outlined" color="primary" type="submit" onClick={this.handleSubmit}>CREATE</Button>
                         </Grid>
                     </Grid>
                 </div>
-
         )
     }
 }

@@ -59,7 +59,7 @@ class JobDetail extends Component {
     }
     render() {
         return (
-            <div>
+            <div className="detailPage">
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={2}>
                     </Grid>
@@ -67,13 +67,13 @@ class JobDetail extends Component {
                         <div style={styles.title}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={3}>
-                                    <Link to="/job-list"><Button style={styles.buttonBack} variant="contained">Back to List</Button></Link>
+                                    <Link to="/job-list"><Button style={styles.buttonBack} color="secondary" variant="contained">Back to List</Button></Link>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <h2>{this.props.jobDetail.title}</h2>
                                 </Grid>
                                 <Grid item xs={12} sm={3}>
-                                    <Link to={`/job-list/edit/${this.props.match.params.id}`}><Button style={styles.button} variant="contained">Edit</Button></Link>
+                                    <Link to={`/job-list/edit/${this.props.match.params.id}`}><Button style={styles.button} color="primary" variant="contained">Edit</Button></Link>
                                 </Grid>
                             </Grid>
                         </div>

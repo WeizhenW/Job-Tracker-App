@@ -32,7 +32,7 @@ const styles = {
 
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
         // marginTop: '80px',
     },

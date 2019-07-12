@@ -19,8 +19,9 @@ const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        backgroundColor: 'white',
+        // backgroundColor: 'white',
         width: '80%',
+        padding: '10px',
     },
     dropdown: {
         marginTop: 10,
@@ -28,9 +29,9 @@ const styles = {
 
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
-        // marginTop: '80px',
+        width: '80%',
     },
     button: {
         // display: 'inline-flex',
@@ -95,7 +96,7 @@ class Contact extends Component {
                         <div style={styles.title}>
                             <h2 >Enter a New Contact </h2>
                         </div>
-                        <form style={styles.container} onSubmit={this.handleSubmit}>
+                        <div style={styles.container} onSubmit={this.handleSubmit}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
                                     <h4>Name:</h4>
@@ -209,7 +210,7 @@ class Contact extends Component {
                                     <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
                                 </div>
                             </Grid>
-                        </form>
+                        </div>
                         <pre>
                             {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                             {/* {JSON.stringify(this.state, null, 2)} */}

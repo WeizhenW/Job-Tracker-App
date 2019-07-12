@@ -20,12 +20,10 @@ const styles = {
         display: 'flex',
         flexWrap: 'wrap',
         backgroundColor: 'white',
-        // width: '70%',
-
     },
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px'
     },
     button: {
@@ -244,8 +242,8 @@ class EditDetail extends Component {
                                     }
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
-                                    <Button style={styles.button} variant="contained" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
-                                    <Button style={styles.button} variant="contained" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
+                                    <Button style={styles.button} variant="contained" color="secondary" onClick={() => this.handleCancel(this.props.match.params.id)}>Cancel</Button>
+                                    <Button style={styles.button} variant="contained" color="primary" onClick={() => this.handleSave(this.props.match.params.id)}>Save</Button>
                                 </Grid>
                             </Grid>
                         </div>
