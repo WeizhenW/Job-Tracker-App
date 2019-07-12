@@ -161,15 +161,12 @@ class App extends Component {
               path="/contact"
               component={ContactDisplay}
             />
-
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          {/* <Footer /> */}
-
+          <Footer />
       </Router>
       </MuiThemeProvider>
-
   )}
 }
 
