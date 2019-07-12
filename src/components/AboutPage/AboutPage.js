@@ -23,6 +23,7 @@ const AboutPage = () => (
         <li>Add connections into the directory, and add a contact as referee to a job</li>
         <li>Track job application progress from the dashboard</li>
       </ul>
+      <p>Deployed version available at: <a href="https://job-cracker.herokuapp.com/#/home">https://job-cracker.herokuapp.com/</a></p>
   </div>
   <Techniques />
   </div>
