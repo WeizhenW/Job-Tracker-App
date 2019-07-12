@@ -52,6 +52,8 @@ const useStyles = makeStyles(theme => ({
     },
     menuButton: {
         marginRight: theme.spacing(3),
+        marginTop: theme.spacing(2),
+        fontSize: '20px',
     },
     hide: {
         display: 'none',
@@ -90,6 +92,7 @@ const useStyles = makeStyles(theme => ({
         float: 'right',
         alignItems: 'right',
         marginRight: 0,
+        marginTop: '20px',
     },
     toolbar: {
         minHeight: 105,
@@ -132,9 +135,10 @@ function NavAll(props) {
                             </IconButton>
                         </Grid>
                         <Grid item xs={8}>
-                            <Typography className="siteTitle" variant="h4" noWrap>
-                                JOB TRACKER
-                            </Typography>
+                            {/* <img src="/image/siteLogo.png" height="150px" /> */}
+                            <h1 className="siteTitle" noWrap>
+                                Job Cracker
+                            </h1>
                         </Grid>
                         {props.user.id ?
                             <>
@@ -143,7 +147,7 @@ function NavAll(props) {
                                         Hello  {props.user.username}
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={1}>
+                                <Grid item xs={1} id="logout">
                                     <LogOutButton />
                                 </Grid>
                             </>

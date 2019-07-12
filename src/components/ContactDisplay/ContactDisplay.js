@@ -65,6 +65,9 @@ class ContactDisplay extends Component {
                             <h2 >Directory </h2>
                         </div>
                         <Grid container spacing={2}>
+                            <Grid item sm={12}>
+                                <h2>Click to flip the card and see the notes</h2>
+                            </Grid>
                             {this.props.reduxState.contact.contactReducer.map(contact =>
                                 <Grid key={contact.id} item xs={12} sm={4}>
                                     <ContactItem key={contact.id} contact={contact} />
