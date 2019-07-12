@@ -101,7 +101,7 @@ class InputJob extends Component {
                         <div style={styles.container}>
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={12}>
-                                    <h4>Core info:</h4>
+                                    <h2>Core info:</h2>
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
                                     <TextField
@@ -134,7 +134,7 @@ class InputJob extends Component {
                                 fullWidth
                             />
                             <br />
-                            <h4>Have you applied for the job?</h4>
+                            <h2>Have you applied for the job?</h2>
                             <FormControl style={styles.dropdown} fullWidth variant="outlined">
                                 <InputLabel htmlFor="status">
                                     Job Status

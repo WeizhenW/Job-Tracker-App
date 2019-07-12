@@ -23,7 +23,7 @@ import LinkIcon from '@material-ui/icons/Link';
 const styles = {
     tableHeader: {
         fontSize: '16px',
-        backgroundColor: '#333333',
+        backgroundColor: '#5AB5D1',
         fontWeight: 600,
         color: 'white',
     },
@@ -84,8 +84,7 @@ class NewJobList extends Component {
                     payload: job,
                 })
             } 
-          })
-        
+          })    
     }
 
     //function to get job details for one job

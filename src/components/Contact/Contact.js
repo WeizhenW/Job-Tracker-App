@@ -198,7 +198,7 @@ class Contact extends Component {
                                 </Grid>
                                 <div>
                                     <Link to='/home'><Button style={styles.button} variant="contained" color="secondary" >Cancel</Button></Link>
-                                    <Button style={styles.button} variant="contained" color="primary" type="submit">Submit</Button>
+                                    <Button style={styles.button} variant="contained" color="primary" onClick={this.handleSubmit}>Submit</Button>
                                 </div>
                             </Grid>
                         </div>

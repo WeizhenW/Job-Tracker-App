@@ -133,7 +133,7 @@ function NavAll(props) {
                         </Grid>
                         <Grid item xs={8}>
                             <Typography className="siteTitle" variant="h4" noWrap>
-                                JOB TRACKER
+                                Job Cracker
                             </Typography>
                         </Grid>
                         {props.user.id ?

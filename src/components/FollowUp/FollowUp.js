@@ -23,8 +23,9 @@ import Done from '@material-ui/icons/Done';
 const styles = {
     tableHeader: {
         fontSize: '16px',
-        backgroundColor: 'black',
+        backgroundColor: '#5AB5D1',
         color: 'white',
+        fontWeight: 600,
     },
     table: {
         marginTop: '50px',
@@ -44,7 +45,7 @@ const styles = {
     },
     title: {
         textAlign: 'center',
-        color: '#F7882F',
+        color: '#333333',
         fontSize: '24px',
     },
     checked: {

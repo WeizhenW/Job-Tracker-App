@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
-
+import WebScrapingItem from '../WebScrapingItem/WebScrapingItem';
 
 //material ui
-import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -63,7 +57,7 @@ class WebScraping extends Component {
         jobs: [],
 
     }
-
+    //get request to server to fetch jobs from indeed
     handleGetJobs = (propertyName) => {
         axios.get(`/api/scraping/${propertyName}`)
             .then(
@@ -110,8 +104,9 @@ class WebScraping extends Component {
                             <Grid item sm={4}>
                                 <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
                             </Grid>
-                            {/* <Grid item sm={4}>
-                            </Grid> */}
+                            <Grid item sm={4}>
+                                <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('frontend')}>Front End Developer</Button>
+                            </Grid>
                             <Grid item sm={4}>
                                 <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
                             </Grid>
@@ -128,12 +123,7 @@ class WebScraping extends Component {
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
-                                        {this.state.jobs.map(job => <TableRow key={job.href}>
-                                            <TableCell>{job.title}</TableCell>
-                                            <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
-                                            <TableCell>{job.company}</TableCell>
-                                            <TableCell><Button variant="outlined" color="secondary" onClick={() => this.handleMove(job)}>Add</Button></TableCell>
-                                        </TableRow>)}
+                                        {this.state.jobs.map(job => <WebScrapingItem job={job} />)}
                                     </TableBody>
                                 </Table>
                                 :
