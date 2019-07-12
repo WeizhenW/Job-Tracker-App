@@ -40,7 +40,7 @@ class WebScraping extends Component {
         return (
             <TableRow key={this.props.job.href}>
                 <TableCell>{this.props.job.title}</TableCell>
-                <TableCell><a href={this.props.job.href} target="_blank">See Job Post</a></TableCell>
+                <TableCell><a href={this.props.job.href} target="_blank" alt="post">See Job Post</a></TableCell>
                 <TableCell>{this.props.job.company}</TableCell>
                 <TableCell>
                     {this.state.added ?

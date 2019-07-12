@@ -137,7 +137,7 @@ function NavAll(props) {
                         <Grid item xs={8}>
                             {/* <img src="/image/siteLogo.png" height="150px" /> */}
                             <h1 className="siteTitle" noWrap>
-                                Job Cracker
+                                <a id="linkToHome" href="/" alt="home">Job Cracker</a>
                             </h1>
                         </Grid>
                         {props.user.id ?

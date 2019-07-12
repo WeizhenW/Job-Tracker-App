@@ -115,7 +115,7 @@ class JobDetail extends Component {
                                     <span style={styles.jobTitle}>Post URL: </span>
                                 </Grid>
                                 <Grid item xs={12} sm={8}>
-                                    <a href={this.props.jobDetail.post_url} target="_blank">Click</a>
+                                    <a href={this.props.jobDetail.post_url} target="_blank" alt="job post">Click</a>
                                 </Grid>
                                 <Grid item xs={12} sm={4}>
                                     <span style={styles.jobTitle}>Job Status: </span>
@@ -185,7 +185,7 @@ class JobDetail extends Component {
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
                                     <h2>Prime Alumni Search</h2>
-                                    <a target="_blank" href={`https://www.linkedin.com/school/prime-digital-academy/people/?keywords=${this.props.jobDetail.company}`}>Open Linkedin</a>
+                                    <a target="_blank" alt="alumni" href={`https://www.linkedin.com/school/prime-digital-academy/people/?keywords=${this.props.jobDetail.company}`}>Open Linkedin</a>
                                 </Grid>
                             </Grid>
                         </div>

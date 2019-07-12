@@ -8,3 +8,8 @@
 #logout {
     margin-top: 20px;
 }
+
+#linkToHome {
+    text-decoration: none;
+    color: white;
+}

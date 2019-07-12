@@ -162,7 +162,7 @@ class FollowUp extends Component {
                             <h2>Great job! You have cleared all your tasks! 
                                 <br />
                                 <br />
-                                It's time to <Link to='/new-job'>apply for more jobs</Link> or look at the <Link to='/job-list'>Job List</Link>!
+                                It's time to <Link to='/new-job' className="proposeLink">apply for more jobs</Link> or look at the <Link to='/job-list' className="proposeLink">Job List</Link>!
                             </h2>
                         </Paper>
                     }
