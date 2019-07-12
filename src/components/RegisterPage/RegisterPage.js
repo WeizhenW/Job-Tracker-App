@@ -44,7 +44,7 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
-        <div className='registerBox' onSubmit={this.registerUser}>
+        <div className='registerBox' >
           <h1>Register User</h1>
           <div>
             <TextField
@@ -74,11 +74,12 @@ class RegisterPage extends Component {
 
             />
             <Button
-              type="submit"
+              // type="submit"
               id="loginButton"
               fullWidth
               variant="contained"
               color="primary"
+              onClick={this.registerUser}
             >
               Register
                   </Button>
