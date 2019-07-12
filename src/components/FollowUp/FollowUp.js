@@ -158,7 +158,7 @@ class FollowUp extends Component {
                         </>
                         :
                         <Paper style={styles.paper}>
-                            <h2>Great job! You have cleaned up all your tasks! 
+                            <h2>Great job! You have cleared all your tasks! 
                                 <br />
                                 <br />
                                 It's time to <Link to='/new-job'>apply for more jobs</Link> or look at the <Link to='/job-list'>Job List</Link>!

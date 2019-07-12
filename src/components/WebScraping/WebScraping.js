@@ -103,17 +103,19 @@ class WebScraping extends Component {
                         <div style={styles.title}>
                             <h2>Indeed Job Search</h2>
                         </div>
-                            <Grid container spacing={3} style={styles.searchKeyword}>
-                                
-                                <Grid item sm={4}>
-                                    <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
-                                </Grid>
-                                <Grid item sm={4}>
-                                </Grid>
-                                <Grid item sm={4}>
-                                    <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
-                                </Grid>
+                        <Grid container spacing={3} style={styles.searchKeyword}>
+                            <Grid item sm={12}>
+                                <h2>Click a button to fetch the latest jobs from Indeed</h2>
                             </Grid>
+                            <Grid item sm={4}>
+                                <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('javascript')}>JavaScript Developer</Button>
+                            </Grid>
+                            {/* <Grid item sm={4}>
+                            </Grid> */}
+                            <Grid item sm={4}>
+                                <Button variant="contained" color="secondary" onClick={() => this.handleGetJobs('software')}>Software Engineer</Button>
+                            </Grid>
+                        </Grid>
                         <div style={styles.container}>
                             {this.state.jobs.length ?
                                 <Table>
@@ -130,12 +132,12 @@ class WebScraping extends Component {
                                             <TableCell>{job.title}</TableCell>
                                             <TableCell><a href={job.href} target="_blank">See Job Post</a></TableCell>
                                             <TableCell>{job.company}</TableCell>
-                                            <TableCell><Button variant="contained"  onClick={() => this.handleMove(job)}>Add</Button></TableCell>
+                                            <TableCell><Button variant="outlined" color="secondary" onClick={() => this.handleMove(job)}>Add</Button></TableCell>
                                         </TableRow>)}
                                     </TableBody>
                                 </Table>
-                            :
-                            ''
+                                :
+                                ''
                             }
                         </div>
                     </Grid>

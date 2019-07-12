@@ -93,7 +93,7 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: {
         minHeight: 105,
-      }
+    }
 }));
 
 function NavAll(props) {
@@ -170,17 +170,7 @@ function NavAll(props) {
                     </IconButton>
                 </div>
                 <Divider />
-
-                {/* <List>
-          {['Home', 'New Job', 'My List', 'Contact', 'Search', 'Indeed Feed'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
                 {props.user.id ?
-
                     <List>
                         <ListItem button >
                             <ListItemIcon><Home /></ListItemIcon>
@@ -213,7 +203,7 @@ function NavAll(props) {
                         </ListItem>
                         <ListItem button >
                             <ListItemIcon><Info /></ListItemIcon>
-                            <Link to='/about'><ListItemText primary='About this App' /></Link>
+                            <Link to='/about'><ListItemText primary='About' /></Link>
                         </ListItem>
 
                     </List>
@@ -225,19 +215,10 @@ function NavAll(props) {
                         </ListItem>
                         <ListItem button >
                             <ListItemIcon><Info /></ListItemIcon>
-                            <Link to='/about'><ListItemText primary='About this App' /></Link>
+                            <Link to='/about'><ListItemText primary='About' /></Link>
                         </ListItem>
                     </List>
                 }
-                {/* <Divider /> */}
-                {/* <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List> */}
             </Drawer>
             <main
                 className={clsx(classes.content, {
@@ -245,7 +226,6 @@ function NavAll(props) {
                 })}
             >
                 <div className={classes.drawerHeader} />
-
             </main>
         </div>
     );
