@@ -14,12 +14,10 @@ import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
-
 const styles = {
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-        // backgroundColor: 'white',
         width: '80%',
         padding: '10px',
     },
@@ -34,19 +32,12 @@ const styles = {
         width: '80%',
     },
     button: {
-        // display: 'inline-flex',
         marginTop: '30px',
         marginLeft: '200px',
     },
 };
 
-class Contact extends Component {
-    //in component did mount => fetch all status to populate the ddl
-    componentDidMount() {
-        // this.props.dispatch({
-        //     type: 'FETCH_ALL_STATUS',
-        // })
-    };
+class Contact extends Component {    
     //local state to temporarily hold the inputs
     state = {
         firstName: '',
@@ -211,10 +202,10 @@ class Contact extends Component {
                                 </div>
                             </Grid>
                         </div>
-                        <pre>
+                        {/* <pre> */}
                             {/* {JSON.stringify(this.props.reduxState.status, null, 2)} */}
                             {/* {JSON.stringify(this.state, null, 2)} */}
-                        </pre>
+                        {/* </pre> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>

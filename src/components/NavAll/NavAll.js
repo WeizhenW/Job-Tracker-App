@@ -15,8 +15,6 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { connect } from 'react-redux';
@@ -30,9 +28,7 @@ import GroupAdd from '@material-ui/icons/GroupAdd';
 import NotificationsActive from '@material-ui/icons/NotificationsActive';
 import Info from '@material-ui/icons/Info';
 
-
-
-
+import './NavAll.css';
 
 const drawerWidth = 240;
 
@@ -97,7 +93,6 @@ const useStyles = makeStyles(theme => ({
     },
     toolbar: {
         minHeight: 105,
-        // padding: 10,
       }
 }));
 
@@ -137,7 +132,7 @@ function NavAll(props) {
                             </IconButton>
                         </Grid>
                         <Grid item xs={8}>
-                            <Typography variant="h4" noWrap>
+                            <Typography className="siteTitle" variant="h4" noWrap>
                                 JOB TRACKER
                             </Typography>
                         </Grid>
