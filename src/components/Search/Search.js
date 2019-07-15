@@ -1,25 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
 //material ui
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-// import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import { Input } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 
@@ -47,8 +40,9 @@ const styles = {
     },
     tableHeader: {
         fontSize: '16px',
-        backgroundColor: 'black',
+        backgroundColor: '#5AB5D1',
         color: 'white',
+        fontWeight: 600,
     },
 }
 
@@ -104,7 +98,6 @@ class SearchJob extends Component {
                     <Grid item xs={12} sm={2}>
                     </Grid>
                     <Grid item xs={12} sm={8}>
-                        {/* <Paper style={styles.paper}> */}
                         <div style={styles.title}>
                             <h2 >Search Jobs in My Job List</h2>
                         </div>
@@ -112,9 +105,6 @@ class SearchJob extends Component {
                             <Grid container spacing={4}>
                                 <Grid item xm={12} sm={4}>
                                     <FormControl style={styles.search} fullWidth>
-                                        {/* <InputLabel htmlFor="status">
-                                            Search Field
-                                        </InputLabel> */}
                                         <Select
                                             onChange={this.handleSelect}
                                             value={this.state.searchBy}
@@ -143,7 +133,6 @@ class SearchJob extends Component {
                                         />
                                         :
                                         <FormControl style={styles.search} fullWidth>
-                                            {/* <br /> */}
                                             <InputLabel htmlFor="status">
                                                 Select Job Status
                                             </InputLabel>
@@ -204,7 +193,6 @@ class SearchJob extends Component {
                                     ''
                             }
                         </div>
-                        {/* </Paper> */}
                     </Grid>
                     <Grid item xs={12} sm={2}>
                     </Grid>
