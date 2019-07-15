@@ -22,26 +22,26 @@ import Done from '@material-ui/icons/Done';
 
 const styles = {
     tableHeader: {
-        fontSize: '16px',
+        fontSize: '20px',
         backgroundColor: '#5AB5D1',
         color: 'white',
-        fontWeight: 600,
+        fontWeight: 800,
     },
     table: {
         marginTop: '50px',
     },
     tableBody: {
-        fontSize: '16px',
+        fontSize: '18px',
     },
     jobTitle: {
         textDecoration: 'underline',
-        fontSize: '16px',
+        fontSize: '18px',
     },
     button: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     specialFont: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
     title: {
         textAlign: 'center',
@@ -110,7 +110,7 @@ class FollowUp extends Component {
                     {this.props.reduxState.followup.followUpReducer.length ?
                         <>
                             <div style={styles.title}>
-                                <h2>My Follow Up Task List</h2>
+                                <h2>My Daily Tasks</h2>
                             </div>
                             <pre>
                                 {/* {JSON.stringify(this.props.reduxState.jobList.appliedJobsListReducer, null, 2)} */}

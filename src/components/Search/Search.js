@@ -19,7 +19,6 @@ import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 
 const styles = {
-
     title: {
         textAlign: 'center',
         color: '#333333',
@@ -39,10 +38,13 @@ const styles = {
         marginTop: '50px',
     },
     tableHeader: {
-        fontSize: '16px',
+        fontSize: '20px',
         backgroundColor: '#5AB5D1',
         color: 'white',
-        fontWeight: 600,
+        fontWeight: 800,
+    },
+    tablebody: {
+        fontSize: '16px',
     },
 }
 
@@ -171,19 +173,19 @@ class SearchJob extends Component {
                                     <TableBody>
                                         {this.props.reduxState.search.searchResultReducer.data.map(job =>
                                             <TableRow key={job.job_id}>
-                                                <TableCell><Link to={`/job-list/detail/${job.job_id}`} >
+                                                <TableCell style={styles.tablebody}><Link to={`/job-list/detail/${job.job_id}`} >
                                                     {job.title}
                                                 </Link></TableCell>
-                                                <TableCell>
+                                                <TableCell style={styles.tablebody}>
                                                     {job.company}
                                                 </TableCell>
-                                                <TableCell>
+                                                <TableCell style={styles.tablebody}>
                                                     <a href={job.post_url}>Go to the post</a>
                                                 </TableCell>
-                                                <TableCell>
+                                                <TableCell style={styles.tablebody}>
                                                     {job.status_name}
                                                 </TableCell>
-                                            </TableRow>)}
+                                            </TableRow >)}
                                     </TableBody>
                                 </Table>
                                 :

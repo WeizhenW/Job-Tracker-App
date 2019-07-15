@@ -10,6 +10,12 @@ import TableRow from '@material-ui/core/TableRow';
 //import sweetalert2
 import Swal from 'sweetalert2'
 
+const styles={
+    tableBody: {
+        fontSize: '16px',
+    }
+}
+
 class WebScraping extends Component {
     state = {
         added: false,
@@ -39,10 +45,10 @@ class WebScraping extends Component {
     render() {
         return (
             <TableRow key={this.props.job.href}>
-                <TableCell>{this.props.job.title}</TableCell>
-                <TableCell><a href={this.props.job.href} target="_blank">See Job Post</a></TableCell>
-                <TableCell>{this.props.job.company}</TableCell>
-                <TableCell>
+                <TableCell style={styles.tableBody}>{this.props.job.title}</TableCell>
+                <TableCell style={styles.tableBody}><a href={this.props.job.href} target="_blank">See Job Post</a></TableCell>
+                <TableCell style={styles.tableBody}>{this.props.job.company}</TableCell>
+                <TableCell style={styles.tableBody}>
                     {this.state.added ?
                         <Button variant="outlined" color="secondary" disabled onClick={() => this.handleMove(this.props.job)}>Add</Button>
                         :

@@ -93,6 +93,7 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'right',
         marginRight: 0,
         marginTop: '20px',
+        fontWeight: 600,
     },
     toolbar: {
         minHeight: 105,
@@ -135,7 +136,6 @@ function NavAll(props) {
                             </IconButton>
                         </Grid>
                         <Grid item xs={8}>
-                            {/* <img src="/image/siteLogo.png" height="150px" /> */}
                             <h1 className="siteTitle" noWrap>
                                 <a id="linkToHome" href="/">Job Cracker</a>
                             </h1>

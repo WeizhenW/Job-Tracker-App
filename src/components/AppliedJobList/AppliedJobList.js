@@ -16,9 +16,9 @@ import LinkIcon from '@material-ui/icons/Link';
 
 const styles = {
     tableHeader: {
-        fontSize: '16px',
+        fontSize: '20px',
         backgroundColor: '#5AB5D1',
-        fontWeight: 600,
+        fontWeight: 800,
         color: 'white',
     },
     tableBody: {
@@ -32,7 +32,7 @@ const styles = {
         textDecoration: 'underline',
     },
     specialFont: {
-        fontSize: '14px',
+        fontSize: '16px',
     },
 }
 
@@ -78,7 +78,7 @@ class AppliedList extends Component {
                     <TableHead>
                         <TableRow>
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>
-                            <TableCell style={styles.tableHeader}>company</TableCell>
+                            <TableCell style={styles.tableHeader}>Company</TableCell>
                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
                             <TableCell style={styles.tableHeader}>Status</TableCell>
                         </TableRow>

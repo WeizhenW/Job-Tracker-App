@@ -8,8 +8,8 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 import Paper from '@material-ui/core/Paper';
 const styles = {
     paper: {
-        width: '80%',
-        margin: '10px auto',
+        // width: '80%',
+        margin: '20px auto',
         padding: '100px',
         paddingTop: '20px',
     },

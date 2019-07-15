@@ -6,8 +6,8 @@ import { Bar } from 'react-chartjs-2';
 import Paper from '@material-ui/core/Paper';
 const styles = {
     paper: {
-        width: '80%',
-        margin: '10px auto',
+        // width: '80%',
+        margin: '20px auto',
         padding: '100px',
         paddingTop: '20px',
     },
@@ -19,13 +19,6 @@ class DonutChart extends Component {
         this.props.dispatch({
             type: 'FETCH_TOP_JOB_SKILLS',
         })
-        // axios.get('/api/chart/skills')
-        //     .then(
-        //         response => {
-        //             this.skillArray = response.data;
-        //         }
-        //     )
-        //     .catch(error => console.log('error with axios get', error));
     }
 
     createData = () => {

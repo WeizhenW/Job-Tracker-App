@@ -33,19 +33,19 @@ const styles = {
         fontSize: '24px',
     },
     tableHeader: {
-        fontSize: '16px',
+        fontSize: '20px',
         backgroundColor: '#5AB5D1',
         color: 'white',
-        fontWeight: 600,
+        fontWeight: 800,
     },
     tableBody: {
-        fontSize: '16px',
+        fontSize: '18px',
     },
     jobTitle: {
-        fontSize: '16px',
+        fontSize: '18px',
     },
     button: {
-        fontSize: '10px',
+        fontSize: '12px',
     },
     searchKeyword: {
         marginTop: '30px',
