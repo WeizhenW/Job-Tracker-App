@@ -44,13 +44,13 @@ Before you get started, make sure you have the following software installed on y
 * Navigate to `localhost:3000`
 
 ## Built with
-React (including redux) as front-end framework
-Node.js/Express for server
-PostgreSQL as database
-Material-UI for UI styling
-AWS S3 for file storage
-Cheerio (node package) for web scraping
-ChartJS to create chart
+- React (including redux) as front-end framework
+- Node.js/Express for server
+- PostgreSQL as database
+- Material-UI for UI styling
+- AWS S3 for file storage
+- Cheerio (node package) for web scraping
+- ChartJS to create chart
 
 ## Lay of the Land
 
