@@ -6,6 +6,17 @@ Deployed versio available at: https://job-cracker.herokuapp.com
 
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
+# Features
+
+This app will allow user to:
+- add a job into job list or delete an existing job
+- update job details or change job status
+- add contact into directory
+- link an existing contact to a job as referral or create a referral from the job page
+- search for a job from the job list by job status or by company name
+- fetch job from indeed.com with predefined criteria and add interesting job from the result to the job list
+- check task list for the jobs that require follow up action
+
 ## Prerequisites
 
 Before you get started, make sure you have the following software installed on your computer:
