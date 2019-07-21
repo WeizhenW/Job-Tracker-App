@@ -6,7 +6,7 @@ Deployed versio available at: https://job-cracker.herokuapp.com
 
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
-# Features
+## Features
 
 This app will allow user to:
 - add a job into job list or delete an existing job
@@ -29,7 +29,7 @@ Before you get started, make sure you have the following software installed on y
 - Create a database named job_app
 - Run the queries from database.sql
 
-### Install Dependencies
+## Install Dependencies
 * npm `install` to install all the dependencies
 * Create a `.env` file at the root of the project and include the following lines:
     ```
@@ -42,6 +42,15 @@ Before you get started, make sure you have the following software installed on y
 * Run `npm run server`
 * Run `npm run client`
 * Navigate to `localhost:3000`
+
+## Built with
+React (including redux) as front-end framework
+Node.js/Express for server
+PostgreSQL as database
+Material-UI for UI styling
+AWS S3 for file storage
+Cheerio (node package) for web scraping
+ChartJS to create chart
 
 ## Lay of the Land
 
