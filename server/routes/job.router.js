@@ -21,16 +21,29 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/new', rejectUnauthenticated, (req, res) => {
     // console.log(req.body);
     const newJob = req.body;
-    pool.query(`INSERT INTO "job" ("title", "post_url", "company", "status_id", "user_id")
-    VALUES($1, $2, $3, $4, $5) returning "id";`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
+    if(newJob.status_id==2) {
+        pool.query(`INSERT INTO "job" ("title", "post_url", "company", "status_id", "user_id", "application_date")
+        VALUES($1, $2, $3, $4, $5, CURRENT_DATE) returning "id";`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
         .then((result) => {
-            console.log(result.rows[0]);
+            // console.log(result.rows[0]);
             res.send(result.rows[0]);
         })
         .catch(error => {
             console.log('error with post new job', error);
             res.sendStatus(500);
         })
+    } else {
+        pool.query(`INSERT INTO "job" ("title", "post_url", "company", "status_id", "user_id")
+        VALUES($1, $2, $3, $4, $5) returning "id";`, [newJob.jobTitle, newJob.postUrl, newJob.companyName, newJob.status_id, req.user.id])
+        .then((result) => {
+            // console.log(result.rows[0]);
+            res.send(result.rows[0]);
+        })
+        .catch(error => {
+            console.log('error with post new job', error);
+            res.sendStatus(500);
+        })
+    } 
 });
 
 //route to get all jobs to apply
