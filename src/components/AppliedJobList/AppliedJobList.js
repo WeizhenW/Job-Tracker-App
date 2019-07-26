@@ -80,6 +80,7 @@ class AppliedList extends Component {
                             <TableCell style={styles.tableHeader} >Job Title</TableCell>
                             <TableCell style={styles.tableHeader}>Company</TableCell>
                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
+                            <TableCell style={styles.tableHeader}>Application Date</TableCell>
                             <TableCell style={styles.tableHeader}>Status</TableCell>
                         </TableRow>
                     </TableHead>
@@ -88,6 +89,7 @@ class AppliedList extends Component {
                             <TableCell style={styles.jobTitle}><Link to={`/job-list/detail/${job.id}`} >{job.title}</Link></TableCell>
                             <TableCell style={styles.tableBody}>{job.company}</TableCell>
                             <TableCell style={styles.tableBody}><a href={job.post_url} target="_blank"><LinkIcon /> </a></TableCell>
+                            <TableCell style={styles.tableBody}>{job.application_date.substring(0,10)}</TableCell>
                             <TableCell style={styles.tableBody}>
                                 <Select
                                     variant="outlined"
