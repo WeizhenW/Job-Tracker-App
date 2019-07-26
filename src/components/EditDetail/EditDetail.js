@@ -221,7 +221,7 @@ class EditDetail extends Component {
                             </Grid>
                             <Grid container spacing={4} >
                                 <Grid item xs={12} sm={12} className="referenceBox">
-                                    <h2>My Reference</h2>
+                                    <h2>My Referral</h2>
                                     <FormGroup row>
                                                 <FormControlLabel
                                                     // style={styles.specialFont}
