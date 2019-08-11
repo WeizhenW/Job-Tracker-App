@@ -167,6 +167,7 @@ class SearchJob extends Component {
                                             <TableCell style={styles.tableHeader}>Job Title</TableCell>
                                             <TableCell style={styles.tableHeader}>Company</TableCell>
                                             <TableCell style={styles.tableHeader}>Post URL</TableCell>
+                                            <TableCell style={styles.tableHeader}>Application Date</TableCell>
                                             <TableCell style={styles.tableHeader}>Status</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -181,6 +182,9 @@ class SearchJob extends Component {
                                                 </TableCell>
                                                 <TableCell style={styles.tablebody}>
                                                     <a href={job.post_url}>Go to the post</a>
+                                                </TableCell>
+                                                <TableCell style={styles.tablebody}>
+                                                    {job.application_date}
                                                 </TableCell>
                                                 <TableCell style={styles.tablebody}>
                                                     {job.status_name}
