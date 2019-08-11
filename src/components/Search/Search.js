@@ -184,7 +184,7 @@ class SearchJob extends Component {
                                                     <a href={job.post_url}>Go to the post</a>
                                                 </TableCell>
                                                 <TableCell style={styles.tablebody}>
-                                                    {job.application_date}
+                                                    {job.application_date.slice(0,10)}
                                                 </TableCell>
                                                 <TableCell style={styles.tablebody}>
                                                     {job.status_name}
